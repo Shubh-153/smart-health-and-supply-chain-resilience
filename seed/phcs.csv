@@ -1,0 +1,11 @@
+phc_id,name,district,state,lat,lng,total_beds,occupied_beds,doctors_sanctioned,doctors_present,nurses_sanctioned,nurses_present
+PHC-01,Ludhiana Central PHC,Ludhiana,Punjab,30.901,75.8573,50,20,10,10,20,20
+PHC-02,Sahnewal Rural PHC,Ludhiana,Punjab,30.8248,75.9754,30,30,5,1,10,2
+PHC-03,Jagraon PHC,Ludhiana,Punjab,30.785,75.475,40,35,8,4,15,8
+PHC-04,Jalandhar Cantonment PHC,Jalandhar,Punjab,31.3,75.6,25,22,4,2,8,4
+PHC-05,Phillaur PHC,Jalandhar,Punjab,31.025,75.785,35,30,6,5,12,11
+PHC-06,Khanna PHC,Ludhiana,Punjab,30.7,76.21,45,20,8,8,16,15
+PHC-07,Nakodar PHC,Jalandhar,Punjab,31.12,75.47,30,10,5,4,10,9
+PHC-08,Raikot PHC,Ludhiana,Punjab,30.65,75.6,20,8,4,4,8,8
+PHC-09,Samrala PHC,Ludhiana,Punjab,30.83,76.18,25,12,5,4,10,8
+PHC-10,Kartarpur PHC,Jalandhar,Punjab,31.43,75.5,35,30,6,5,12,10

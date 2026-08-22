@@ -1,0 +1,43 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Cloud Functions use Admin SDK and bypass these rules entirely.
+    // Deny all client writes globally.
+    match /{document=**} {
+      allow write: if false;
+    }
+
+    // Allow public read on specified collections
+    match /phcs/{phc_id} {
+      allow read: if true;
+      
+      match /medicines/{medicine_id} {
+        allow read: if true;
+      }
+      
+      match /footfall/{date} {
+        allow read: if true;
+      }
+    }
+    
+    match /forecasts/{phc_id} {
+      allow read: if true;
+    }
+    
+    match /recommendations/{rec_id} {
+      allow read: if true;
+    }
+    
+    match /alerts_cache/{alert_id} {
+      allow read: if true;
+    }
+    
+    match /distance_cache/{dist_id} {
+      allow read: if true;
+    }
+    
+    match /network/{doc_id} {
+      allow read: if true;
+    }
+  }
+}
