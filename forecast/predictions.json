@@ -1,0 +1,402 @@
+{
+  "PHC-01": {
+    "forecast_7d": [
+      67,
+      100,
+      97,
+      95,
+      95,
+      93,
+      93
+    ],
+    "trend_pct": 1,
+    "trend_pct_exact": 1.0918027031771265,
+    "medicines": {
+      "ORS": {
+        "units_per_patient": 4,
+        "predicted_7d_demand": 2560,
+        "predicted_daily_consumption": 267
+      },
+      "Paracetamol": {
+        "units_per_patient": 2,
+        "predicted_7d_demand": 1280,
+        "predicted_daily_consumption": 134
+      },
+      "Amoxicillin": {
+        "units_per_patient": 1,
+        "predicted_7d_demand": 640,
+        "predicted_daily_consumption": 67
+      },
+      "IV Fluids": {
+        "units_per_patient": 1,
+        "predicted_7d_demand": 640,
+        "predicted_daily_consumption": 67
+      },
+      "Iron-Folic Acid": {
+        "units_per_patient": 5,
+        "predicted_7d_demand": 3200,
+        "predicted_daily_consumption": 334
+      }
+    }
+  },
+  "PHC-02": {
+    "forecast_7d": [
+      67,
+      87,
+      88,
+      90,
+      92,
+      93,
+      95
+    ],
+    "trend_pct": 18,
+    "trend_pct_exact": 17.97297297297295,
+    "medicines": {
+      "ORS": {
+        "units_per_patient": 4,
+        "predicted_7d_demand": 2444,
+        "predicted_daily_consumption": 268
+      },
+      "Paracetamol": {
+        "units_per_patient": 2,
+        "predicted_7d_demand": 1222,
+        "predicted_daily_consumption": 134
+      },
+      "Amoxicillin": {
+        "units_per_patient": 1,
+        "predicted_7d_demand": 611,
+        "predicted_daily_consumption": 67
+      },
+      "IV Fluids": {
+        "units_per_patient": 1,
+        "predicted_7d_demand": 611,
+        "predicted_daily_consumption": 67
+      },
+      "Iron-Folic Acid": {
+        "units_per_patient": 5,
+        "predicted_7d_demand": 3055,
+        "predicted_daily_consumption": 335
+      }
+    }
+  },
+  "PHC-03": {
+    "forecast_7d": [
+      79,
+      120,
+      123,
+      123,
+      123,
+      122,
+      122
+    ],
+    "trend_pct": 1,
+    "trend_pct_exact": 0.6870439212446391,
+    "medicines": {
+      "ORS": {
+        "units_per_patient": 4,
+        "predicted_7d_demand": 3250,
+        "predicted_daily_consumption": 316
+      },
+      "Paracetamol": {
+        "units_per_patient": 2,
+        "predicted_7d_demand": 1625,
+        "predicted_daily_consumption": 158
+      },
+      "Amoxicillin": {
+        "units_per_patient": 1,
+        "predicted_7d_demand": 813,
+        "predicted_daily_consumption": 79
+      },
+      "IV Fluids": {
+        "units_per_patient": 1,
+        "predicted_7d_demand": 813,
+        "predicted_daily_consumption": 79
+      },
+      "Iron-Folic Acid": {
+        "units_per_patient": 5,
+        "predicted_7d_demand": 4063,
+        "predicted_daily_consumption": 395
+      }
+    }
+  },
+  "PHC-04": {
+    "forecast_7d": [
+      46,
+      69,
+      68,
+      67,
+      69,
+      66,
+      71
+    ],
+    "trend_pct": 0,
+    "trend_pct_exact": 0.49055678194753066,
+    "medicines": {
+      "ORS": {
+        "units_per_patient": 4,
+        "predicted_7d_demand": 1821,
+        "predicted_daily_consumption": 183
+      },
+      "Paracetamol": {
+        "units_per_patient": 2,
+        "predicted_7d_demand": 910,
+        "predicted_daily_consumption": 92
+      },
+      "Amoxicillin": {
+        "units_per_patient": 1,
+        "predicted_7d_demand": 455,
+        "predicted_daily_consumption": 46
+      },
+      "IV Fluids": {
+        "units_per_patient": 1,
+        "predicted_7d_demand": 455,
+        "predicted_daily_consumption": 46
+      },
+      "Iron-Folic Acid": {
+        "units_per_patient": 5,
+        "predicted_7d_demand": 2276,
+        "predicted_daily_consumption": 229
+      }
+    }
+  },
+  "PHC-05": {
+    "forecast_7d": [
+      77,
+      130,
+      130,
+      129,
+      126,
+      125,
+      127
+    ],
+    "trend_pct": 2,
+    "trend_pct_exact": 1.781262565339777,
+    "medicines": {
+      "ORS": {
+        "units_per_patient": 4,
+        "predicted_7d_demand": 3375,
+        "predicted_daily_consumption": 309
+      },
+      "Paracetamol": {
+        "units_per_patient": 2,
+        "predicted_7d_demand": 1688,
+        "predicted_daily_consumption": 155
+      },
+      "Amoxicillin": {
+        "units_per_patient": 1,
+        "predicted_7d_demand": 844,
+        "predicted_daily_consumption": 77
+      },
+      "IV Fluids": {
+        "units_per_patient": 1,
+        "predicted_7d_demand": 844,
+        "predicted_daily_consumption": 77
+      },
+      "Iron-Folic Acid": {
+        "units_per_patient": 5,
+        "predicted_7d_demand": 4219,
+        "predicted_daily_consumption": 387
+      }
+    }
+  },
+  "PHC-06": {
+    "forecast_7d": [
+      69,
+      106,
+      104,
+      101,
+      104,
+      106,
+      105
+    ],
+    "trend_pct": 1,
+    "trend_pct_exact": 0.6496221257436793,
+    "medicines": {
+      "ORS": {
+        "units_per_patient": 4,
+        "predicted_7d_demand": 2782,
+        "predicted_daily_consumption": 277
+      },
+      "Paracetamol": {
+        "units_per_patient": 2,
+        "predicted_7d_demand": 1391,
+        "predicted_daily_consumption": 138
+      },
+      "Amoxicillin": {
+        "units_per_patient": 1,
+        "predicted_7d_demand": 695,
+        "predicted_daily_consumption": 69
+      },
+      "IV Fluids": {
+        "units_per_patient": 1,
+        "predicted_7d_demand": 695,
+        "predicted_daily_consumption": 69
+      },
+      "Iron-Folic Acid": {
+        "units_per_patient": 5,
+        "predicted_7d_demand": 3477,
+        "predicted_daily_consumption": 346
+      }
+    }
+  },
+  "PHC-07": {
+    "forecast_7d": [
+      65,
+      95,
+      102,
+      99,
+      96,
+      101,
+      99
+    ],
+    "trend_pct": 2,
+    "trend_pct_exact": 1.5455950540958137,
+    "medicines": {
+      "ORS": {
+        "units_per_patient": 4,
+        "predicted_7d_demand": 2628,
+        "predicted_daily_consumption": 259
+      },
+      "Paracetamol": {
+        "units_per_patient": 2,
+        "predicted_7d_demand": 1314,
+        "predicted_daily_consumption": 129
+      },
+      "Amoxicillin": {
+        "units_per_patient": 1,
+        "predicted_7d_demand": 657,
+        "predicted_daily_consumption": 65
+      },
+      "IV Fluids": {
+        "units_per_patient": 1,
+        "predicted_7d_demand": 657,
+        "predicted_daily_consumption": 65
+      },
+      "Iron-Folic Acid": {
+        "units_per_patient": 5,
+        "predicted_7d_demand": 3285,
+        "predicted_daily_consumption": 324
+      }
+    }
+  },
+  "PHC-08": {
+    "forecast_7d": [
+      75,
+      109,
+      105,
+      107,
+      108,
+      107,
+      109
+    ],
+    "trend_pct": 0,
+    "trend_pct_exact": 0.12208314016380213,
+    "medicines": {
+      "ORS": {
+        "units_per_patient": 4,
+        "predicted_7d_demand": 2880,
+        "predicted_daily_consumption": 299
+      },
+      "Paracetamol": {
+        "units_per_patient": 2,
+        "predicted_7d_demand": 1440,
+        "predicted_daily_consumption": 149
+      },
+      "Amoxicillin": {
+        "units_per_patient": 1,
+        "predicted_7d_demand": 720,
+        "predicted_daily_consumption": 75
+      },
+      "IV Fluids": {
+        "units_per_patient": 1,
+        "predicted_7d_demand": 720,
+        "predicted_daily_consumption": 75
+      },
+      "Iron-Folic Acid": {
+        "units_per_patient": 5,
+        "predicted_7d_demand": 3599,
+        "predicted_daily_consumption": 373
+      }
+    }
+  },
+  "PHC-09": {
+    "forecast_7d": [
+      39,
+      56,
+      59,
+      56,
+      57,
+      55,
+      56
+    ],
+    "trend_pct": 0,
+    "trend_pct_exact": 0.017683465959334562,
+    "medicines": {
+      "ORS": {
+        "units_per_patient": 4,
+        "predicted_7d_demand": 1508,
+        "predicted_daily_consumption": 155
+      },
+      "Paracetamol": {
+        "units_per_patient": 2,
+        "predicted_7d_demand": 754,
+        "predicted_daily_consumption": 78
+      },
+      "Amoxicillin": {
+        "units_per_patient": 1,
+        "predicted_7d_demand": 377,
+        "predicted_daily_consumption": 39
+      },
+      "IV Fluids": {
+        "units_per_patient": 1,
+        "predicted_7d_demand": 377,
+        "predicted_daily_consumption": 39
+      },
+      "Iron-Folic Acid": {
+        "units_per_patient": 5,
+        "predicted_7d_demand": 1885,
+        "predicted_daily_consumption": 194
+      }
+    }
+  },
+  "PHC-10": {
+    "forecast_7d": [
+      30,
+      43,
+      44,
+      43,
+      45,
+      42,
+      44
+    ],
+    "trend_pct": 1,
+    "trend_pct_exact": 1.331784746418888,
+    "medicines": {
+      "ORS": {
+        "units_per_patient": 4,
+        "predicted_7d_demand": 1163,
+        "predicted_daily_consumption": 121
+      },
+      "Paracetamol": {
+        "units_per_patient": 2,
+        "predicted_7d_demand": 582,
+        "predicted_daily_consumption": 61
+      },
+      "Amoxicillin": {
+        "units_per_patient": 1,
+        "predicted_7d_demand": 291,
+        "predicted_daily_consumption": 30
+      },
+      "IV Fluids": {
+        "units_per_patient": 1,
+        "predicted_7d_demand": 291,
+        "predicted_daily_consumption": 30
+      },
+      "Iron-Folic Acid": {
+        "units_per_patient": 5,
+        "predicted_7d_demand": 1454,
+        "predicted_daily_consumption": 152
+      }
+    }
+  }
+}
