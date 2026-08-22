@@ -1,0 +1,23 @@
+{
+  "status": "success",
+  "message": "Welcome to Aarogya Grid Mock API",
+  "data": {
+    "health_centers": [
+      {
+        "id": "hc-001",
+        "name": "Central District Hospital",
+        "location": {
+          "lat": 28.6139,
+          "lng": 77.2090
+        }
+      }
+    ],
+    "inventory": [
+      {
+        "item_id": "item-101",
+        "name": "Paracetamol 500mg",
+        "stock": 5000
+      }
+    ]
+  }
+}
