@@ -1,0 +1,38 @@
+{
+  "name": "smart-health-and-supply-chain-resilience",
+  "version": "1.0.0",
+  "description": "Aarogya Grid is a comprehensive health supply chain forecasting and management platform.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sakshammtyagi-max/smart-health-and-supply-chain-resilience.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/sakshammtyagi-max/smart-health-and-supply-chain-resilience/issues"
+  },
+  "homepage": "https://github.com/sakshammtyagi-max/smart-health-and-supply-chain-resilience#readme",
+  "dependencies": {
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "react-router-dom": "^7.18.2",
+    "recharts": "^3.10.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "@vitejs/plugin-react": "^6.1.0",
+    "autoprefixer": "^10.5.4",
+    "postcss": "^8.5.26",
+    "tailwindcss": "^4.3.3",
+    "vite": "^8.2.2"
+  }
+}

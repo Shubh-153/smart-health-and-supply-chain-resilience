@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+@theme {
+  --color-paper: var(--paper);
+  --color-card: var(--card);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-rule: var(--rule);
+  --color-signal: var(--signal);
+  
+  --color-triage-min: var(--triage-min);
+  --color-triage-del: var(--triage-del);
+  --color-triage-urg: var(--triage-urg);
+  --color-triage-imm: var(--triage-imm);
+
+  --font-display: 'Bricolage Grotesque', sans-serif;
+  --font-body: 'Public Sans', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}
+
+:root {
+  /* Palette */
+  --paper: #ffffff;
+  --card: #f8fafc; /* slate-50 */
+  --ink: #0f172a; /* slate-900 */
+  --ink-soft: #475569; /* slate-600 */
+  --rule: #e2e8f0; /* slate-200 */
+  --signal: #3b82f6; /* blue-500 */
+
+  /* Triage Bands */
+  --triage-min: #22c55e; /* green-500 */
+  --triage-del: #eab308; /* yellow-500 */
+  --triage-urg: #f97316; /* orange-500 */
+  --triage-imm: #ef4444; /* red-500 */
+}
+
+body {
+  background-color: var(--paper);
+  color: var(--ink);
+}
+
+@keyframes slide-left {
+  0% {
+    transform: translateX(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-left {
+  animation: slide-left 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@layer base {
+  a, button, [role="button"], input, select, textarea {
+    outline: none;
+  }
+  
+  a:focus-visible, button:focus-visible, [role="button"]:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+    outline: 2px solid var(--signal);
+    outline-offset: 2px;
+  }
+}

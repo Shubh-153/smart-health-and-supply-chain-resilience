@@ -41,3 +41,7 @@ ui-debug.log
 # Mac / OS
 .DS_Store
 Thumbs.db
+dist/
+.agents/
+mcp_config.json
+skills-lock.json
