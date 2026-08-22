@@ -41,6 +41,7 @@ ui-debug.log
 # Mac / OS
 .DS_Store
 Thumbs.db
-
-# Service Account Keys
-serviceAccountKey.json
+dist/
+.agents/
+mcp_config.json
+skills-lock.json
