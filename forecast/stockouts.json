@@ -1,0 +1,422 @@
+{
+  "PHC-01": [
+    {
+      "medicine": "ORS",
+      "days_remaining": 32,
+      "current_stock": 8500,
+      "predicted_daily_consumption": 267,
+      "trend_pct": 1,
+      "severity": "Normal"
+    },
+    {
+      "medicine": "Paracetamol",
+      "days_remaining": 21,
+      "current_stock": 2860,
+      "predicted_daily_consumption": 134,
+      "trend_pct": 1,
+      "severity": "Normal"
+    },
+    {
+      "medicine": "Amoxicillin",
+      "days_remaining": 49,
+      "current_stock": 3294,
+      "predicted_daily_consumption": 67,
+      "trend_pct": 1,
+      "severity": "Normal"
+    },
+    {
+      "medicine": "IV Fluids",
+      "days_remaining": 47,
+      "current_stock": 3130,
+      "predicted_daily_consumption": 67,
+      "trend_pct": 1,
+      "severity": "Normal"
+    },
+    {
+      "medicine": "Iron-Folic Acid",
+      "days_remaining": 9,
+      "current_stock": 3095,
+      "predicted_daily_consumption": 334,
+      "trend_pct": 1,
+      "severity": "Normal"
+    }
+  ],
+  "PHC-02": [
+    {
+      "medicine": "ORS",
+      "days_remaining": 3,
+      "current_stock": 800,
+      "predicted_daily_consumption": 268,
+      "trend_pct": 18,
+      "severity": "Critical"
+    },
+    {
+      "medicine": "Paracetamol",
+      "days_remaining": 0,
+      "current_stock": 0,
+      "predicted_daily_consumption": 134,
+      "trend_pct": 18,
+      "severity": "Critical"
+    },
+    {
+      "medicine": "Amoxicillin",
+      "days_remaining": 54,
+      "current_stock": 3638,
+      "predicted_daily_consumption": 67,
+      "trend_pct": 18,
+      "severity": "Normal"
+    },
+    {
+      "medicine": "IV Fluids",
+      "days_remaining": 62,
+      "current_stock": 4169,
+      "predicted_daily_consumption": 67,
+      "trend_pct": 18,
+      "severity": "Normal"
+    },
+    {
+      "medicine": "Iron-Folic Acid",
+      "days_remaining": 7,
+      "current_stock": 2466,
+      "predicted_daily_consumption": 335,
+      "trend_pct": 18,
+      "severity": "Normal"
+    }
+  ],
+  "PHC-03": [
+    {
+      "medicine": "ORS",
+      "days_remaining": 10,
+      "current_stock": 3238,
+      "predicted_daily_consumption": 316,
+      "trend_pct": 1,
+      "severity": "Normal"
+    },
+    {
+      "medicine": "Paracetamol",
+      "days_remaining": 0,
+      "current_stock": 0,
+      "predicted_daily_consumption": 158,
+      "trend_pct": 1,
+      "severity": "Critical"
+    },
+    {
+      "medicine": "Amoxicillin",
+      "days_remaining": 29,
+      "current_stock": 2330,
+      "predicted_daily_consumption": 79,
+      "trend_pct": 1,
+      "severity": "Normal"
+    },
+    {
+      "medicine": "IV Fluids",
+      "days_remaining": 44,
+      "current_stock": 3482,
+      "predicted_daily_consumption": 79,
+      "trend_pct": 1,
+      "severity": "Normal"
+    },
+    {
+      "medicine": "Iron-Folic Acid",
+      "days_remaining": 10,
+      "current_stock": 4135,
+      "predicted_daily_consumption": 395,
+      "trend_pct": 1,
+      "severity": "Normal"
+    }
+  ],
+  "PHC-04": [
+    {
+      "medicine": "ORS",
+      "days_remaining": 27,
+      "current_stock": 4919,
+      "predicted_daily_consumption": 183,
+      "trend_pct": 0,
+      "severity": "Normal"
+    },
+    {
+      "medicine": "Paracetamol",
+      "days_remaining": 0,
+      "current_stock": 0,
+      "predicted_daily_consumption": 92,
+      "trend_pct": 0,
+      "severity": "Critical"
+    },
+    {
+      "medicine": "Amoxicillin",
+      "days_remaining": 46,
+      "current_stock": 2130,
+      "predicted_daily_consumption": 46,
+      "trend_pct": 0,
+      "severity": "Normal"
+    },
+    {
+      "medicine": "IV Fluids",
+      "days_remaining": 80,
+      "current_stock": 3685,
+      "predicted_daily_consumption": 46,
+      "trend_pct": 0,
+      "severity": "Normal"
+    },
+    {
+      "medicine": "Iron-Folic Acid",
+      "days_remaining": 12,
+      "current_stock": 2769,
+      "predicted_daily_consumption": 229,
+      "trend_pct": 0,
+      "severity": "Normal"
+    }
+  ],
+  "PHC-05": [
+    {
+      "medicine": "ORS",
+      "days_remaining": 14,
+      "current_stock": 4391,
+      "predicted_daily_consumption": 309,
+      "trend_pct": 2,
+      "severity": "Normal"
+    },
+    {
+      "medicine": "Paracetamol",
+      "days_remaining": 23,
+      "current_stock": 3515,
+      "predicted_daily_consumption": 155,
+      "trend_pct": 2,
+      "severity": "Normal"
+    },
+    {
+      "medicine": "Amoxicillin",
+      "days_remaining": 63,
+      "current_stock": 4853,
+      "predicted_daily_consumption": 77,
+      "trend_pct": 2,
+      "severity": "Normal"
+    },
+    {
+      "medicine": "IV Fluids",
+      "days_remaining": 58,
+      "current_stock": 4433,
+      "predicted_daily_consumption": 77,
+      "trend_pct": 2,
+      "severity": "Normal"
+    },
+    {
+      "medicine": "Iron-Folic Acid",
+      "days_remaining": 8,
+      "current_stock": 3215,
+      "predicted_daily_consumption": 387,
+      "trend_pct": 2,
+      "severity": "Normal"
+    }
+  ],
+  "PHC-06": [
+    {
+      "medicine": "ORS",
+      "days_remaining": 11,
+      "current_stock": 2955,
+      "predicted_daily_consumption": 277,
+      "trend_pct": 1,
+      "severity": "Normal"
+    },
+    {
+      "medicine": "Paracetamol",
+      "days_remaining": 31,
+      "current_stock": 4324,
+      "predicted_daily_consumption": 138,
+      "trend_pct": 1,
+      "severity": "Normal"
+    },
+    {
+      "medicine": "Amoxicillin",
+      "days_remaining": 46,
+      "current_stock": 3184,
+      "predicted_daily_consumption": 69,
+      "trend_pct": 1,
+      "severity": "Normal"
+    },
+    {
+      "medicine": "IV Fluids",
+      "days_remaining": 36,
+      "current_stock": 2459,
+      "predicted_daily_consumption": 69,
+      "trend_pct": 1,
+      "severity": "Normal"
+    },
+    {
+      "medicine": "Iron-Folic Acid",
+      "days_remaining": 6,
+      "current_stock": 2021,
+      "predicted_daily_consumption": 346,
+      "trend_pct": 1,
+      "severity": "Normal"
+    }
+  ],
+  "PHC-07": [
+    {
+      "medicine": "ORS",
+      "days_remaining": 17,
+      "current_stock": 4300,
+      "predicted_daily_consumption": 259,
+      "trend_pct": 2,
+      "severity": "Normal"
+    },
+    {
+      "medicine": "Paracetamol",
+      "days_remaining": 21,
+      "current_stock": 2747,
+      "predicted_daily_consumption": 129,
+      "trend_pct": 2,
+      "severity": "Normal"
+    },
+    {
+      "medicine": "Amoxicillin",
+      "days_remaining": 75,
+      "current_stock": 4904,
+      "predicted_daily_consumption": 65,
+      "trend_pct": 2,
+      "severity": "Normal"
+    },
+    {
+      "medicine": "IV Fluids",
+      "days_remaining": 38,
+      "current_stock": 2474,
+      "predicted_daily_consumption": 65,
+      "trend_pct": 2,
+      "severity": "Normal"
+    },
+    {
+      "medicine": "Iron-Folic Acid",
+      "days_remaining": 10,
+      "current_stock": 3082,
+      "predicted_daily_consumption": 324,
+      "trend_pct": 2,
+      "severity": "Normal"
+    }
+  ],
+  "PHC-08": [
+    {
+      "medicine": "ORS",
+      "days_remaining": 15,
+      "current_stock": 4558,
+      "predicted_daily_consumption": 299,
+      "trend_pct": 0,
+      "severity": "Normal"
+    },
+    {
+      "medicine": "Paracetamol",
+      "days_remaining": 27,
+      "current_stock": 4047,
+      "predicted_daily_consumption": 149,
+      "trend_pct": 0,
+      "severity": "Normal"
+    },
+    {
+      "medicine": "Amoxicillin",
+      "days_remaining": 63,
+      "current_stock": 4747,
+      "predicted_daily_consumption": 75,
+      "trend_pct": 0,
+      "severity": "Normal"
+    },
+    {
+      "medicine": "IV Fluids",
+      "days_remaining": 40,
+      "current_stock": 2975,
+      "predicted_daily_consumption": 75,
+      "trend_pct": 0,
+      "severity": "Normal"
+    },
+    {
+      "medicine": "Iron-Folic Acid",
+      "days_remaining": 10,
+      "current_stock": 3806,
+      "predicted_daily_consumption": 373,
+      "trend_pct": 0,
+      "severity": "Normal"
+    }
+  ],
+  "PHC-09": [
+    {
+      "medicine": "ORS",
+      "days_remaining": 14,
+      "current_stock": 2189,
+      "predicted_daily_consumption": 155,
+      "trend_pct": 0,
+      "severity": "Normal"
+    },
+    {
+      "medicine": "Paracetamol",
+      "days_remaining": 61,
+      "current_stock": 4734,
+      "predicted_daily_consumption": 78,
+      "trend_pct": 0,
+      "severity": "Normal"
+    },
+    {
+      "medicine": "Amoxicillin",
+      "days_remaining": 66,
+      "current_stock": 2562,
+      "predicted_daily_consumption": 39,
+      "trend_pct": 0,
+      "severity": "Normal"
+    },
+    {
+      "medicine": "IV Fluids",
+      "days_remaining": 100,
+      "current_stock": 3899,
+      "predicted_daily_consumption": 39,
+      "trend_pct": 0,
+      "severity": "Normal"
+    },
+    {
+      "medicine": "Iron-Folic Acid",
+      "days_remaining": 17,
+      "current_stock": 3267,
+      "predicted_daily_consumption": 194,
+      "trend_pct": 0,
+      "severity": "Normal"
+    }
+  ],
+  "PHC-10": [
+    {
+      "medicine": "ORS",
+      "days_remaining": 40,
+      "current_stock": 4879,
+      "predicted_daily_consumption": 121,
+      "trend_pct": 1,
+      "severity": "Normal"
+    },
+    {
+      "medicine": "Paracetamol",
+      "days_remaining": 58,
+      "current_stock": 3528,
+      "predicted_daily_consumption": 61,
+      "trend_pct": 1,
+      "severity": "Normal"
+    },
+    {
+      "medicine": "Amoxicillin",
+      "days_remaining": 88,
+      "current_stock": 2646,
+      "predicted_daily_consumption": 30,
+      "trend_pct": 1,
+      "severity": "Normal"
+    },
+    {
+      "medicine": "IV Fluids",
+      "days_remaining": 136,
+      "current_stock": 4068,
+      "predicted_daily_consumption": 30,
+      "trend_pct": 1,
+      "severity": "Normal"
+    },
+    {
+      "medicine": "Iron-Folic Acid",
+      "days_remaining": 32,
+      "current_stock": 4888,
+      "predicted_daily_consumption": 152,
+      "trend_pct": 1,
+      "severity": "Normal"
+    }
+  ]
+}
