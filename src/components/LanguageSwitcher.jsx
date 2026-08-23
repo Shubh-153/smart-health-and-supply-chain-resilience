@@ -13,11 +13,11 @@ export function LanguageSwitcher() {
     <select 
       value={i18n.resolvedLanguage || 'en'} 
       onChange={handleChange}
-      className="bg-white/10 text-white text-xs py-1 px-2 rounded border border-white/20 outline-none hover:bg-white/20 transition-colors"
+      className="text-sm font-medium text-ink bg-paper hover:bg-rule/50 border border-rule rounded px-2 py-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal transition-colors cursor-pointer"
       aria-label="Language selection"
     >
       {Object.values(languages).map((lang) => (
-        <option key={lang.code} value={lang.code} className="text-slate-800">
+        <option key={lang.code} value={lang.code} className="text-ink bg-paper">
           {lang.nativeLabel}
         </option>
       ))}
