@@ -186,14 +186,14 @@ export default function FacilityList({ scope, id, phase }) {
             className={`px-3 py-1.5 text-xs font-medium rounded-md transition-colors ${viewMode === 'cards' ? 'bg-paper text-ink shadow-sm' : 'text-ink-soft hover:text-ink'}`}
             onClick={() => setViewMode('cards')}
           >
-            Cards
+            {t("facilityList.cards")}
           </button>
           <button
             type="button"
             className={`px-3 py-1.5 text-xs font-medium rounded-md transition-colors ${viewMode === 'grid' ? 'bg-paper text-ink shadow-sm' : 'text-ink-soft hover:text-ink'}`}
             onClick={() => setViewMode('grid')}
           >
-            Grid
+            {t("facilityList.grid")}
           </button>
         </div>
       </div>

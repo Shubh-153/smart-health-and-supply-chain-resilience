@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { getHierarchy } from '../api/client';
 import { useTranslation } from 'react-i18next';
+import { translateStateName, translateDistrictName, translateFacilityName } from '../i18n/dataLocalization';
 
 function TriageDot({ bucket }) {
   const colors = {
@@ -170,7 +171,7 @@ export default function Sidebar({ isOpen, onClose }) {
         <div className="overflow-y-auto flex-1 py-2">
           <ul role="tree" className="list-none">
             <TreeNode
-              label="India"
+              label={t("common.indiaNational")}
               to="/"
               isActive={isActive('/')}
               defaultExpanded={true}
@@ -182,7 +183,7 @@ export default function Sidebar({ isOpen, onClose }) {
                 return (
                   <TreeNode
                     key={state.name}
-                    label={state.name}
+                    label={translateStateName(state.name, i18n.resolvedLanguage)}
                     to={statePath}
                     isActive={isActive(statePath)}
                     defaultExpanded={isUnder(statePath)}
@@ -194,7 +195,7 @@ export default function Sidebar({ isOpen, onClose }) {
                       return (
                         <TreeNode
                           key={district.name}
-                          label={district.name}
+                          label={translateDistrictName(district.name, i18n.resolvedLanguage)}
                           to={districtPath}
                           isActive={isActive(districtPath)}
                           defaultExpanded={isUnder(districtPath)}
@@ -206,7 +207,7 @@ export default function Sidebar({ isOpen, onClose }) {
                             return (
                               <TreeNode
                                 key={phc.id}
-                                label={phc.name}
+                                label={translateFacilityName(phc, i18n.resolvedLanguage)}
                                 to={phcPath}
                                 isActive={isActive(phcPath)}
                                 depth={3}

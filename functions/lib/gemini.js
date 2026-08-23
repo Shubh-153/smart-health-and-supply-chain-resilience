@@ -7,7 +7,8 @@ let model = null;
 
 // Template fallback defined in FR-7.3 and §A6
 function getTemplateFallback(payload) {
-  return `${payload.phc_name} is projected to exhaust ${payload.medicine} in ${payload.days_remaining} days. Transfer ${payload.transfer_qty} units from ${payload.recommended_source} (${payload.distance_km} km, ${payload.travel_time_min} min).`;
+  return `${payload.phc_name} is projected to exhaust ${payload.medicine} in ${payload.days_remaining} days. Transfer ${payload.transfer_qty} units from ${payload.recommended_source,
+    payload} (${payload.distance_km} km, ${payload.travel_time_min} min).`;
 }
 
 function validateIntegers(responseStr, payload) {
@@ -48,7 +49,8 @@ async function generateAlert(payload) {
     genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "dummy_key");
     model = genAI.getGenerativeModel({ 
       model: 'gemini-3.5-flash',
-      systemInstruction: "Write a two-sentence alert for a district health officer. Use only the numbers provided — never estimate, round, or add figures. First sentence states the predicted shortage and its cause. Second sentence states the recommended transfer with source, quantity, and travel time. Plain English, no jargon, no greeting, no markdown."
+      systemInstruction: "Write a two-sentence alert for a district health officer. Use only the numbers provided — never estimate, round, or add figures. First sentence states the predicted shortage and its cause. Second sentence states the recommended transfer with source,
+    payload, quantity, and travel time. Plain English, no jargon, no greeting, no markdown."
     });
   }
 
@@ -65,7 +67,8 @@ async function generateAlert(payload) {
   }
 
   let finalOutput = "";
-  let source = "gemini";
+  let source,
+    payload = "gemini";
 
   try {
     // 4. 4-second timeout
@@ -79,18 +82,21 @@ async function generateAlert(payload) {
     } else {
       console.warn(`[Gemini] Validation failed. Falling back to template.`);
       finalOutput = getTemplateFallback(payload);
-      source = "template";
+      source,
+    payload = "template";
     }
   } catch (err) {
     console.warn(`[Gemini] API error or timeout (${err.message}). Falling back to template.`);
     finalOutput = getTemplateFallback(payload);
-    source = "template";
+    source,
+    payload = "template";
   }
 
   const alertData = {
     text: finalOutput,
     generated_at: Timestamp.now(),
-    source
+    source,
+    payload
   };
 
   // Save to cache asynchronously (fire and forget)

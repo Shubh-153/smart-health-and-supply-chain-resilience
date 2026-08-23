@@ -1,183 +1,226 @@
 {
   "dataGrid": {
-    "facility": "医疗机构",
-    "stockStatus": "库存状态",
-    "trend": "趋势 (7天)",
-    "risk": "风险",
-    "transfer": "调拨",
-    "triage": "分诊",
-    "beds": "床位",
-    "staff": "人员比例 %",
-    "district": "地区"
+    "facility": "Facility",
+    "stockStatus": "Stock Status",
+    "trend": "Trend (7d)",
+    "risk": "Risk",
+    "transfer": "Transfer",
+    "triage": "Triage",
+    "beds": "Beds",
+    "staff": "Staff %",
+    "district": "District"
   },
   "facilityList": {
-    "error": "医疗机构数据连接已断开。当前显示空机构列表。",
-    "empty": "当前{{scope}}内无风险医疗机构。上次检查时间为 2 分钟前。",
-    "cards": "卡片",
-    "grid": "网格"
+    "error": "Facility data connection dropped. Showing an empty facility list instead.",
+    "empty": "No facilities at risk in this {{scope}}. Last checked 2 minutes ago.",
+    "cards": "Cards",
+    "grid": "Grid"
   },
   "recommendationRail": {
-    "title": "AI 调拨建议",
-    "subtitle": "审查并批准网络再平衡。",
-    "empty": "无建议。",
-    "approve": "批准",
-    "from": "从",
-    "to": "到",
-    "km": "公里",
-    "riskReduction": "风险降低",
-    "riskReductionTitle": "风险降低",
-    "error": "数据流已断开。"
+    "title": "AI Transfer Recommendations",
+    "subtitle": "Review and approve network rebalancing.",
+    "empty": "No recommendations.",
+    "approve": "Approve",
+    "from": "from",
+    "to": "to",
+    "km": "km",
+    "riskReduction": "risk reduction",
+    "riskReductionTitle": "Risk reduction",
+    "error": "Data stream disconnected.",
+    "networkError": "Recommendation Engine Disconnected",
+    "emptyTransfers": "No Transfers Needed",
+    "emptyDesc": "There are currently no active transfer recommendations for this facility. Stock levels are either within safe operational margins, or no nearby surplus exists to facilitate a transfer.",
+    "transferQueued": "Transfer Queued",
+    "transferFinalized": "Transfer Finalized",
+    "undo": "Undo ({{timeLeft}}s)",
+    "notifiedFinalized": "Logistics team has been notified for {{quantity}} units of {{medicine}} from {{source}}.",
+    "notifiedQueued": "Logistics team will be notified for {{quantity}} units of {{medicine}} from {{source}}.",
+    "destination": "Destination",
+    "itemQuantity": "Item & Quantity",
+    "logistics": "Logistics",
+    "min": "min",
+    "transferDisabled": "Transfer Disabled",
+    "networkIssue": "Transfer request failed. Network issue encountered."
   },
   "riskBreakdown": {
-    "title": "风险因素",
-    "stock": "库存",
-    "demand": "需求",
-    "beds": "床位",
-    "staff": "人员"
+    "title": "Risk Factors",
+    "stock": "Stock",
+    "demand": "Demand",
+    "beds": "Beds",
+    "staff": "Staff"
   },
   "summaryBar": {
-    "title": "网络概览",
-    "totalFacilities": "医疗机构总数",
-    "avgRiskScore": "平均风险评分",
-    "critical": "危急",
-    "activeTransfers": "进行中的调拨",
-    "error": "连接已断开。"
+    "title": "Network Snapshot",
+    "totalFacilities": "Total Facilities",
+    "avgRiskScore": "Avg Risk Score",
+    "critical": "Critical",
+    "activeTransfers": "Active Transfers",
+    "error": "Connection lost.",
+    "criticalCount": "Critical count",
+    "atRiskCount": "At risk count",
+    "medicineStockOuts": "Medicine stock-outs",
+    "bedOccupancy": "Bed occupancy %",
+    "staffAvailability": "Staff availability %"
   },
   "triageTag": {
-    "risk": "风险",
-    "viewDetails": "查看详情"
+    "risk": "Risk",
+    "viewDetails": "View details"
   },
   "aggregateView": {
-    "empty": "未找到医疗机构。",
-    "networkOverview": "网络概览",
-    "activeAlerts": "活动警报",
-    "facilitiesAtRisk": "有风险的医疗机构",
-    "riskDistribution": "风险分布",
-    "aiRecommendations": "AI 建议"
+    "empty": "No facilities found.",
+    "networkOverview": "Network Overview",
+    "activeAlerts": "Active Alerts",
+    "facilitiesAtRisk": "Facilities at Risk",
+    "riskDistribution": "Risk Distribution",
+    "aiRecommendations": "AI Recommendations",
+    "stateOf": "State of {{name}}",
+    "indiaNational": "India (National)",
+    "noFacilitySelected": "No facility selected",
+    "noFacilityDesc": "Please select a facility from the sidebar to view detailed metrics and AI recommendations.",
+    "networkSummary": "Aggregated metrics and facility status.",
+    "facilities": "Facilities"
   },
   "notFound": {
     "title": "404",
-    "subtitle": "页面未找到",
-    "return": "返回控制面板"
+    "subtitle": "Page not found",
+    "return": "Return to Dashboard"
   },
   "phcView": {
-    "stockOutIn": "预计缺货于",
-    "days": "天",
-    "forecast": "7天预测",
-    "inventory": "药品库存",
-    "riskAnalysis": "风险分析",
-    "footfall": "就诊人次"
+    "stockOutIn": "Stock out in",
+    "days": "days",
+    "forecast": "7-Day Forecast",
+    "inventory": "Medicine Inventory",
+    "riskAnalysis": "Risk Analysis",
+    "footfall": "Patient Footfall",
+    "patientForecast": "Patient Forecast",
+    "inventoryStatus": "Inventory Status",
+    "thirtyDayTrend": "30-Day Trend & AI Forecast",
+    "forecastUnavailable": "Forecast data unavailable",
+    "criticalMedicines": "Critical Medicines",
+    "transferConfirmed": "Transfer confirmed",
+    "riskScoreTooltip": "This score combines medicine supply risk (40%), bed capacity (25%), demand surge (20%), and staffing levels (15%). Range: 0 (minimal risk) to 100 (critical).",
+    "forecastTooltip": "Solid line: recorded daily patient visits over the past 30 days. Dashed line: 7-day AI prediction with \u00b115% confidence band (shaded area).",
+    "medicineTooltip": "Medicine stock levels sorted by urgency. 'Days Rem.' shows how long current stock will last at current consumption rates."
   },
   "layout": {
     "breadcrumbs": {
-      "india": "印度"
+      "india": "India"
     },
     "header": {
       "title": "Aarogya Grid",
-      "openNavigation": "打开导航",
-      "searchFacilities": "搜索医疗机构",
-      "search": "搜索...",
-      "simulated": "已模拟",
-      "simulatedTooltip": "此数据为模拟生成"
+      "openNavigation": "Open navigation",
+      "searchFacilities": "Search facilities",
+      "search": "Search...",
+      "simulated": "Simulated",
+      "simulatedTooltip": "Data is generated for simulation"
     }
   },
   "sidebar": {
-    "expand": "展开",
-    "collapse": "收起",
-    "ariaNavigation": "医疗机构导航",
-    "loading": "导航不可用。请使用上方的面包屑导航。",
-    "header": "导航",
-    "close": "关闭导航"
+    "expand": "Expand",
+    "collapse": "Collapse",
+    "ariaNavigation": "Facility navigation",
+    "loading": "Navigation unavailable. Use breadcrumbs above.",
+    "header": "Navigation",
+    "close": "Close navigation"
   },
   "forecastChart": {
-    "count": "数量：",
-    "range": "范围：",
-    "status": "状态：",
-    "predicted": "预测",
-    "recorded": "已记录",
-    "historicalPattern": "基于30天历史模式",
-    "today": "今天"
+    "count": "Count:",
+    "range": "Range:",
+    "status": "Status:",
+    "predicted": "Predicted",
+    "recorded": "Recorded",
+    "historicalPattern": "Based on 30-day historical pattern",
+    "today": "TODAY"
   },
   "medicineTable": {
-    "medicine": "药品",
-    "currentStock": "当前库存",
-    "dailyCons": "日消耗",
-    "daysRem": "剩余天数",
-    "status": "状态"
+    "medicine": "Medicine",
+    "currentStock": "Current Stock",
+    "dailyCons": "Daily Cons.",
+    "daysRem": "Days Rem.",
+    "status": "Status"
   },
   "triage": {
-    "critical": "危急",
-    "high": "高",
-    "medium": "中",
-    "low": "低"
+    "critical": "Critical",
+    "high": "High",
+    "medium": "Medium",
+    "low": "Low"
   },
   "glossary": {
-    "ariaLabel": "术语表",
-    "title": "术语表",
-    "close": "关闭术语表",
-    "searchPlaceholder": "搜索术语...",
-    "noTermsFound": "未找到与“{{query}}”匹配的术语",
+    "ariaLabel": "Glossary",
+    "title": "Glossary",
+    "close": "Close glossary",
+    "searchPlaceholder": "Search terms...",
+    "noTermsFound": "No terms found matching \"{{query}}\"",
     "terms": {
       "riskScore": {
-        "term": "风险评分",
-        "def": "每日计算的 0-100 综合指标。权重包括：当前库存水平 (40%)、预测需求 (35%) 以及当地基础设施能力 (25%)。"
+        "term": "Risk Score",
+        "def": "A composite 0-100 metric calculated daily. It weights current stock levels (40%), forecasted demand (35%), and local infrastructure capacity (25%)."
       },
       "triageBands": {
-        "term": "分诊级别",
-        "def": "医疗机构根据风险评分被划分为四个级别：轻微 (0–30)、延缓 (31–60)、紧急 (61–80) 和即刻 (81–100)。这些级别与临床分诊术语相对应。"
+        "term": "Triage Bands",
+        "def": "Facilities are classified into four bands based on risk score: Minimal (0\u201330), Delayed (31\u201360), Urgent (61\u201380), and Immediate (81\u2013100). These map to clinical triage terminology."
       },
       "stockDays": {
-        "term": "库存可用天数",
-        "def": "在当前消耗率下药品预计可维持的天数。计算方式为：当前库存 ÷ 日平均消耗量。"
+        "term": "Stock Days",
+        "def": "The number of days a medicine will last at current consumption rates. Calculated as current stock \u00f7 average daily consumption."
       },
       "demandSurge": {
-        "term": "需求激增",
-        "def": "基于 7 天 AI 预测模型预测的就诊人数增长。表示为高出 30 天基准线的百分比。"
+        "term": "Demand Surge",
+        "def": "A predicted increase in patient footfall based on the 7-day AI forecast model. Expressed as a percentage above the 30-day baseline."
       },
       "transferRecommendation": {
-        "term": "调拨建议",
-        "def": "AI 生成的建议，用于将药品库存从有盈余的医疗机构调拨至面临短缺的医疗机构。显示来源地、目的地、数量、距离及预测的风险降低度。"
+        "term": "Transfer Recommendation",
+        "def": "An AI-generated suggestion to move medicine stock from a facility with surplus to one facing shortage. Shows source, destination, quantity, distance, and projected risk reduction."
       },
       "bedOccupancy": {
-        "term": "床位使用率",
-        "def": "医疗机构当前正在使用的床位数占总床位数的百分比。高使用率 (>80%) 意味着面临收治压力。"
+        "term": "Bed Occupancy",
+        "def": "The percentage of a facility's total beds currently in use. High occupancy (>80%) signals capacity pressure."
       },
       "staffRatio": {
-        "term": "人员配置比例",
-        "def": "当前已配备的在编（批准）人员岗位的比例。比例较低表明存在人员短缺。"
+        "term": "Staff Ratio",
+        "def": "The proportion of sanctioned (approved) staff positions currently filled. Low ratios indicate staffing shortages."
       }
     }
   },
   "helpTooltip": {
-    "moreInfo": "更多信息"
+    "moreInfo": "More information"
   },
   "alertCard": {
-    "actionRequired": "需要采取行动",
-    "reviewTransfer": "审查调拨"
+    "actionRequired": "Action Required",
+    "reviewTransfer": "Review transfer",
+    "template": "{{phc_name}} is projected to exhaust {{medicine}} in {{days}} days. Transfer {{quantity}} units from {{source}}."
   },
   "alertRail": {
-    "emergencyText": "紧急：PHC-02 就诊人次骤增。预计 ORS 将在不到 24 小时内耗尽。需要立即调拨以稳定储备。",
-    "error": "警报流连接已断开。当前显示零个活动警报。",
-    "empty": "当前{{scope}}内无活动警报。"
+    "emergencyText": "CRITICAL: PHC-02 footfall surging abruptly. ORS stockout projected in <24 hours. Immediate transfer required to stabilize reserve.",
+    "error": "Alert stream disconnected. Showing zero active alerts.",
+    "empty": "No active alerts for this {{scope}}."
   },
   "emergencyControls": {
-    "updating": "正在更新...",
-    "simulate": "模拟紧急情况",
-    "reset": "重置网络",
-    "triggerTitle": "触发紧急情况？",
-    "triggerDesc": "此操作将向网络中植入模拟危机，重新计算所有风险评分，并生成新的 AI 调拨建议。",
-    "cancel": "取消",
-    "triggerBtn": "触发"
+    "updating": "Updating...",
+    "simulate": "Simulate emergency",
+    "reset": "Reset network",
+    "triggerTitle": "Trigger Emergency?",
+    "triggerDesc": "This will inject simulated crises into the network, recalculate all risk scores, and generate new AI transfer recommendations.",
+    "cancel": "Cancel",
+    "triggerBtn": "Trigger"
   },
   "searchPalette": {
-    "placeholder": "按名称、ID、地区搜索医疗机构...",
-    "ariaSearch": "搜索医疗机构",
+    "placeholder": "Search facilities by name, ID, district...",
+    "ariaSearch": "Search facilities",
     "esc": "Esc",
-    "recent": "最近",
-    "typeToSearch": "输入以在所有医疗机构中进行搜索",
-    "noResults": "未找到与“{{query}}”匹配的医疗机构",
-    "navigate": "↑↓ 导航",
-    "select": "↵ 选择",
-    "close": "Esc 关闭"
+    "recent": "Recent",
+    "typeToSearch": "Type to search across all facilities",
+    "noResults": "No facilities matching \"{{query}}\"",
+    "navigate": "\u2191\u2193 Navigate",
+    "select": "\u21b5 Select",
+    "close": "Esc Close"
+  },
+  "common": {
+    "indiaNational": "India (National)",
+    "returnToDistrict": "Return to District",
+    "dataLoadFailed": "Data Load Failed",
+    "phcNotFound": "The requested Primary Health Centre \"<strong>{{phcId}}</strong>\" could not be retrieved. Showing an empty facility layout.",
+    "simulationUnavailable": "Simulation Data Unavailable",
+    "datasetBlank": "The dataset is currently blank for this facility. Showing an empty layout."
   }
 }

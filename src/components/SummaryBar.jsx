@@ -44,11 +44,11 @@ export default function SummaryBar({ data, loading }) {
   const { t } = useTranslation();
   // If no data yet but loading, create 5 placeholders to map over
   const metrics = loading ? Array(5).fill(null) : [
-    { label: t('summaryBar.critical') + ' count', value: data.critical, suffix: '', isCritical: true },
-    { label: 'At risk count', value: data.at_risk, suffix: '', isCritical: false },
-    { label: 'Medicine stock-outs', value: data.stock_outs, suffix: '', isCritical: false },
-    { label: 'Bed occupancy %', value: data.bed_occupancy_pct, suffix: '%', isCritical: false },
-    { label: 'Staff availability %', value: data.staff_availability_pct, suffix: '%', isCritical: false },
+    { label: t('summaryBar.criticalCount'), value: data.critical, suffix: '', isCritical: true },
+    { label: t('summaryBar.atRiskCount'), value: data.at_risk, suffix: '', isCritical: false },
+    { label: t('summaryBar.medicineStockOuts'), value: data.stock_outs, suffix: '', isCritical: false },
+    { label: t('summaryBar.bedOccupancy'), value: data.bed_occupancy_pct, suffix: '%', isCritical: false },
+    { label: t('summaryBar.staffAvailability'), value: data.staff_availability_pct, suffix: '%', isCritical: false },
   ];
 
   return (

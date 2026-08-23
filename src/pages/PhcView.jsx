@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { translateFacilityName } from '../i18n/dataLocalization';
 import { useParams, Link } from 'react-router-dom';
 import { getPhcDetail, getPhcStockout, getPhcForecast } from '../api/client';
 import RiskBreakdown from '../components/RiskBreakdown';
@@ -160,12 +161,12 @@ export default function PhcView() {
   if (error) {
     return (
       <div className="p-8 border border-rule bg-card rounded-lg max-w-xl text-center mx-auto mt-12">
-        <h2 className="text-xl font-display font-semibold text-ink mb-2">Data Load Failed</h2>
+        <h2 className="text-xl font-display font-semibold text-ink mb-2">{t("common.dataLoadFailed")}</h2>
         <p className="text-ink-soft mb-6">
-          The requested Primary Health Centre "<strong>{phcId}</strong>" could not be retrieved. Showing an empty facility layout.
+          <span dangerouslySetInnerHTML={{ __html: t("common.phcNotFound", { phcId }) }} />
         </p>
         <Link to={`/state/${stateId}/district/${districtId}`} className="inline-flex items-center justify-center px-4 py-2 bg-ink text-paper rounded font-medium hover:bg-ink-soft transition-colors">
-          Return to District
+          {t("common.returnToDistrict")}
         </Link>
       </div>
     );
@@ -174,9 +175,9 @@ export default function PhcView() {
   if (!data) {
     return (
       <div className="p-8 border border-rule bg-card rounded-lg max-w-xl text-center mx-auto mt-12">
-        <h2 className="text-xl font-display font-semibold text-ink mb-2">Simulation Data Unavailable</h2>
+        <h2 className="text-xl font-display font-semibold text-ink mb-2">{t("common.simulationUnavailable")}</h2>
         <p className="text-ink-soft mb-6">
-          The dataset is currently blank for this facility. Showing an empty layout.
+          {t("common.datasetBlank")}
         </p>
       </div>
     );
@@ -197,7 +198,7 @@ export default function PhcView() {
             <div className="flex flex-col justify-between md:w-1/3 flex-shrink-0">
               <div className="flex items-center gap-3 mb-4">
                 <h2 className="text-3xl font-display font-bold text-ink leading-tight">
-                  {data.name}
+                  {translateFacilityName(data, i18n.resolvedLanguage)}
                 </h2>
                 <button type="button" onClick={() => setIsGlossaryOpen(true)} className="flex items-center justify-center w-7 h-7 rounded-full bg-card text-ink-soft hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal transition-colors" aria-label="Open Glossary" title="Glossary">
                   <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path></svg>
@@ -223,7 +224,7 @@ export default function PhcView() {
                   /100
                 </span>
                 <div className="absolute top-3 right-3">
-                  <HelpTooltip text="This score combines medicine supply risk (40%), bed capacity (25%), demand surge (20%), and staffing levels (15%). Range: 0 (minimal risk) to 100 (critical)." position="bottom" />
+                  <HelpTooltip text={t("phcView.riskScoreTooltip")} position="bottom" />
                 </div>
               </div>
             </div>
@@ -242,14 +243,14 @@ export default function PhcView() {
                 onClick={() => setActiveTab('forecast')}
                 className={`flex-1 py-4 text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-signal ${activeTab === 'forecast' ? 'text-signal border-b-2 border-signal bg-card' : 'text-ink-soft hover:text-ink hover:bg-slate-50'}`}
               >
-                Patient Forecast
+                {t("phcView.patientForecast")}
               </button>
               <button 
                 type="button" 
                 onClick={() => setActiveTab('inventory')}
                 className={`flex-1 py-4 text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-signal ${activeTab === 'inventory' ? 'text-signal border-b-2 border-signal bg-card' : 'text-ink-soft hover:text-ink hover:bg-slate-50'}`}
               >
-                Inventory Status
+                {t("phcView.inventoryStatus")}
               </button>
             </div>
             
@@ -257,8 +258,8 @@ export default function PhcView() {
               {activeTab === 'forecast' && (
                 <div className="animate-fade-in">
                   <div className="flex items-center gap-2 mb-6">
-                    <h3 className="text-lg font-display font-semibold text-ink">30-Day Trend & AI Forecast</h3>
-                    <HelpTooltip text="Solid line: recorded daily patient visits over the past 30 {t('phcView.days')}. Dashed line: 7-day AI prediction with ±15% confidence band (shaded area)." />
+                    <h3 className="text-lg font-display font-semibold text-ink">{t("phcView.thirtyDayTrend")}</h3>
+                    <HelpTooltip text={t("phcView.forecastTooltip")} />
                   </div>
                   {data.footfall_history_30d && forecast?.footfall_forecast_7d ? (
                     <ForecastChart 
@@ -267,7 +268,7 @@ export default function PhcView() {
                     />
                   ) : (
                     <div className="h-80 bg-card rounded-xl flex items-center justify-center">
-                      <span className="text-ink-soft font-body">Forecast data unavailable</span>
+                      <span className="text-ink-soft font-body">{t("phcView.forecastUnavailable")}</span>
                     </div>
                   )}
                 </div>
@@ -276,8 +277,8 @@ export default function PhcView() {
               {activeTab === 'inventory' && (
                 <div className="animate-fade-in">
                   <div className="flex items-center gap-2 mb-6">
-                    <h3 className="text-lg font-display font-semibold text-ink">Critical Medicines</h3>
-                    <HelpTooltip text="Medicine stock levels sorted by urgency. 'Days Rem.' shows how long current stock will last at current consumption rates." />
+                    <h3 className="text-lg font-display font-semibold text-ink">{t("phcView.criticalMedicines")}</h3>
+                    <HelpTooltip text={t("phcView.medicineTooltip")} />
                   </div>
                   <MedicineTable medicines={data.medicines} />
                 </div>
@@ -307,7 +308,7 @@ export default function PhcView() {
         }`}
       >
         <span className="w-2.5 h-2.5 rounded-full bg-triage-min"></span>
-        <span className="font-medium font-body tracking-wide">Transfer confirmed</span>
+        <span className="font-medium font-body tracking-wide">{t("phcView.transferConfirmed")}</span>
       </div>
       
       <Glossary isOpen={isGlossaryOpen} onClose={() => setIsGlossaryOpen(false)} />

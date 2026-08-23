@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { translateStateName } from '../i18n/dataLocalization';
 import { useParams, Link } from 'react-router-dom';
 import { getSummary } from '../api/client';
 import SummaryBar from '../components/SummaryBar';
@@ -31,12 +32,12 @@ export default function AggregateView() {
     scope = 'district';
     id = districtId;
     parentLink = `/state/${stateId}`;
-    parentLabel = `State of ${stateId.charAt(0).toUpperCase() + stateId.slice(1)}`;
+    parentLabel = t("aggregateView.stateOf", { name: translateStateName(stateId.charAt(0).toUpperCase() + stateId.slice(1), i18n.resolvedLanguage) });
   } else if (stateId) {
     scope = 'state';
     id = stateId;
     parentLink = '/';
-    parentLabel = 'India (National)';
+    parentLabel = t("aggregateView.indiaNational");
   }
 
   useEffect(() => {
@@ -115,7 +116,7 @@ export default function AggregateView() {
   }
 
   const title = scope === 'india' 
-    ? 'National Summary' 
+    ? t("aggregateView.networkOverview") 
     : `${id.charAt(0).toUpperCase() + id.slice(1)} Summary`;
 
   return (
@@ -123,7 +124,7 @@ export default function AggregateView() {
       <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">
         <div>
           <h2 className="text-3xl font-display font-bold text-ink mb-1">{title}</h2>
-          <p className="text-ink-soft font-body text-sm">Aggregated metrics and facility status.</p>
+          <p className="text-ink-soft font-body text-sm">{t("aggregateView.networkSummary")}</p>
         </div>
         
         <EmergencyControls 
@@ -141,7 +142,7 @@ export default function AggregateView() {
         <div className="flex flex-col min-[900px]:grid min-[900px]:grid-cols-12 gap-8">
           
           <div className="min-[900px]:col-span-8 order-2 min-[900px]:order-1">
-            <h3 className="text-lg font-display font-semibold text-ink mb-4">Facilities</h3>
+            <h3 className="text-lg font-display font-semibold text-ink mb-4">{t("aggregateView.facilities")}</h3>
             <FacilityList scope={scope} id={id} phase={phase} />
           </div>
           

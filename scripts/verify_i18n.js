@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const localesDir = path.join(__dirname, '../src/locales');
-const languages = ['en', 'pt', 'ru', 'hi', 'zh', 'ar', 'am', 'fa', 'id'];
+const languages = ['en', 'pt', 'ru', 'hi', 'zh'];
 
 function flattenKeys(obj, prefix = '') {
   return Object.keys(obj).reduce((acc, k) => {

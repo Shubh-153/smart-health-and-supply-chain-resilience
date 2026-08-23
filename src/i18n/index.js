@@ -8,10 +8,6 @@ import pt from '../locales/pt/translation.json';
 import ru from '../locales/ru/translation.json';
 import hi from '../locales/hi/translation.json';
 import zh from '../locales/zh/translation.json';
-import ar from '../locales/ar/translation.json';
-import am from '../locales/am/translation.json';
-import fa from '../locales/fa/translation.json';
-import id from '../locales/id/translation.json';
 
 const resources = {
   en: { translation: en },
@@ -19,10 +15,6 @@ const resources = {
   ru: { translation: ru },
   hi: { translation: hi },
   zh: { translation: zh },
-  ar: { translation: ar },
-  am: { translation: am },
-  fa: { translation: fa },
-  id: { translation: id }
 };
 
 i18n

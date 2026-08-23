@@ -1,183 +1,226 @@
 {
   "dataGrid": {
-    "facility": "सुविधा",
-    "stockStatus": "स्टॉक की स्थिति",
-    "trend": "ट्रेंड (7 दिन)",
-    "risk": "जोखिम",
-    "transfer": "स्थानांतरण",
-    "triage": "ट्राएज",
-    "beds": "बिस्तर",
-    "staff": "कर्मचारी %",
-    "district": "जिला"
+    "facility": "Facility",
+    "stockStatus": "Stock Status",
+    "trend": "Trend (7d)",
+    "risk": "Risk",
+    "transfer": "Transfer",
+    "triage": "Triage",
+    "beds": "Beds",
+    "staff": "Staff %",
+    "district": "District"
   },
   "facilityList": {
-    "error": "सुविधा डेटा कनेक्शन टूट गया। इसके बजाय एक खाली सुविधा सूची दिखाई जा रही है।",
-    "empty": "इस {{scope}} में जोखिम में कोई भी सुविधा नहीं है। आखिरी बार 2 मिनट पहले जाँच की गई।",
-    "cards": "कार्ड",
-    "grid": "ग्रिड"
+    "error": "Facility data connection dropped. Showing an empty facility list instead.",
+    "empty": "No facilities at risk in this {{scope}}. Last checked 2 minutes ago.",
+    "cards": "Cards",
+    "grid": "Grid"
   },
   "recommendationRail": {
-    "title": "एआई स्थानांतरण सिफारिशें",
-    "subtitle": "नेटवर्क रीबैलेंसिंग की समीक्षा और अनुमोदन करें।",
-    "empty": "कोई सिफारिश नहीं।",
-    "approve": "मंजूर करें",
-    "from": "से",
-    "to": "को",
-    "km": "किमी",
-    "riskReduction": "जोखिम में कमी",
-    "riskReductionTitle": "जोखिम में कमी",
-    "error": "डेटा स्ट्रीम डिस्कनेक्ट हो गया।"
+    "title": "AI Transfer Recommendations",
+    "subtitle": "Review and approve network rebalancing.",
+    "empty": "No recommendations.",
+    "approve": "Approve",
+    "from": "from",
+    "to": "to",
+    "km": "km",
+    "riskReduction": "risk reduction",
+    "riskReductionTitle": "Risk reduction",
+    "error": "Data stream disconnected.",
+    "networkError": "Recommendation Engine Disconnected",
+    "emptyTransfers": "No Transfers Needed",
+    "emptyDesc": "There are currently no active transfer recommendations for this facility. Stock levels are either within safe operational margins, or no nearby surplus exists to facilitate a transfer.",
+    "transferQueued": "Transfer Queued",
+    "transferFinalized": "Transfer Finalized",
+    "undo": "Undo ({{timeLeft}}s)",
+    "notifiedFinalized": "Logistics team has been notified for {{quantity}} units of {{medicine}} from {{source}}.",
+    "notifiedQueued": "Logistics team will be notified for {{quantity}} units of {{medicine}} from {{source}}.",
+    "destination": "Destination",
+    "itemQuantity": "Item & Quantity",
+    "logistics": "Logistics",
+    "min": "min",
+    "transferDisabled": "Transfer Disabled",
+    "networkIssue": "Transfer request failed. Network issue encountered."
   },
   "riskBreakdown": {
-    "title": "जोखिम कारक",
-    "stock": "स्टॉक",
-    "demand": "मांग",
-    "beds": "बिस्तर",
-    "staff": "कर्मचारी"
+    "title": "Risk Factors",
+    "stock": "Stock",
+    "demand": "Demand",
+    "beds": "Beds",
+    "staff": "Staff"
   },
   "summaryBar": {
-    "title": "नेटवर्क स्नैपशॉट",
-    "totalFacilities": "कुल सुविधाएं",
-    "avgRiskScore": "औसत जोखिम स्कोर",
-    "critical": "गंभीर",
-    "activeTransfers": "सक्रिय स्थानांतरण",
-    "error": "कनेक्शन टूट गया।"
+    "title": "Network Snapshot",
+    "totalFacilities": "Total Facilities",
+    "avgRiskScore": "Avg Risk Score",
+    "critical": "Critical",
+    "activeTransfers": "Active Transfers",
+    "error": "Connection lost.",
+    "criticalCount": "Critical count",
+    "atRiskCount": "At risk count",
+    "medicineStockOuts": "Medicine stock-outs",
+    "bedOccupancy": "Bed occupancy %",
+    "staffAvailability": "Staff availability %"
   },
   "triageTag": {
-    "risk": "जोखिम",
-    "viewDetails": "विवरण देखें"
+    "risk": "Risk",
+    "viewDetails": "View details"
   },
   "aggregateView": {
-    "empty": "कोई सुविधा नहीं मिली।",
-    "networkOverview": "नेटवर्क अवलोकन",
-    "activeAlerts": "सक्रिय अलर्ट",
-    "facilitiesAtRisk": "जोखिम में सुविधाएं",
-    "riskDistribution": "जोखिम वितरण",
-    "aiRecommendations": "एआई सिफारिशें"
+    "empty": "No facilities found.",
+    "networkOverview": "Network Overview",
+    "activeAlerts": "Active Alerts",
+    "facilitiesAtRisk": "Facilities at Risk",
+    "riskDistribution": "Risk Distribution",
+    "aiRecommendations": "AI Recommendations",
+    "stateOf": "State of {{name}}",
+    "indiaNational": "India (National)",
+    "noFacilitySelected": "No facility selected",
+    "noFacilityDesc": "Please select a facility from the sidebar to view detailed metrics and AI recommendations.",
+    "networkSummary": "Aggregated metrics and facility status.",
+    "facilities": "Facilities"
   },
   "notFound": {
     "title": "404",
-    "subtitle": "पृष्ठ नहीं मिला",
-    "return": "डैशबोर्ड पर लौटें"
+    "subtitle": "Page not found",
+    "return": "Return to Dashboard"
   },
   "phcView": {
-    "stockOutIn": "स्टॉक समाप्त होने में",
-    "days": "दिन",
-    "forecast": "7-दिवसीय पूर्वानुमान",
-    "inventory": "दवा सूची",
-    "riskAnalysis": "जोखिम विश्लेषण",
-    "footfall": "मरीजों का आगमन"
+    "stockOutIn": "Stock out in",
+    "days": "days",
+    "forecast": "7-Day Forecast",
+    "inventory": "Medicine Inventory",
+    "riskAnalysis": "Risk Analysis",
+    "footfall": "Patient Footfall",
+    "patientForecast": "Patient Forecast",
+    "inventoryStatus": "Inventory Status",
+    "thirtyDayTrend": "30-Day Trend & AI Forecast",
+    "forecastUnavailable": "Forecast data unavailable",
+    "criticalMedicines": "Critical Medicines",
+    "transferConfirmed": "Transfer confirmed",
+    "riskScoreTooltip": "This score combines medicine supply risk (40%), bed capacity (25%), demand surge (20%), and staffing levels (15%). Range: 0 (minimal risk) to 100 (critical).",
+    "forecastTooltip": "Solid line: recorded daily patient visits over the past 30 days. Dashed line: 7-day AI prediction with \u00b115% confidence band (shaded area).",
+    "medicineTooltip": "Medicine stock levels sorted by urgency. 'Days Rem.' shows how long current stock will last at current consumption rates."
   },
   "layout": {
     "breadcrumbs": {
-      "india": "भारत"
+      "india": "India"
     },
     "header": {
-      "title": "आरोग्य ग्रिड",
-      "openNavigation": "नेविगेशन खोलें",
-      "searchFacilities": "सुविधाएं खोजें",
-      "search": "खोजें...",
-      "simulated": "सिम्युलेटेड",
-      "simulatedTooltip": "डेटा सिमुलेशन के लिए उत्पन्न किया गया है"
+      "title": "Aarogya Grid",
+      "openNavigation": "Open navigation",
+      "searchFacilities": "Search facilities",
+      "search": "Search...",
+      "simulated": "Simulated",
+      "simulatedTooltip": "Data is generated for simulation"
     }
   },
   "sidebar": {
-    "expand": "विस्तार करें",
-    "collapse": "समेटें",
-    "ariaNavigation": "सुविधा नेविगेशन",
-    "loading": "नेविगेशन अनुपलब्ध है। ऊपर दिए गए ब्रेडक्रंब का उपयोग करें।",
-    "header": "नेविगेशन",
-    "close": "नेविगेशन बंद करें"
+    "expand": "Expand",
+    "collapse": "Collapse",
+    "ariaNavigation": "Facility navigation",
+    "loading": "Navigation unavailable. Use breadcrumbs above.",
+    "header": "Navigation",
+    "close": "Close navigation"
   },
   "forecastChart": {
-    "count": "संख्या:",
-    "range": "सीमा:",
-    "status": "स्थिति:",
-    "predicted": "अनुमानित",
-    "recorded": "दर्ज की गई",
-    "historicalPattern": "30-दिन के ऐतिहासिक पैटर्न के आधार पर",
-    "today": "आज"
+    "count": "Count:",
+    "range": "Range:",
+    "status": "Status:",
+    "predicted": "Predicted",
+    "recorded": "Recorded",
+    "historicalPattern": "Based on 30-day historical pattern",
+    "today": "TODAY"
   },
   "medicineTable": {
-    "medicine": "दवा",
-    "currentStock": "वर्तमान स्टॉक",
-    "dailyCons": "दैनिक खपत",
-    "daysRem": "शेष दिन",
-    "status": "स्थिति"
+    "medicine": "Medicine",
+    "currentStock": "Current Stock",
+    "dailyCons": "Daily Cons.",
+    "daysRem": "Days Rem.",
+    "status": "Status"
   },
   "triage": {
-    "critical": "गंभीर",
-    "high": "उच्च",
-    "medium": "मध्यम",
-    "low": "कम"
+    "critical": "Critical",
+    "high": "High",
+    "medium": "Medium",
+    "low": "Low"
   },
   "glossary": {
-    "ariaLabel": "शब्दावली",
-    "title": "शब्दावली",
-    "close": "शब्दावली बंद करें",
-    "searchPlaceholder": "शब्द खोजें...",
-    "noTermsFound": "\"{{query}}\" से मेल खाने वाला कोई शब्द नहीं मिला",
+    "ariaLabel": "Glossary",
+    "title": "Glossary",
+    "close": "Close glossary",
+    "searchPlaceholder": "Search terms...",
+    "noTermsFound": "No terms found matching \"{{query}}\"",
     "terms": {
       "riskScore": {
-        "term": "जोखिम स्कोर",
-        "def": "दैनिक रूप से गणना की जाने वाली एक संयुक्त 0-100 मीट्रिक। यह वर्तमान स्टॉक स्तर (40%), अनुमानित मांग (35%), और स्थानीय बुनियादी ढांचा क्षमता (25%) को महत्व देती है।"
+        "term": "Risk Score",
+        "def": "A composite 0-100 metric calculated daily. It weights current stock levels (40%), forecasted demand (35%), and local infrastructure capacity (25%)."
       },
       "triageBands": {
-        "term": "ट्राएज बैंड",
-        "def": "जोखिम स्कोर के आधार पर सुविधाओं को चार बैंडों में वर्गीकृत किया गया है: न्यूनतम (0-30), विलंबित (31-60), तत्काल (61-80), और अति-तत्काल (81-100)। ये नैदानिक ट्राएज शब्दावली से मेल खाते हैं।"
+        "term": "Triage Bands",
+        "def": "Facilities are classified into four bands based on risk score: Minimal (0\u201330), Delayed (31\u201360), Urgent (61\u201380), and Immediate (81\u2013100). These map to clinical triage terminology."
       },
       "stockDays": {
-        "term": "स्टॉक के दिन",
-        "def": "वर्तमान खपत दर पर दवा कितने दिनों तक चलेगी। इसकी गणना वर्तमान स्टॉक ÷ औसत दैनिक खपत के रूप में की जाती है।"
+        "term": "Stock Days",
+        "def": "The number of days a medicine will last at current consumption rates. Calculated as current stock \u00f7 average daily consumption."
       },
       "demandSurge": {
-        "term": "मांग में उछाल",
-        "def": "7-दिवसीय एआई पूर्वानुमान मॉडल के आधार पर मरीजों के आगमन में अनुमानित वृद्धि। इसे 30-दिवसीय बेसलाइन से ऊपर प्रतिशत के रूप में व्यक्त किया जाता है।"
+        "term": "Demand Surge",
+        "def": "A predicted increase in patient footfall based on the 7-day AI forecast model. Expressed as a percentage above the 30-day baseline."
       },
       "transferRecommendation": {
-        "term": "स्थानांतरण सिफारिश",
-        "def": "अधिशेष वाली सुविधा से कमी का सामना कर रही सुविधा में दवा स्टॉक को स्थानांतरित करने का एक एआई-जनित सुझाव। यह स्रोत, गंतव्य, मात्रा, दूरी और अनुमानित जोखिम में कमी को दर्शाता है।"
+        "term": "Transfer Recommendation",
+        "def": "An AI-generated suggestion to move medicine stock from a facility with surplus to one facing shortage. Shows source, destination, quantity, distance, and projected risk reduction."
       },
       "bedOccupancy": {
-        "term": "बिस्तरों का उपयोग",
-        "def": "किसी सुविधा के वर्तमान में उपयोग किए जा रहे कुल बिस्तरों का प्रतिशत। उच्च उपयोग (>80%) क्षमता के दबाव का संकेत देता है।"
+        "term": "Bed Occupancy",
+        "def": "The percentage of a facility's total beds currently in use. High occupancy (>80%) signals capacity pressure."
       },
       "staffRatio": {
-        "term": "कर्मचारी अनुपात",
-        "def": "वर्तमान में भरे गए स्वीकृत कर्मचारी पदों का अनुपात। कम अनुपात कर्मचारियों की कमी को दर्शाता है।"
+        "term": "Staff Ratio",
+        "def": "The proportion of sanctioned (approved) staff positions currently filled. Low ratios indicate staffing shortages."
       }
     }
   },
   "helpTooltip": {
-    "moreInfo": "अधिक जानकारी"
+    "moreInfo": "More information"
   },
   "alertCard": {
-    "actionRequired": "कार्रवाई आवश्यक",
-    "reviewTransfer": "स्थानांतरण की समीक्षा करें"
+    "actionRequired": "Action Required",
+    "reviewTransfer": "Review transfer",
+    "template": "{{phc_name}} is projected to exhaust {{medicine}} in {{days}} days. Transfer {{quantity}} units from {{source}}."
   },
   "alertRail": {
-    "emergencyText": "गंभीर: PHC-02 में मरीजों का आगमन अचानक बढ़ रहा है। <24 घंटों में ओआरएस स्टॉक समाप्त होने का अनुमान है। रिजर्व को स्थिर करने के लिए तत्काल स्थानांतरण आवश्यक है।",
-    "error": "अलर्ट स्ट्रीम डिस्कनेक्ट हो गया। शून्य सक्रिय अलर्ट दिखाए जा रहे हैं।",
-    "empty": "इस {{scope}} के लिए कोई सक्रिय अलर्ट नहीं है।"
+    "emergencyText": "CRITICAL: PHC-02 footfall surging abruptly. ORS stockout projected in <24 hours. Immediate transfer required to stabilize reserve.",
+    "error": "Alert stream disconnected. Showing zero active alerts.",
+    "empty": "No active alerts for this {{scope}}."
   },
   "emergencyControls": {
-    "updating": "अपडेट किया जा रहा है...",
-    "simulate": "आपातकाल का अनुकरण करें",
-    "reset": "नेटवर्क रीसेट करें",
-    "triggerTitle": "आपातकाल ट्रिगर करें?",
-    "triggerDesc": "यह नेटवर्क में कृत्रिम संकट उत्पन्न करेगा, सभी जोखिम स्कोर की पुनर्गणना करेगा, और नई एआई स्थानांतरण सिफारिशें उत्पन्न करेगा।",
-    "cancel": "रद्द करें",
-    "triggerBtn": "ट्रिगर करें"
+    "updating": "Updating...",
+    "simulate": "Simulate emergency",
+    "reset": "Reset network",
+    "triggerTitle": "Trigger Emergency?",
+    "triggerDesc": "This will inject simulated crises into the network, recalculate all risk scores, and generate new AI transfer recommendations.",
+    "cancel": "Cancel",
+    "triggerBtn": "Trigger"
   },
   "searchPalette": {
-    "placeholder": "नाम, आईडी, जिले द्वारा सुविधाएं खोजें...",
-    "ariaSearch": "सुविधाएं खोजें",
+    "placeholder": "Search facilities by name, ID, district...",
+    "ariaSearch": "Search facilities",
     "esc": "Esc",
-    "recent": "हालिया",
-    "typeToSearch": "सभी सुविधाओं में खोजने के लिए टाइप करें",
-    "noResults": "\"{{query}}\" से मेल खाने वाली कोई सुविधा नहीं मिली",
-    "navigate": "↑↓ नेविगेट करें",
-    "select": "↵ चुनें",
-    "close": "Esc बंद करें"
+    "recent": "Recent",
+    "typeToSearch": "Type to search across all facilities",
+    "noResults": "No facilities matching \"{{query}}\"",
+    "navigate": "\u2191\u2193 Navigate",
+    "select": "\u21b5 Select",
+    "close": "Esc Close"
+  },
+  "common": {
+    "indiaNational": "India (National)",
+    "returnToDistrict": "Return to District",
+    "dataLoadFailed": "Data Load Failed",
+    "phcNotFound": "The requested Primary Health Centre \"<strong>{{phcId}}</strong>\" could not be retrieved. Showing an empty facility layout.",
+    "simulationUnavailable": "Simulation Data Unavailable",
+    "datasetBlank": "The dataset is currently blank for this facility. Showing an empty layout."
   }
 }

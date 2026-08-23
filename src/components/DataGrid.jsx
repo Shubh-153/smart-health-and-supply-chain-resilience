@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { translateDistrictName, translateFacilityName } from '../i18n/dataLocalization';
 import { useNavigate } from 'react-router-dom';
 
 function TriageDot({ bucket }) {
@@ -86,7 +87,7 @@ export default function DataGrid({ phcs }) {
                   tabIndex={0}
                   onKeyDown={(e) => { if (e.key === 'Enter') handleRowClick(phc); }}
                 >
-                  <td className="px-4 py-3 font-medium text-ink whitespace-nowrap">{phc.name}</td>
+                  <td className="px-4 py-3 font-medium text-ink whitespace-nowrap">{translateFacilityName(phc, i18n.resolvedLanguage)}</td>
                   <td className={`px-4 py-3 text-right font-mono font-bold ${riskBgClass(bucket)}`}>
                     {phc.risk_score}
                   </td>
@@ -102,7 +103,7 @@ export default function DataGrid({ phcs }) {
                   <td className={`px-4 py-3 text-right font-mono ${staffPct < 60 ? 'text-triage-imm font-bold' : 'text-ink-soft'}`}>
                     {staffPct}%
                   </td>
-                  <td className="px-4 py-3 text-ink-soft whitespace-nowrap">{phc.district}</td>
+                  <td className="px-4 py-3 text-ink-soft whitespace-nowrap">{translateDistrictName(phc.district, i18n.resolvedLanguage)}</td>
                 </tr>
               );
             })}

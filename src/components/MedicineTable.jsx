@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { translateMedicineName } from '../i18n/dataLocalization';
 
 export default function MedicineTable({ medicines }) {
   const { t, i18n } = useTranslation();
@@ -43,7 +44,7 @@ export default function MedicineTable({ medicines }) {
           <tbody className="divide-y divide-rule text-ink">
             {enriched.map((m, idx) => (
               <tr key={idx} className="hover:bg-slate-50 transition-colors">
-                <td className="px-6 py-4 font-medium whitespace-nowrap">{m.name}</td>
+                <td className="px-6 py-4 font-medium whitespace-nowrap">{translateMedicineName(m.name, i18n.resolvedLanguage)}</td>
                 <td className="px-6 py-4 text-right">{numFormatter.format(m.current_stock)}</td>
                 <td className="px-6 py-4 text-right text-ink-soft">{numFormatter.format(m.avg_daily_consumption)}</td>
                 <td className={`px-6 py-4 text-right font-bold ${m.days_remaining <= 3 ? 'text-triage-imm' : ''}`}>

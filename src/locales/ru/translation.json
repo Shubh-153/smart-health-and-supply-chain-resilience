@@ -1,183 +1,226 @@
 {
   "dataGrid": {
-    "facility": "Учреждение",
-    "stockStatus": "Статус запасов",
-    "trend": "Тренд (7д)",
-    "risk": "Риск",
-    "transfer": "Перемещение",
-    "triage": "Сортировка",
-    "beds": "Койки",
-    "staff": "Персонал %",
-    "district": "Район"
+    "facility": "Facility",
+    "stockStatus": "Stock Status",
+    "trend": "Trend (7d)",
+    "risk": "Risk",
+    "transfer": "Transfer",
+    "triage": "Triage",
+    "beds": "Beds",
+    "staff": "Staff %",
+    "district": "District"
   },
   "facilityList": {
-    "error": "Связь с базой данных учреждений прервана. Показан пустой список учреждений.",
-    "empty": "Нет учреждений в зоне риска в этом {{scope}}. Последняя проверка 2 минуты назад.",
-    "cards": "Карточки",
-    "grid": "Таблица"
+    "error": "Facility data connection dropped. Showing an empty facility list instead.",
+    "empty": "No facilities at risk in this {{scope}}. Last checked 2 minutes ago.",
+    "cards": "Cards",
+    "grid": "Grid"
   },
   "recommendationRail": {
-    "title": "Рекомендации ИИ по перемещению",
-    "subtitle": "Просмотрите и утвердите балансировку сети.",
-    "empty": "Нет рекомендаций.",
-    "approve": "Утвердить",
-    "from": "из",
-    "to": "в",
-    "km": "км",
-    "riskReduction": "снижение риска",
-    "riskReductionTitle": "Снижение риска",
-    "error": "Поток данных отключен."
+    "title": "AI Transfer Recommendations",
+    "subtitle": "Review and approve network rebalancing.",
+    "empty": "No recommendations.",
+    "approve": "Approve",
+    "from": "from",
+    "to": "to",
+    "km": "km",
+    "riskReduction": "risk reduction",
+    "riskReductionTitle": "Risk reduction",
+    "error": "Data stream disconnected.",
+    "networkError": "Recommendation Engine Disconnected",
+    "emptyTransfers": "No Transfers Needed",
+    "emptyDesc": "There are currently no active transfer recommendations for this facility. Stock levels are either within safe operational margins, or no nearby surplus exists to facilitate a transfer.",
+    "transferQueued": "Transfer Queued",
+    "transferFinalized": "Transfer Finalized",
+    "undo": "Undo ({{timeLeft}}s)",
+    "notifiedFinalized": "Logistics team has been notified for {{quantity}} units of {{medicine}} from {{source}}.",
+    "notifiedQueued": "Logistics team will be notified for {{quantity}} units of {{medicine}} from {{source}}.",
+    "destination": "Destination",
+    "itemQuantity": "Item & Quantity",
+    "logistics": "Logistics",
+    "min": "min",
+    "transferDisabled": "Transfer Disabled",
+    "networkIssue": "Transfer request failed. Network issue encountered."
   },
   "riskBreakdown": {
-    "title": "Факторы риска",
-    "stock": "Запасы",
-    "demand": "Спрос",
-    "beds": "Койки",
-    "staff": "Персонал"
+    "title": "Risk Factors",
+    "stock": "Stock",
+    "demand": "Demand",
+    "beds": "Beds",
+    "staff": "Staff"
   },
   "summaryBar": {
-    "title": "Сводка по сети",
-    "totalFacilities": "Всего учреждений",
-    "avgRiskScore": "Средний индекс риска",
-    "critical": "Критические",
-    "activeTransfers": "Активные перемещения",
-    "error": "Соединение потеряно."
+    "title": "Network Snapshot",
+    "totalFacilities": "Total Facilities",
+    "avgRiskScore": "Avg Risk Score",
+    "critical": "Critical",
+    "activeTransfers": "Active Transfers",
+    "error": "Connection lost.",
+    "criticalCount": "Critical count",
+    "atRiskCount": "At risk count",
+    "medicineStockOuts": "Medicine stock-outs",
+    "bedOccupancy": "Bed occupancy %",
+    "staffAvailability": "Staff availability %"
   },
   "triageTag": {
-    "risk": "Риск",
-    "viewDetails": "Подробнее"
+    "risk": "Risk",
+    "viewDetails": "View details"
   },
   "aggregateView": {
-    "empty": "Учреждения не найдены.",
-    "networkOverview": "Обзор сети",
-    "activeAlerts": "Активные предупреждения",
-    "facilitiesAtRisk": "Учреждения в зоне риска",
-    "riskDistribution": "Распределение рисков",
-    "aiRecommendations": "Рекомендации ИИ"
+    "empty": "No facilities found.",
+    "networkOverview": "Network Overview",
+    "activeAlerts": "Active Alerts",
+    "facilitiesAtRisk": "Facilities at Risk",
+    "riskDistribution": "Risk Distribution",
+    "aiRecommendations": "AI Recommendations",
+    "stateOf": "State of {{name}}",
+    "indiaNational": "India (National)",
+    "noFacilitySelected": "No facility selected",
+    "noFacilityDesc": "Please select a facility from the sidebar to view detailed metrics and AI recommendations.",
+    "networkSummary": "Aggregated metrics and facility status.",
+    "facilities": "Facilities"
   },
   "notFound": {
     "title": "404",
-    "subtitle": "Страница не найдена",
-    "return": "Вернуться на панель управления"
+    "subtitle": "Page not found",
+    "return": "Return to Dashboard"
   },
   "phcView": {
-    "stockOutIn": "Запасы закончатся через",
-    "days": "дн.",
-    "forecast": "Прогноз на 7 дней",
-    "inventory": "Запасы лекарств",
-    "riskAnalysis": "Анализ рисков",
-    "footfall": "Поток пациентов"
+    "stockOutIn": "Stock out in",
+    "days": "days",
+    "forecast": "7-Day Forecast",
+    "inventory": "Medicine Inventory",
+    "riskAnalysis": "Risk Analysis",
+    "footfall": "Patient Footfall",
+    "patientForecast": "Patient Forecast",
+    "inventoryStatus": "Inventory Status",
+    "thirtyDayTrend": "30-Day Trend & AI Forecast",
+    "forecastUnavailable": "Forecast data unavailable",
+    "criticalMedicines": "Critical Medicines",
+    "transferConfirmed": "Transfer confirmed",
+    "riskScoreTooltip": "This score combines medicine supply risk (40%), bed capacity (25%), demand surge (20%), and staffing levels (15%). Range: 0 (minimal risk) to 100 (critical).",
+    "forecastTooltip": "Solid line: recorded daily patient visits over the past 30 days. Dashed line: 7-day AI prediction with \u00b115% confidence band (shaded area).",
+    "medicineTooltip": "Medicine stock levels sorted by urgency. 'Days Rem.' shows how long current stock will last at current consumption rates."
   },
   "layout": {
     "breadcrumbs": {
-      "india": "Индия"
+      "india": "India"
     },
     "header": {
       "title": "Aarogya Grid",
-      "openNavigation": "Открыть навигацию",
-      "searchFacilities": "Поиск учреждений",
-      "search": "Поиск...",
-      "simulated": "Симуляция",
-      "simulatedTooltip": "Данные сгенерированы для симуляции"
+      "openNavigation": "Open navigation",
+      "searchFacilities": "Search facilities",
+      "search": "Search...",
+      "simulated": "Simulated",
+      "simulatedTooltip": "Data is generated for simulation"
     }
   },
   "sidebar": {
-    "expand": "Развернуть",
-    "collapse": "Свернуть",
-    "ariaNavigation": "Навигация по учреждениям",
-    "loading": "Навигация недоступна. Используйте навигационную цепочку выше.",
-    "header": "Навигация",
-    "close": "Закрыть навигацию"
+    "expand": "Expand",
+    "collapse": "Collapse",
+    "ariaNavigation": "Facility navigation",
+    "loading": "Navigation unavailable. Use breadcrumbs above.",
+    "header": "Navigation",
+    "close": "Close navigation"
   },
   "forecastChart": {
-    "count": "Количество:",
-    "range": "Диапазон:",
-    "status": "Статус:",
-    "predicted": "Прогноз",
-    "recorded": "Зафиксировано",
-    "historicalPattern": "На основе исторических данных за 30 дней",
-    "today": "СЕГОДНЯ"
+    "count": "Count:",
+    "range": "Range:",
+    "status": "Status:",
+    "predicted": "Predicted",
+    "recorded": "Recorded",
+    "historicalPattern": "Based on 30-day historical pattern",
+    "today": "TODAY"
   },
   "medicineTable": {
-    "medicine": "Лекарство",
-    "currentStock": "Текущий запас",
-    "dailyCons": "Сут. расход",
-    "daysRem": "Осталось дней",
-    "status": "Статус"
+    "medicine": "Medicine",
+    "currentStock": "Current Stock",
+    "dailyCons": "Daily Cons.",
+    "daysRem": "Days Rem.",
+    "status": "Status"
   },
   "triage": {
-    "critical": "Критический",
-    "high": "Высокий",
-    "medium": "Средний",
-    "low": "Низкий"
+    "critical": "Critical",
+    "high": "High",
+    "medium": "Medium",
+    "low": "Low"
   },
   "glossary": {
-    "ariaLabel": "Глоссарий",
-    "title": "Глоссарий",
-    "close": "Закрыть глоссарий",
-    "searchPlaceholder": "Поиск терминов...",
-    "noTermsFound": "Термины, соответствующие «{{query}}», не найдены",
+    "ariaLabel": "Glossary",
+    "title": "Glossary",
+    "close": "Close glossary",
+    "searchPlaceholder": "Search terms...",
+    "noTermsFound": "No terms found matching \"{{query}}\"",
     "terms": {
       "riskScore": {
-        "term": "Индекс риска",
-        "def": "Ежедневно рассчитываемый комплексный показатель от 0 до 100. Он учитывает текущие уровни запасов (40%), прогнозируемый спрос (35%) и локальную вместимость инфраструктуры (25%)."
+        "term": "Risk Score",
+        "def": "A composite 0-100 metric calculated daily. It weights current stock levels (40%), forecasted demand (35%), and local infrastructure capacity (25%)."
       },
       "triageBands": {
-        "term": "Группы сортировки",
-        "def": "Учреждения классифицируются по четырем группам на основе индекса риска: минимальный (0–30), отложенный (31–60), срочный (61–80) и немедленный (81–100). Эти группы соответствуют клинической терминологии сортировки пациентов."
+        "term": "Triage Bands",
+        "def": "Facilities are classified into four bands based on risk score: Minimal (0\u201330), Delayed (31\u201360), Urgent (61\u201380), and Immediate (81\u2013100). These map to clinical triage terminology."
       },
       "stockDays": {
-        "term": "Дни запаса",
-        "def": "Количество дней, на которое хватит лекарства при текущем уровне потребления. Рассчитывается как: текущий запас ÷ среднее суточное потребление."
+        "term": "Stock Days",
+        "def": "The number of days a medicine will last at current consumption rates. Calculated as current stock \u00f7 average daily consumption."
       },
       "demandSurge": {
-        "term": "Всплеск спроса",
-        "def": "Прогнозируемое увеличение потока пациентов на основе 7-дневной модели прогнозирования ИИ. Выражается в процентах превышения базового уровня за 30 дней."
+        "term": "Demand Surge",
+        "def": "A predicted increase in patient footfall based on the 7-day AI forecast model. Expressed as a percentage above the 30-day baseline."
       },
       "transferRecommendation": {
-        "term": "Рекомендация по перемещению",
-        "def": "Сгенерированное ИИ предложение переместить запасы лекарств из учреждения с избытком в учреждение, испытывающее дефицит. Показывает отправителя, получателя, количество, расстояние и прогнозируемое снижение риска."
+        "term": "Transfer Recommendation",
+        "def": "An AI-generated suggestion to move medicine stock from a facility with surplus to one facing shortage. Shows source, destination, quantity, distance, and projected risk reduction."
       },
       "bedOccupancy": {
-        "term": "Занятость коек",
-        "def": "Процент от общего числа коек в учреждении, занятых в данный момент. Высокая занятость (>80%) сигнализирует о нагрузке на вместимость."
+        "term": "Bed Occupancy",
+        "def": "The percentage of a facility's total beds currently in use. High occupancy (>80%) signals capacity pressure."
       },
       "staffRatio": {
-        "term": "Коэффициент укомплектованности штата",
-        "def": "Доля заполненных штатных (утвержденных) должностей персонала. Низкие показатели указывают на нехватку персонала."
+        "term": "Staff Ratio",
+        "def": "The proportion of sanctioned (approved) staff positions currently filled. Low ratios indicate staffing shortages."
       }
     }
   },
   "helpTooltip": {
-    "moreInfo": "Подробнее"
+    "moreInfo": "More information"
   },
   "alertCard": {
-    "actionRequired": "Требуется действие",
-    "reviewTransfer": "Рассмотреть перемещение"
+    "actionRequired": "Action Required",
+    "reviewTransfer": "Review transfer",
+    "template": "{{phc_name}} is projected to exhaust {{medicine}} in {{days}} days. Transfer {{quantity}} units from {{source}}."
   },
   "alertRail": {
-    "emergencyText": "КРИТИЧЕСКАЯ СИТУАЦИЯ: Резкий рост потока пациентов в PHC-02. Прогнозируется дефицит ORS менее чем через 24 часа. Требуется немедленное перемещение для стабилизации резерва.",
-    "error": "Поток предупреждений отключен. Показывается ноль активных предупреждений.",
-    "empty": "Нет активных предупреждений для этого {{scope}}."
+    "emergencyText": "CRITICAL: PHC-02 footfall surging abruptly. ORS stockout projected in <24 hours. Immediate transfer required to stabilize reserve.",
+    "error": "Alert stream disconnected. Showing zero active alerts.",
+    "empty": "No active alerts for this {{scope}}."
   },
   "emergencyControls": {
-    "updating": "Обновление...",
-    "simulate": "Симулировать чрезвычайную ситуацию",
-    "reset": "Сбросить настройки сети",
-    "triggerTitle": "Запустить чрезвычайную ситуацию?",
-    "triggerDesc": "Это добавит симулированные кризисы в сеть, пересчитает все индексы риска и создаст новые рекомендации ИИ по перемещению.",
-    "cancel": "Отмена",
-    "triggerBtn": "Запустить"
+    "updating": "Updating...",
+    "simulate": "Simulate emergency",
+    "reset": "Reset network",
+    "triggerTitle": "Trigger Emergency?",
+    "triggerDesc": "This will inject simulated crises into the network, recalculate all risk scores, and generate new AI transfer recommendations.",
+    "cancel": "Cancel",
+    "triggerBtn": "Trigger"
   },
   "searchPalette": {
-    "placeholder": "Поиск учреждений по названию, ID, району...",
-    "ariaSearch": "Поиск учреждений",
+    "placeholder": "Search facilities by name, ID, district...",
+    "ariaSearch": "Search facilities",
     "esc": "Esc",
-    "recent": "Недавние",
-    "typeToSearch": "Введите текст для поиска по всем учреждениям",
-    "noResults": "Нет учреждений, соответствующих «{{query}}»",
-    "navigate": "↑↓ Переход",
-    "select": "↵ Выбрать",
-    "close": "Esc Закрыть"
+    "recent": "Recent",
+    "typeToSearch": "Type to search across all facilities",
+    "noResults": "No facilities matching \"{{query}}\"",
+    "navigate": "\u2191\u2193 Navigate",
+    "select": "\u21b5 Select",
+    "close": "Esc Close"
+  },
+  "common": {
+    "indiaNational": "India (National)",
+    "returnToDistrict": "Return to District",
+    "dataLoadFailed": "Data Load Failed",
+    "phcNotFound": "The requested Primary Health Centre \"<strong>{{phcId}}</strong>\" could not be retrieved. Showing an empty facility layout.",
+    "simulationUnavailable": "Simulation Data Unavailable",
+    "datasetBlank": "The dataset is currently blank for this facility. Showing an empty layout."
   }
 }

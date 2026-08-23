@@ -17,10 +17,6 @@ const languages = {
   ru: 'Russian',
   hi: 'Hindi',
   zh: 'Simplified Chinese',
-  ar: 'Arabic',
-  am: 'Amharic',
-  fa: 'Persian/Farsi',
-  id: 'Bahasa Indonesia'
 };
 
 async function translateFile() {

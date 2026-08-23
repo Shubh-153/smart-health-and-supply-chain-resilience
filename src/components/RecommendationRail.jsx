@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getRecommendations, confirmRecommendation } from '../api/client';
 import { useTranslation } from 'react-i18next';
+import { translateMedicineName } from '../i18n/dataLocalization';
 
 export default function RecommendationRail({ districtId, phcId, onConfirmSuccess }) {
   const [recommendation, setRecommendation] = useState(null);
@@ -99,7 +100,7 @@ export default function RecommendationRail({ districtId, phcId, onConfirmSuccess
   if (initError) {
     return (
       <div className="bg-paper rounded-xl p-6 text-center shadow-sm">
-        <h4 className="font-display font-semibold text-ink mb-2">Recommendation Engine Disconnected</h4>
+        <h4 className="font-display font-semibold text-ink mb-2">{t("recommendationRail.networkError")}</h4>
         <p className="text-sm font-body text-ink-soft">
           {t('recommendationRail.error')}
         </p>
@@ -110,7 +111,7 @@ export default function RecommendationRail({ districtId, phcId, onConfirmSuccess
   if (!recommendation) {
     return (
       <div className="bg-paper rounded-xl p-6 text-center shadow-sm">
-        <h4 className="font-display font-semibold text-ink mb-2">No Transfers Needed</h4>
+        <h4 className="font-display font-semibold text-ink mb-2">{t("recommendationRail.emptyTransfers")}</h4>
         <p className="text-sm font-body text-ink-soft">
           {t('recommendationRail.empty')}
         </p>
@@ -124,19 +125,19 @@ export default function RecommendationRail({ districtId, phcId, onConfirmSuccess
         <div className="flex justify-between items-start mb-2">
           <h4 className="font-display font-semibold text-green-900 flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-green-500"></span>
-            Transfer {finalized ? 'Finalized' : 'Queued'}
+            {finalized ? t("recommendationRail.transferFinalized") : t("recommendationRail.transferQueued")}
           </h4>
           {!finalized && (
             <button 
               onClick={handleUndo}
               className="text-sm font-bold text-green-700 hover:text-green-900 underline underline-offset-2"
             >
-              Undo ({timeLeft}s)
+              {t("recommendationRail.undo", { timeLeft })}
             </button>
           )}
         </div>
         <p className="text-sm font-body text-green-800 mb-4">
-          Logistics team {finalized ? 'has been notified' : 'will be notified'} for {recommendation.quantity} units of {recommendation.medicine} {t('recommendationRail.from')} {recommendation.source_phc_id}.
+          {finalized ? t("recommendationRail.notifiedFinalized", { quantity: recommendation.quantity, medicine: translateMedicineName(recommendation.medicine, i18n.resolvedLanguage), source: recommendation.source_phc_id }) : t("recommendationRail.notifiedQueued", { quantity: recommendation.quantity, medicine: translateMedicineName(recommendation.medicine, i18n.resolvedLanguage), source: recommendation.source_phc_id })}
         </p>
       </div>
     );
@@ -165,7 +166,7 @@ export default function RecommendationRail({ districtId, phcId, onConfirmSuccess
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
           </div>
           <div className="text-right">
-            <div className="text-sm text-ink-soft mb-1">Destination</div>
+            <div className="text-sm text-ink-soft mb-1">{t("recommendationRail.destination")}</div>
             <div className="font-mono text-2xl text-triage-min font-bold">
               {recommendation.post_transfer_risk_score}
             </div>
@@ -175,16 +176,16 @@ export default function RecommendationRail({ districtId, phcId, onConfirmSuccess
       
       <div className="space-y-4 mb-6">
         <div className="flex justify-between items-baseline border-b border-rule pb-2">
-          <span className="text-sm text-ink-soft">Item & Quantity</span>
+          <span className="text-sm text-ink-soft">{t("recommendationRail.itemQuantity")}</span>
           <span className="font-mono font-medium text-ink">
-            {recommendation.quantity} × {recommendation.medicine}
+            {recommendation.quantity} × {translateMedicineName(recommendation.medicine, i18n.resolvedLanguage)}
           </span>
         </div>
         
         <div className="flex justify-between items-baseline border-b border-rule pb-2">
-          <span className="text-sm text-ink-soft">Logistics</span>
+          <span className="text-sm text-ink-soft">{t("recommendationRail.logistics")}</span>
           <span className="font-mono font-medium text-ink">
-            {recommendation.distance_km} {t('recommendationRail.km')} ({recommendation.travel_time_min} min)
+            {recommendation.distance_km} {t('recommendationRail.km')} ({recommendation.travel_time_min} {t("recommendationRail.min")})
           </span>
         </div>
       </div>
@@ -201,7 +202,7 @@ export default function RecommendationRail({ districtId, phcId, onConfirmSuccess
         disabled={confirming || apiFailed}
         className="w-full py-3 bg-signal text-paper font-semibold rounded hover:opacity-90 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-signal disabled:opacity-70 flex justify-center items-center font-body"
       >
-        {apiFailed ? 'Transfer Disabled' : t('recommendationRail.approve')}
+        {apiFailed ? t("recommendationRail.transferDisabled") : t('recommendationRail.approve')}
       </button>
     </div>
   );

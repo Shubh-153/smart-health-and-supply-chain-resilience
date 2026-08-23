@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { translateStateName, translateDistrictName, translateFacilityName } from '../i18n/dataLocalization';
 import { Link } from 'react-router-dom';
 
 function AnimatingTagScore({ from, to, delay = 0 }) {
@@ -76,11 +77,11 @@ export default function TriageTag({ phc, phase = 0, index = 0 }) {
         
         <div>
           <h3 className="font-display font-semibold text-ink group-hover:text-signal transition-colors">
-            {phc.name}
+            {translateFacilityName(phc, i18n.resolvedLanguage)}
           </h3>
           <div className="flex items-center gap-3 mt-1">
             <p className="text-sm font-body text-ink-soft">
-              {phc.district}, {phc.state}
+              {translateDistrictName(phc.district, i18n.resolvedLanguage)}, {translateStateName(phc.state, i18n.resolvedLanguage)}
             </p>
             {phc.total_beds !== undefined && (
               <>
@@ -109,7 +110,7 @@ export default function TriageTag({ phc, phase = 0, index = 0 }) {
         className={`px-3 py-1 rounded-full text-xs font-bold tracking-wide uppercase border transition-colors duration-500 ${triageColor}`}
         style={{ transitionDelay: staggerDelay }}
       >
-        {displayBucket}
+        {t(`triage.${displayBucket.toLowerCase()}`)}
       </div>
     </Link>
   );

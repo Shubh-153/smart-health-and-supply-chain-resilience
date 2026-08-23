@@ -360,7 +360,8 @@ app.post("/emergency", async (req, res) => {
         await db.collection('alerts_cache').doc(`${payload.phc_id}_${payload.medicine}_${hash}`).set({
           text,
           generated_at: Timestamp.now(),
-          source: "template"
+          source: "template",
+          payload
         });
       }
     });
