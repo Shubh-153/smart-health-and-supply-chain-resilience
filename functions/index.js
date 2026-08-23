@@ -16,7 +16,7 @@ const app = express();
 app.use(cors({ origin: true }));
 app.use(express.json());
 
-let summaryCache = { timestamp: null, data: null };
+let summaryCache = {};
 const CACHE_TTL_MS = 30 * 1000;
 
 // GET /summary
@@ -24,8 +24,10 @@ app.get("/summary", async (req, res) => {
   try {
     const { scope, id } = req.query;
     const now = Date.now();
-    if (summaryCache.timestamp && summaryCache.data && (now - summaryCache.timestamp < CACHE_TTL_MS)) {
-      return res.json({ status: "success", data: summaryCache.data, cached: true });
+    const cacheKey = `${scope || 'india'}_${id || 'all'}`;
+    
+    if (summaryCache[cacheKey] && summaryCache[cacheKey].timestamp && (now - summaryCache[cacheKey].timestamp < CACHE_TTL_MS)) {
+      return res.json({ status: "success", data: summaryCache[cacheKey].data, cached: true });
     }
 
     let phcsQuery = db.collection('phcs');
@@ -36,15 +38,37 @@ app.get("/summary", async (req, res) => {
     
     let critical = 0, atRisk = 0, stockOuts = 0, totalBeds = 0, occupiedBeds = 0, totalStaff = 0, presentStaff = 0;
 
+    const medPromises = [];
+
     snapshot.forEach(doc => {
       const data = doc.data();
       const bucket = data.risk?.bucket || "Low"; 
       if (bucket === "Critical") critical++;
       if (bucket === "High") atRisk++;
-      totalBeds += data.beds?.total || 0;
-      occupiedBeds += data.beds?.occupied || 0;
-      totalStaff += (data.staff?.doctors_sanctioned || 0) + (data.staff?.nurses_sanctioned || 0);
-      presentStaff += (data.staff?.doctors_present || 0) + (data.staff?.nurses_present || 0);
+      
+      // Fallback handles both new CSV schema (root level) and old mock JSON (nested)
+      totalBeds += data.total_beds || data.beds?.total || 0;
+      occupiedBeds += data.occupied_beds || data.beds?.occupied || 0;
+      
+      const docSanctioned = data.doctors_sanctioned || data.staff?.doctors_sanctioned || 0;
+      const nurSanctioned = data.nurses_sanctioned || data.staff?.nurses_sanctioned || 0;
+      const docPresent = data.doctors_present || data.staff?.doctors_present || 0;
+      const nurPresent = data.nurses_present || data.staff?.nurses_present || 0;
+      
+      totalStaff += docSanctioned + nurSanctioned;
+      presentStaff += docPresent + nurPresent;
+
+      // Queue up medicines read to compute actual stock-outs
+      medPromises.push(db.collection(`phcs/${doc.id}/medicines`).get());
+    });
+
+    const medsSnapshots = await Promise.all(medPromises);
+    medsSnapshots.forEach(medSnap => {
+      medSnap.forEach(mDoc => {
+        if (mDoc.data().current_stock <= 0) {
+          stockOuts++;
+        }
+      });
     });
 
     const data = {
@@ -53,7 +77,7 @@ app.get("/summary", async (req, res) => {
       staff_availability_pct: totalStaff > 0 ? Math.round((presentStaff / totalStaff) * 100) : 0
     };
 
-    summaryCache = { timestamp: now, data };
+    summaryCache[cacheKey] = { timestamp: now, data };
     res.json({ status: "success", data });
   } catch (error) { res.status(500).json({ status: "error", message: error.message }); }
 });

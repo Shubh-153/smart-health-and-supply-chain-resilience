@@ -53,9 +53,9 @@ function riskScore(phc, medicines, forecast) {
 
   const medicine_risk = 40 * clamp(1 - (worstDaysRemaining / 14), 0, 1);
   
-  const occupied_beds = phc.beds ? phc.beds.occupied : 0;
-  const total_beds = phc.beds ? Math.max(phc.beds.total, 1) : 1;
-  const bed_risk = 25 * clamp(occupied_beds / total_beds, 0, 1);
+  const occupied_beds = phc.occupied_beds || (phc.beds ? phc.beds.occupied : 0);
+  const total_beds = phc.total_beds || (phc.beds ? Math.max(phc.beds.total, 1) : 1);
+  const bed_risk = 25 * clamp(occupied_beds / Math.max(total_beds, 1), 0, 1);
   
   const trend_pct = phc.trend_pct || 0; 
   const surge_risk = 20 * clamp(trend_pct / 50, 0, 1);
@@ -65,6 +65,9 @@ function riskScore(phc, medicines, forecast) {
   if (phc.staff) {
     staff_present = phc.staff.doctors_present + phc.staff.nurses_present;
     staff_sanctioned = Math.max(phc.staff.doctors_sanctioned + phc.staff.nurses_sanctioned, 1);
+  } else {
+    staff_present = (phc.doctors_present || 0) + (phc.nurses_present || 0);
+    staff_sanctioned = Math.max((phc.doctors_sanctioned || 0) + (phc.nurses_sanctioned || 0), 1);
   }
   const staff_risk = 15 * clamp(1 - (staff_present / staff_sanctioned), 0, 1);
 
