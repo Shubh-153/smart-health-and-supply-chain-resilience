@@ -1,226 +1,226 @@
 {
   "dataGrid": {
-    "facility": "Facility",
-    "stockStatus": "Stock Status",
-    "trend": "Trend (7d)",
-    "risk": "Risk",
-    "transfer": "Transfer",
-    "triage": "Triage",
-    "beds": "Beds",
-    "staff": "Staff %",
-    "district": "District"
+    "facility": "Unidade",
+    "stockStatus": "Status do estoque",
+    "trend": "Tendência (7d)",
+    "risk": "Risco",
+    "transfer": "Transferência",
+    "triage": "Triagem",
+    "beds": "Leitos",
+    "staff": "Equipe %",
+    "district": "Distrito"
   },
   "facilityList": {
-    "error": "Facility data connection dropped. Showing an empty facility list instead.",
-    "empty": "No facilities at risk in this {{scope}}. Last checked 2 minutes ago.",
+    "error": "A conexão com os dados das unidades foi perdida. Exibindo uma lista vazia de unidades.",
+    "empty": "Nenhuma unidade em risco neste {{scope}}. Última verificação há 2 minutos.",
     "cards": "Cards",
-    "grid": "Grid"
+    "grid": "Grade"
   },
   "recommendationRail": {
-    "title": "AI Transfer Recommendations",
-    "subtitle": "Review and approve network rebalancing.",
-    "empty": "No recommendations.",
-    "approve": "Approve",
-    "from": "from",
-    "to": "to",
+    "title": "Recomendações de transferência por IA",
+    "subtitle": "Revise e aprove o rebalanceamento da rede.",
+    "empty": "Nenhuma recomendação.",
+    "approve": "Aprovar",
+    "from": "de",
+    "to": "para",
     "km": "km",
-    "riskReduction": "risk reduction",
-    "riskReductionTitle": "Risk reduction",
-    "error": "Data stream disconnected.",
-    "networkError": "Recommendation Engine Disconnected",
-    "emptyTransfers": "No Transfers Needed",
-    "emptyDesc": "There are currently no active transfer recommendations for this facility. Stock levels are either within safe operational margins, or no nearby surplus exists to facilitate a transfer.",
-    "transferQueued": "Transfer Queued",
-    "transferFinalized": "Transfer Finalized",
-    "undo": "Undo ({{timeLeft}}s)",
-    "notifiedFinalized": "Logistics team has been notified for {{quantity}} units of {{medicine}} from {{source}}.",
-    "notifiedQueued": "Logistics team will be notified for {{quantity}} units of {{medicine}} from {{source}}.",
-    "destination": "Destination",
-    "itemQuantity": "Item & Quantity",
-    "logistics": "Logistics",
+    "riskReduction": "redução de risco",
+    "riskReductionTitle": "Redução de risco",
+    "error": "Fluxo de dados desconectado.",
+    "networkError": "Mecanismo de recomendação desconectado",
+    "emptyTransfers": "Nenhuma transferência necessária",
+    "emptyDesc": "Atualmente não há recomendações de transferência ativas para esta unidade. Os níveis de estoque estão dentro das margens operacionais seguras ou não há excedente próximo para viabilizar uma transferência.",
+    "transferQueued": "Transferência na fila",
+    "transferFinalized": "Transferência concluída",
+    "undo": "Desfazer ({{timeLeft}}s)",
+    "notifiedFinalized": "A equipe de logística foi notificada sobre {{quantity}} unidades de {{medicine}} de {{source}}.",
+    "notifiedQueued": "A equipe de logística será notificada sobre {{quantity}} unidades de {{medicine}} de {{source}}.",
+    "destination": "Destino",
+    "itemQuantity": "Item e quantidade",
+    "logistics": "Logística",
     "min": "min",
-    "transferDisabled": "Transfer Disabled",
-    "networkIssue": "Transfer request failed. Network issue encountered."
+    "transferDisabled": "Transferência desativada",
+    "networkIssue": "Falha na solicitação de transferência. Erro de rede encontrado."
   },
   "riskBreakdown": {
-    "title": "Risk Factors",
-    "stock": "Stock",
-    "demand": "Demand",
-    "beds": "Beds",
-    "staff": "Staff"
+    "title": "Fatores de risco",
+    "stock": "Estoque",
+    "demand": "Demanda",
+    "beds": "Leitos",
+    "staff": "Equipe"
   },
   "summaryBar": {
-    "title": "Network Snapshot",
-    "totalFacilities": "Total Facilities",
-    "avgRiskScore": "Avg Risk Score",
-    "critical": "Critical",
-    "activeTransfers": "Active Transfers",
-    "error": "Connection lost.",
-    "criticalCount": "Critical count",
-    "atRiskCount": "At risk count",
-    "medicineStockOuts": "Medicine stock-outs",
-    "bedOccupancy": "Bed occupancy %",
-    "staffAvailability": "Staff availability %"
+    "title": "Panorama da rede",
+    "totalFacilities": "Total de unidades",
+    "avgRiskScore": "Pontuação média de risco",
+    "critical": "Crítico",
+    "activeTransfers": "Transferências ativas",
+    "error": "Conexão perdida.",
+    "criticalCount": "Contagem de críticos",
+    "atRiskCount": "Contagem de unidades em risco",
+    "medicineStockOuts": "Desabastecimentos de medicamentos",
+    "bedOccupancy": "% de ocupação de leitos",
+    "staffAvailability": "% de disponibilidade da equipe"
   },
   "triageTag": {
-    "risk": "Risk",
-    "viewDetails": "View details"
+    "risk": "Risco",
+    "viewDetails": "Ver detalhes"
   },
   "aggregateView": {
-    "empty": "No facilities found.",
-    "networkOverview": "Network Overview",
-    "activeAlerts": "Active Alerts",
-    "facilitiesAtRisk": "Facilities at Risk",
-    "riskDistribution": "Risk Distribution",
-    "aiRecommendations": "AI Recommendations",
-    "stateOf": "State of {{name}}",
-    "indiaNational": "India (National)",
-    "noFacilitySelected": "No facility selected",
-    "noFacilityDesc": "Please select a facility from the sidebar to view detailed metrics and AI recommendations.",
-    "networkSummary": "Aggregated metrics and facility status.",
-    "facilities": "Facilities"
+    "empty": "Nenhuma unidade encontrada.",
+    "networkOverview": "Visão geral da rede",
+    "activeAlerts": "Alertas ativos",
+    "facilitiesAtRisk": "Unidades em risco",
+    "riskDistribution": "Distribuição de risco",
+    "aiRecommendations": "Recomendações de IA",
+    "stateOf": "Estado de {{name}}",
+    "indiaNational": "Índia (Nacional)",
+    "noFacilitySelected": "Nenhuma unidade selecionada",
+    "noFacilityDesc": "Selecione uma unidade na barra lateral para visualizar métricas detalhadas e recomendações de IA.",
+    "networkSummary": "Métricas agregadas e status das unidades.",
+    "facilities": "Unidades"
   },
   "notFound": {
     "title": "404",
-    "subtitle": "Page not found",
-    "return": "Return to Dashboard"
+    "subtitle": "Página não encontrada",
+    "return": "Voltar ao painel"
   },
   "phcView": {
-    "stockOutIn": "Stock out in",
-    "days": "days",
-    "forecast": "7-Day Forecast",
-    "inventory": "Medicine Inventory",
-    "riskAnalysis": "Risk Analysis",
-    "footfall": "Patient Footfall",
-    "patientForecast": "Patient Forecast",
-    "inventoryStatus": "Inventory Status",
-    "thirtyDayTrend": "30-Day Trend & AI Forecast",
-    "forecastUnavailable": "Forecast data unavailable",
-    "criticalMedicines": "Critical Medicines",
-    "transferConfirmed": "Transfer confirmed",
-    "riskScoreTooltip": "This score combines medicine supply risk (40%), bed capacity (25%), demand surge (20%), and staffing levels (15%). Range: 0 (minimal risk) to 100 (critical).",
-    "forecastTooltip": "Solid line: recorded daily patient visits over the past 30 days. Dashed line: 7-day AI prediction with \u00b115% confidence band (shaded area).",
-    "medicineTooltip": "Medicine stock levels sorted by urgency. 'Days Rem.' shows how long current stock will last at current consumption rates."
+    "stockOutIn": "Falta de estoque em",
+    "days": "dias",
+    "forecast": "Previsão de 7 dias",
+    "inventory": "Estoque de medicamentos",
+    "riskAnalysis": "Análise de risco",
+    "footfall": "Fluxo de pacientes",
+    "patientForecast": "Previsão de pacientes",
+    "inventoryStatus": "Status do estoque",
+    "thirtyDayTrend": "Tendência de 30 dias e previsão de IA",
+    "forecastUnavailable": "Dados de previsão indisponíveis",
+    "criticalMedicines": "Medicamentos críticos",
+    "transferConfirmed": "Transferência confirmada",
+    "riskScoreTooltip": "Esta pontuação combina o risco de suprimento de medicamentos (40%), capacidade de leitos (25%), aumento de demanda (20%) e níveis de equipe (15%). Intervalo: 0 (risco mínimo) a 100 (crítico).",
+    "forecastTooltip": "Linha contínua: visitas diárias registradas de pacientes nos últimos 30 dias. Linha tracejada: previsão de IA de 7 dias com faixa de confiança de ±15% (área sombreada).",
+    "medicineTooltip": "Níveis de estoque de medicamentos ordenados por urgência. 'Dias rest.' mostra quanto tempo o estoque atual durará com as taxas de consumo atuais."
   },
   "layout": {
     "breadcrumbs": {
-      "india": "India"
+      "india": "Índia"
     },
     "header": {
       "title": "Aarogya Grid",
-      "openNavigation": "Open navigation",
-      "searchFacilities": "Search facilities",
-      "search": "Search...",
-      "simulated": "Simulated",
-      "simulatedTooltip": "Data is generated for simulation"
+      "openNavigation": "Abrir navegação",
+      "searchFacilities": "Buscar unidades",
+      "search": "Buscar...",
+      "simulated": "Simulado",
+      "simulatedTooltip": "Os dados são gerados para simulação"
     }
   },
   "sidebar": {
-    "expand": "Expand",
-    "collapse": "Collapse",
-    "ariaNavigation": "Facility navigation",
-    "loading": "Navigation unavailable. Use breadcrumbs above.",
-    "header": "Navigation",
-    "close": "Close navigation"
+    "expand": "Expandir",
+    "collapse": "Recolher",
+    "ariaNavigation": "Navegação de unidades",
+    "loading": "Navegação indisponível. Use as rotas de navegação acima.",
+    "header": "Navegação",
+    "close": "Fechar navegação"
   },
   "forecastChart": {
-    "count": "Count:",
-    "range": "Range:",
+    "count": "Contagem:",
+    "range": "Intervalo:",
     "status": "Status:",
-    "predicted": "Predicted",
-    "recorded": "Recorded",
-    "historicalPattern": "Based on 30-day historical pattern",
-    "today": "TODAY"
+    "predicted": "Previsto",
+    "recorded": "Registrado",
+    "historicalPattern": "Com base no padrão histórico de 30 dias",
+    "today": "HOJE"
   },
   "medicineTable": {
-    "medicine": "Medicine",
-    "currentStock": "Current Stock",
-    "dailyCons": "Daily Cons.",
-    "daysRem": "Days Rem.",
+    "medicine": "Medicamento",
+    "currentStock": "Estoque atual",
+    "dailyCons": "Cons. diário",
+    "daysRem": "Dias rest.",
     "status": "Status"
   },
   "triage": {
-    "critical": "Critical",
-    "high": "High",
-    "medium": "Medium",
-    "low": "Low"
+    "critical": "Crítico",
+    "high": "Alto",
+    "medium": "Médio",
+    "low": "Baixo"
   },
   "glossary": {
-    "ariaLabel": "Glossary",
-    "title": "Glossary",
-    "close": "Close glossary",
-    "searchPlaceholder": "Search terms...",
-    "noTermsFound": "No terms found matching \"{{query}}\"",
+    "ariaLabel": "Glossário",
+    "title": "Glossário",
+    "close": "Fechar glossário",
+    "searchPlaceholder": "Buscar termos...",
+    "noTermsFound": "Nenhum termo encontrado correspondente a \"{{query}}\"",
     "terms": {
       "riskScore": {
-        "term": "Risk Score",
-        "def": "A composite 0-100 metric calculated daily. It weights current stock levels (40%), forecasted demand (35%), and local infrastructure capacity (25%)."
+        "term": "Pontuação de risco",
+        "def": "Uma métrica composta de 0 a 100 calculada diariamente. Ela pondera os níveis atuais de estoque (40%), a demanda prevista (35%) e a capacidade da infraestrutura local (25%)."
       },
       "triageBands": {
-        "term": "Triage Bands",
-        "def": "Facilities are classified into four bands based on risk score: Minimal (0\u201330), Delayed (31\u201360), Urgent (61\u201380), and Immediate (81\u2013100). These map to clinical triage terminology."
+        "term": "Faixas de triagem",
+        "def": "As unidades são classificadas em quatro faixas com base na pontuação de risco: Mínimo (0–30), Adiado (31–60), Urgente (61–80) e Imediato (81–100). Estas se mapeiam para a terminologia de triagem clínica."
       },
       "stockDays": {
-        "term": "Stock Days",
-        "def": "The number of days a medicine will last at current consumption rates. Calculated as current stock \u00f7 average daily consumption."
+        "term": "Dias de estoque",
+        "def": "O número de dias que um medicamento durará com as taxas de consumo atuais. Calculado como estoque atual ÷ consumo médio diário."
       },
       "demandSurge": {
-        "term": "Demand Surge",
-        "def": "A predicted increase in patient footfall based on the 7-day AI forecast model. Expressed as a percentage above the 30-day baseline."
+        "term": "Aumento de demanda",
+        "def": "Um aumento previsto no fluxo de pacientes com base no modelo de previsão de IA de 7 dias. Expresso como uma porcentagem acima da linha de base de 30 dias."
       },
       "transferRecommendation": {
-        "term": "Transfer Recommendation",
-        "def": "An AI-generated suggestion to move medicine stock from a facility with surplus to one facing shortage. Shows source, destination, quantity, distance, and projected risk reduction."
+        "term": "Recomendação de transferência",
+        "def": "Uma sugestão gerada por IA para mover o estoque de medicamentos de uma unidade com excedente para outra que enfrenta escassez. Mostra a origem, o destino, a quantidade, a distância e a redução de risco projetada."
       },
       "bedOccupancy": {
-        "term": "Bed Occupancy",
-        "def": "The percentage of a facility's total beds currently in use. High occupancy (>80%) signals capacity pressure."
+        "term": "Ocupação de leitos",
+        "def": "A porcentagem do total de leitos de uma unidade atualmente em uso. A alta ocupação (>80%) sinaliza pressão sobre a capacidade."
       },
       "staffRatio": {
-        "term": "Staff Ratio",
-        "def": "The proportion of sanctioned (approved) staff positions currently filled. Low ratios indicate staffing shortages."
+        "term": "Proporção de equipe",
+        "def": "A proporção de cargos de equipe autorizados (aprovados) atualmente preenchidos. Proporções baixas indicam escassez de funcionários."
       }
     }
   },
   "helpTooltip": {
-    "moreInfo": "More information"
+    "moreInfo": "Mais informações"
   },
   "alertCard": {
-    "actionRequired": "Action Required",
-    "reviewTransfer": "Review transfer",
-    "template": "{{phc_name}} is projected to exhaust {{medicine}} in {{days}} days. Transfer {{quantity}} units from {{source}}."
+    "actionRequired": "Ação necessária",
+    "reviewTransfer": "Revisar transferência",
+    "template": "A projeção indica que a {{phc_name}} esgotará o estoque de {{medicine}} em {{days}} dias. Transfira {{quantity}} unidades de {{source}}."
   },
   "alertRail": {
-    "emergencyText": "CRITICAL: PHC-02 footfall surging abruptly. ORS stockout projected in <24 hours. Immediate transfer required to stabilize reserve.",
-    "error": "Alert stream disconnected. Showing zero active alerts.",
-    "empty": "No active alerts for this {{scope}}."
+    "emergencyText": "CRÍTICO: O fluxo de pacientes na UBS-02 está aumentando abruptamente. Desabastecimento de SRO previsto em <24 horas. Transferência imediata necessária para estabilizar a reserva.",
+    "error": "Fluxo de alertas desconectado. Exibindo zero alertas ativos.",
+    "empty": "Nenhum alerta ativo para este {{scope}}."
   },
   "emergencyControls": {
-    "updating": "Updating...",
-    "simulate": "Simulate emergency",
-    "reset": "Reset network",
-    "triggerTitle": "Trigger Emergency?",
-    "triggerDesc": "This will inject simulated crises into the network, recalculate all risk scores, and generate new AI transfer recommendations.",
-    "cancel": "Cancel",
-    "triggerBtn": "Trigger"
+    "updating": "Atualizando...",
+    "simulate": "Simular emergência",
+    "reset": "Redefinir rede",
+    "triggerTitle": "Acionar emergência?",
+    "triggerDesc": "Isso injetará crises simuladas na rede, recalculará todas as pontuações de risco e gerará novas recomendações de transferência por IA.",
+    "cancel": "Cancelar",
+    "triggerBtn": "Acionar"
   },
   "searchPalette": {
-    "placeholder": "Search facilities by name, ID, district...",
-    "ariaSearch": "Search facilities",
+    "placeholder": "Buscar unidades por nome, ID, distrito...",
+    "ariaSearch": "Buscar unidades",
     "esc": "Esc",
-    "recent": "Recent",
-    "typeToSearch": "Type to search across all facilities",
-    "noResults": "No facilities matching \"{{query}}\"",
-    "navigate": "\u2191\u2193 Navigate",
-    "select": "\u21b5 Select",
-    "close": "Esc Close"
+    "recent": "Recentes",
+    "typeToSearch": "Digite para buscar em todas as unidades",
+    "noResults": "Nenhuma unidade correspondente a \"{{query}}\"",
+    "navigate": "↑↓ Navegar",
+    "select": "↵ Selecionar",
+    "close": "Esc Fechar"
   },
   "common": {
-    "indiaNational": "India (National)",
-    "returnToDistrict": "Return to District",
-    "dataLoadFailed": "Data Load Failed",
-    "phcNotFound": "The requested Primary Health Centre \"<strong>{{phcId}}</strong>\" could not be retrieved. Showing an empty facility layout.",
-    "simulationUnavailable": "Simulation Data Unavailable",
-    "datasetBlank": "The dataset is currently blank for this facility. Showing an empty layout."
+    "indiaNational": "Índia (Nacional)",
+    "returnToDistrict": "Voltar ao Distrito",
+    "dataLoadFailed": "Falha no carregamento de dados",
+    "phcNotFound": "A Unidade Básica de Saúde solicitada \"<strong>{{phcId}}</strong>\" não pôde ser recuperada. Exibindo um layout de unidade vazio.",
+    "simulationUnavailable": "Dados de simulação indisponíveis",
+    "datasetBlank": "O conjunto de dados está atualmente em branco para esta unidade. Exibindo um layout vazio."
   }
 }
