@@ -2,20 +2,6 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import HelpTooltip from './HelpTooltip';
 
-const NAMES = {
-  medicine: 'Medicine shortage',
-  bed: 'Bed occupancy',
-  surge: 'Patient surge',
-  staff: t('riskBreakdown.staff') + ' shortage'
-};
-
-const HELP_TEXTS = {
-  medicine: "Based on days of medicine supply remaining across all tracked medicines. Weight: 40% of total score.",
-  bed: "Based on the ratio of occupied beds to total beds. Weight: 25% of total score.",
-  surge: "Based on predicted patient footfall increase from the 7-day AI forecast. Weight: 20% of total score.",
-  staff: "Based on the ratio of present staff to sanctioned positions. Weight: 15% of total score."
-};
-
 const COLORS = {
   medicine: 'bg-slate-900', // darkest
   bed: 'bg-slate-700',
@@ -26,6 +12,20 @@ const COLORS = {
 export default function RiskBreakdown({ breakdown }) {
   const { t } = useTranslation();
   const [showCalc, setShowCalc] = useState(false);
+
+  const NAMES = {
+    medicine: t('riskBreakdown.medicineTitle', { defaultValue: 'Medicine shortage' }),
+    bed: t('riskBreakdown.bedTitle', { defaultValue: 'Bed occupancy' }),
+    surge: t('riskBreakdown.surgeTitle', { defaultValue: 'Patient surge' }),
+    staff: t('riskBreakdown.staff') + ' ' + t('riskBreakdown.shortage', { defaultValue: 'shortage' })
+  };
+
+  const HELP_TEXTS = {
+    medicine: t('riskBreakdown.medicineHelp', { defaultValue: "Based on days of medicine supply remaining across all tracked medicines. Weight: 40% of total score." }),
+    bed: t('riskBreakdown.bedHelp', { defaultValue: "Based on the ratio of occupied beds to total beds. Weight: 25% of total score." }),
+    surge: t('riskBreakdown.surgeHelp', { defaultValue: "Based on predicted patient footfall increase from the 7-day AI forecast. Weight: 20% of total score." }),
+    staff: t('riskBreakdown.staffHelp', { defaultValue: "Based on the ratio of present staff to sanctioned positions. Weight: 15% of total score." })
+  };
 
   const segments = Object.entries(breakdown)
     .map(([key, value]) => ({
@@ -47,8 +47,8 @@ export default function RiskBreakdown({ breakdown }) {
   return (
     <div className="bg-paper rounded-xl p-6 shadow-sm">
       <div className="flex items-center gap-2 mb-6">
-        <h3 className="text-lg font-display font-semibold text-ink">Risk Components</h3>
-        <HelpTooltip text="Shows the weighted contribution of four key operational metrics to the total risk score." />
+        <h3 className="text-lg font-display font-semibold text-ink">{t('riskBreakdown.title', { defaultValue: 'Risk Components' })}</h3>
+        <HelpTooltip text={t('riskBreakdown.mainHelp', { defaultValue: "Shows the weighted contribution of four key operational metrics to the total risk score." })} />
       </div>
       
       <div className="relative pt-6 pb-2">
