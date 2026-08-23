@@ -1,6 +1,6 @@
 const { onRequest } = require("firebase-functions/v2/https");
 const { getFirestore, Timestamp } = require("firebase-admin/firestore");
-const { initializeApp, getApps } = require("firebase-admin/app");
+const { initializeApp, getApps, cert } = require("firebase-admin/app");
 const express = require("express");
 const cors = require("cors");
 
@@ -9,7 +9,7 @@ const { generateRecommendations } = require('./lib/redistribute');
 const { generateAlert } = require('./lib/gemini');
 
 if (!getApps().length) {
-  initializeApp();
+  if (process.env.FIREBASE_SERVICE_ACCOUNT) { initializeApp({ credential: cert(JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT)) }); } else { initializeApp(); }
 }
 const db = getFirestore();
 
@@ -106,6 +106,32 @@ app.get("/phcs/:id", async (req, res) => {
       data: { ...phcData, id, risk, medicines, footfall_history }
     });
   } catch (error) { res.status(500).json({ status: "error", message: error.message }); }
+});
+
+// GET /phcs/:id/forecast
+app.get("/phcs/:id/forecast", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const doc = await db.collection('forecasts').doc(id).get();
+    if (!doc.exists) return res.status(404).json({ status: "error", message: "Forecast not found" });
+
+    const d = doc.data();
+    
+    const medicine_demand_forecast = Object.keys(d.demand_7d || {}).map(med => ({
+      medicine: med,
+      daily_demand: d.demand_7d[med]
+    }));
+
+    res.json({
+      status: "success",
+      data: {
+        footfall_forecast_7d: d.footfall_7d || [],
+        medicine_demand_forecast
+      }
+    });
+  } catch (err) {
+    res.status(500).json({ status: "error", message: err.message });
+  }
 });
 
 // GET /phcs/:id/stockout
@@ -210,6 +236,22 @@ app.post("/emergency", async (req, res) => {
     const multiplierFootfall = active ? 2.5 : 1/2.5;
     const multiplierConsumption = active ? 1.65 : 1/1.65;
 
+    // Call Python Service
+    let pythonRes = null;
+    try {
+      const pResponse = await fetch('http://127.0.0.1:8080/forecast', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          phc_ids: phcsSnap.docs.map(d => d.id),
+          emergency_multiplier: active ? 2.5 : null
+        })
+      });
+      pythonRes = await pResponse.json();
+    } catch(err) {
+      console.warn("Python service unreachable, falling back to mock");
+    }
+
     for (const doc of phcsSnap.docs) {
       affectedPhcIds.push(doc.id);
       batch.update(doc.ref, { emergency: active });
@@ -221,10 +263,20 @@ app.post("/emergency", async (req, res) => {
         batch.update(mDoc.ref, { avg_daily_consumption: Math.round(d.avg_daily_consumption * multiplierConsumption) });
       });
 
-      // Update forecast (mocking forecast service call)
+      // Update forecast using Python service or mock fallback
       const forecastRef = db.collection('forecasts').doc(doc.id);
       const forecastDoc = await forecastRef.get();
-      if (forecastDoc.exists) {
+      
+      if (pythonRes && pythonRes.data && pythonRes.data[doc.id]) {
+        const pData = pythonRes.data[doc.id];
+        const newFf = pData.forecast_7d;
+        const newDemand = {};
+        pData.stockouts.forEach(s => {
+            newDemand[s.medicine] = Array(7).fill(s.predicted_daily_consumption);
+        });
+        batch.update(forecastRef, { footfall_7d: newFf, demand_7d: newDemand });
+      } else if (forecastDoc.exists) {
+        // Fallback
         const d = forecastDoc.data();
         const newFf = d.footfall_7d.map(x => Math.round(x * multiplierFootfall));
         const newDemand = {};

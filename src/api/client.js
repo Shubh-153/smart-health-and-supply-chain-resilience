@@ -5,8 +5,8 @@
 
 import apiData from '../../mock/api.json';
 
-const USE_MOCK = import.meta.env.VITE_USE_MOCK === 'true' || true;
-const BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api';
+const USE_MOCK = import.meta.env.VITE_USE_MOCK === 'true';
+const BASE_URL = import.meta.env.VITE_API_BASE_URL || (import.meta.env.PROD ? '/api' : 'http://127.0.0.1:5001/supply-43d81/us-central1/api');
 
 /**
  * Simulates network delay for mock responses to test loading states.
@@ -16,6 +16,43 @@ const BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api
  * @returns {Promise<T>}
  */
 const delay = (data, ms = 400) => new Promise(resolve => setTimeout(() => resolve(data), ms));
+
+/**
+ * The live Cloud Functions API stores beds/staff/risk as nested objects and uses
+ * different field names than the frozen mock contract every component was built
+ * against. These adapters flatten a live PHC payload to match that contract.
+ */
+function normalizePhc(phc) {
+  if (!phc) return phc;
+  return {
+    ...phc,
+    total_beds: phc.beds?.total,
+    occupied_beds: phc.beds?.occupied,
+    doctors_sanctioned: phc.staff?.doctors_sanctioned,
+    doctors_present: phc.staff?.doctors_present,
+    nurses_sanctioned: phc.staff?.nurses_sanctioned,
+    nurses_present: phc.staff?.nurses_present,
+    risk_score: phc.risk?.score,
+    risk_bucket: phc.risk?.bucket,
+    footfall_history_30d: phc.footfall_history,
+  };
+}
+
+function normalizeRecommendation(rec) {
+  if (!rec) return rec;
+  return {
+    ...rec,
+    source_phc_id: rec.source_phc,
+    destination_phc_id: rec.dest_phc,
+    quantity: rec.qty,
+    post_transfer_risk_score: rec.projected_risk_after,
+  };
+}
+
+function normalizeAlert(alert) {
+  if (!alert) return alert;
+  return { ...alert, alert_text: alert.text };
+}
 
 /**
  * Fetches the mock JSON file.
@@ -54,7 +91,7 @@ export async function getSummary(scope, id = '') {
   
   const res = await fetch(url);
   if (!res.ok) throw new Error('Failed to fetch summary');
-  return res.json();
+  const json = await res.json(); return json.data;
 }
 
 /**
@@ -92,7 +129,7 @@ export async function getPhcs(district = '') {
   
   const res = await fetch(url);
   if (!res.ok) throw new Error('Failed to fetch PHCs');
-  return res.json();
+  const json = await res.json(); return (json.data || []).map(normalizePhc);
 }
 
 /**
@@ -140,7 +177,7 @@ export async function getPhcDetail(id) {
   
   const res = await fetch(`${BASE_URL}/phcs/${id}`);
   if (!res.ok) throw new Error(`Failed to fetch PHC details for ${id}`);
-  return res.json();
+  const json = await res.json(); return normalizePhc(json.data);
 }
 
 /**
@@ -168,7 +205,7 @@ export async function getPhcForecast(id) {
   
   const res = await fetch(`${BASE_URL}/phcs/${id}/forecast`);
   if (!res.ok) throw new Error(`Failed to fetch forecast for ${id}`);
-  return res.json();
+  const json = await res.json(); return json.data;
 }
 
 /**
@@ -194,7 +231,7 @@ export async function getPhcStockout(id) {
   
   const res = await fetch(`${BASE_URL}/phcs/${id}/stockout`);
   if (!res.ok) throw new Error(`Failed to fetch stockouts for ${id}`);
-  return res.json();
+  const json = await res.json(); return json.data;
 }
 
 /**
@@ -224,7 +261,7 @@ export async function getRecommendations(district) {
   
   const res = await fetch(url);
   if (!res.ok) throw new Error('Failed to fetch recommendations');
-  return res.json();
+  const json = await res.json(); return (json.data || []).map(normalizeRecommendation);
 }
 
 /**
@@ -242,11 +279,12 @@ export async function getRecommendations(district) {
 
 /**
  * Confirm a transfer recommendation, mutating stock and returning risk scores.
- * @param {string} destinationId - The destination PHC ID
+ * @param {string} recommendationId - The recommendation's own ID (not a PHC ID) — the live
+ *   backend looks up source/destination/quantity from the stored recommendation document.
  * @param {TransferPayload} payload - The transfer details
  * @returns {Promise<ConfirmTransferResponse>}
  */
-export async function confirmRecommendation(destinationId, payload) {
+export async function confirmRecommendation(recommendationId, payload) {
   if (USE_MOCK) {
     // Return a simulated mock response for successful confirmation
     return delay({
@@ -254,14 +292,15 @@ export async function confirmRecommendation(destinationId, payload) {
       after_risk_score: 65
     });
   }
-  
-  const res = await fetch(`${BASE_URL}/recommendations/${destinationId}/confirm`, {
+
+  const res = await fetch(`${BASE_URL}/recommendations/${recommendationId}/confirm`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload)
   });
   if (!res.ok) throw new Error('Failed to confirm recommendation');
-  return res.json();
+  const json = await res.json();
+  return { before_risk_score: json.data.risk_before?.score, after_risk_score: json.data.risk_after?.score };
 }
 
 /**
@@ -287,7 +326,7 @@ export async function setEmergency(districtId, active) {
     body: JSON.stringify({ district_id: districtId, active })
   });
   if (!res.ok) throw new Error('Failed to update emergency status');
-  return res.json();
+  const json = await res.json(); return json.data;
 }
 
 /**
@@ -319,7 +358,7 @@ export async function getAlerts(district = '') {
   
   const res = await fetch(url);
   if (!res.ok) throw new Error('Failed to fetch alerts');
-  return res.json();
+  const json = await res.json(); return (json.data || []).map(normalizeAlert);
 }
 
 /**
@@ -353,5 +392,55 @@ export async function getFederatedStatus() {
   
   const res = await fetch(`${BASE_URL}/federated/status`);
   if (!res.ok) throw new Error('Failed to fetch federated status');
-  return res.json();
+  const json = await res.json(); return json.data;
+}
+
+/**
+ * @typedef {Object} HierarchyNode
+ * @property {string} name
+ * @property {{ name: string, phcs: PHC[] }[]} districts
+ */
+
+/**
+ * @typedef {Object} Hierarchy
+ * @property {HierarchyNode[]} states
+ */
+
+let _hierarchyCache = null;
+
+/**
+ * Get the full geographic hierarchy (state → district → PHC) for sidebar navigation.
+ * Caches the result so sidebar and search don't re-fetch on every navigation.
+ * @param {boolean} [forceRefresh=false] - Set true to bypass cache
+ * @returns {Promise<Hierarchy>}
+ */
+export async function getHierarchy(forceRefresh = false) {
+  if (_hierarchyCache && !forceRefresh) return _hierarchyCache;
+
+  const phcs = await getPhcs();
+  const stateMap = {};
+
+  phcs.forEach(phc => {
+    const state = phc.state || 'Unknown';
+    const district = phc.district || 'Unknown';
+
+    if (!stateMap[state]) stateMap[state] = {};
+    if (!stateMap[state][district]) stateMap[state][district] = [];
+    stateMap[state][district].push(phc);
+  });
+
+  const states = Object.entries(stateMap)
+    .map(([stateName, districts]) => ({
+      name: stateName,
+      districts: Object.entries(districts)
+        .map(([districtName, phcList]) => ({
+          name: districtName,
+          phcs: phcList.sort((a, b) => b.risk_score - a.risk_score)
+        }))
+        .sort((a, b) => a.name.localeCompare(b.name))
+    }))
+    .sort((a, b) => a.name.localeCompare(b.name));
+
+  _hierarchyCache = { states };
+  return _hierarchyCache;
 }

@@ -32,32 +32,61 @@ export default function RecommendationRail({ districtId, phcId, onConfirmSuccess
     return () => { isMounted = false; };
   }, [districtId, phcId]);
 
-  const handleConfirm = async () => {
+  const [undoTimer, setUndoTimer] = useState(null);
+  const [timeLeft, setTimeLeft] = useState(5);
+  const [finalized, setFinalized] = useState(false);
+  const [apiFailed, setApiFailed] = useState(false);
+
+  useEffect(() => {
+    let interval;
+    if (confirmed && !finalized && timeLeft > 0) {
+      interval = setInterval(() => {
+        setTimeLeft((prev) => prev - 1);
+      }, 1000);
+    }
+    return () => clearInterval(interval);
+  }, [confirmed, finalized, timeLeft]);
+
+  const handleConfirm = () => {
     if (!recommendation) return;
     setConfirming(true);
     setErrorMsg(null);
-    try {
-      const payload = {
-        source_phc_id: recommendation.source_phc_id,
-        medicine: recommendation.medicine,
-        quantity: recommendation.quantity
-      };
-      const res = await confirmRecommendation(phcId, payload);
-      setConfirmed(true);
-      if (onConfirmSuccess) {
-        onConfirmSuccess(res.after_risk_score);
+    setConfirmed(true);
+    setTimeLeft(5);
+
+    const timer = setTimeout(async () => {
+      try {
+        const payload = {
+          source_phc_id: recommendation.source_phc_id,
+          medicine: recommendation.medicine,
+          quantity: recommendation.quantity
+        };
+        const res = await confirmRecommendation(recommendation.id, payload);
+        if (onConfirmSuccess) {
+          onConfirmSuccess(res.after_risk_score);
+        }
+        setFinalized(true);
+      } catch (err) {
+        console.error(err);
+        setConfirmed(false);
+        setConfirming(false);
+        setApiFailed(true);
+        setErrorMsg('Transfer request failed. Network issue encountered.');
       }
-    } catch (err) {
-      console.error(err);
-      setErrorMsg('Transfer request failed. Network issue encountered and no changes were made.');
-    } finally {
-      setConfirming(false);
-    }
+    }, 5000);
+
+    setUndoTimer(timer);
+  };
+
+  const handleUndo = () => {
+    if (undoTimer) clearTimeout(undoTimer);
+    setConfirmed(false);
+    setConfirming(false);
   };
 
   if (loading) {
     return (
-      <div className="bg-card border border-rule rounded-lg p-6 animate-pulse">
+      <div className="bg-paper shadow-sm rounded-xl p-6 animate-pulse">
         <div className="h-6 bg-rule rounded w-1/2 mb-4"></div>
         <div className="h-24 bg-rule/50 rounded mb-4"></div>
         <div className="h-10 bg-rule rounded"></div>
@@ -67,7 +96,7 @@ export default function RecommendationRail({ districtId, phcId, onConfirmSuccess
 
   if (initError) {
     return (
-      <div className="bg-paper border border-rule rounded-lg p-6 text-center shadow-sm">
+      <div className="bg-paper rounded-xl p-6 text-center shadow-sm">
         <h4 className="font-display font-semibold text-ink mb-2">Recommendation Engine Disconnected</h4>
         <p className="text-sm font-body text-ink-soft">
           Unable to retrieve optimization data from the server. Showing zero active transfers.
@@ -78,7 +107,7 @@ export default function RecommendationRail({ districtId, phcId, onConfirmSuccess
 
   if (!recommendation) {
     return (
-      <div className="bg-paper border border-rule rounded-lg p-6 text-center shadow-sm">
+      <div className="bg-paper rounded-xl p-6 text-center shadow-sm">
         <h4 className="font-display font-semibold text-ink mb-2">No Transfers Needed</h4>
         <p className="text-sm font-body text-ink-soft">
           There are currently no active transfer recommendations for this facility. 
@@ -90,33 +119,60 @@ export default function RecommendationRail({ districtId, phcId, onConfirmSuccess
 
   if (confirmed) {
     return (
-      <div className="bg-green-50 border border-green-200 rounded-lg p-6 shadow-sm">
-        <h4 className="font-display font-semibold text-green-900 mb-2 flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-green-500"></span>
-          Transfer Scheduled
-        </h4>
+      <div className="bg-green-50 rounded-xl p-6 shadow-sm border border-green-200">
+        <div className="flex justify-between items-start mb-2">
+          <h4 className="font-display font-semibold text-green-900 flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-green-500"></span>
+            Transfer {finalized ? 'Finalized' : 'Queued'}
+          </h4>
+          {!finalized && (
+            <button 
+              onClick={handleUndo}
+              className="text-sm font-bold text-green-700 hover:text-green-900 underline underline-offset-2"
+            >
+              Undo ({timeLeft}s)
+            </button>
+          )}
+        </div>
         <p className="text-sm font-body text-green-800 mb-4">
-          Logistics team notified for {recommendation.quantity} units of {recommendation.medicine} from {recommendation.source_phc_id}.
+          Logistics team {finalized ? 'has been notified' : 'will be notified'} for {recommendation.quantity} units of {recommendation.medicine} from {recommendation.source_phc_id}.
         </p>
       </div>
     );
   }
 
   return (
-    <div className="bg-card border border-signal rounded-lg p-6 shadow-md relative overflow-hidden">
-      <div className="absolute top-0 left-0 w-full h-1 bg-signal"></div>
+    <div className="bg-paper rounded-xl p-6 shadow-lg relative overflow-hidden">
+      <div className="absolute top-0 left-0 w-full h-[3px] bg-signal"></div>
       
       <h3 className="font-display font-semibold text-ink mb-4 flex items-center gap-2">
         <span className="w-2 h-2 rounded-full bg-signal animate-pulse"></span>
         Recommended Action
       </h3>
+
+      <div className="bg-card rounded-lg p-4 mb-6">
+        <span className="text-xs font-bold text-ink-soft uppercase tracking-widest block mb-3">Risk Trade-off Impact</span>
+        <div className="flex justify-between items-center">
+          <div>
+            <div className="text-sm text-ink-soft mb-1">{recommendation.source_phc_id}</div>
+            <div className="font-mono text-2xl text-triage-urg font-bold flex items-center gap-2">
+              <span className="opacity-50 line-through text-lg text-ink-soft">{recommendation.source_risk_before || 12}</span>
+              {recommendation.source_risk_after || 18}
+            </div>
+          </div>
+          <div className="text-rule px-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+          </div>
+          <div className="text-right">
+            <div className="text-sm text-ink-soft mb-1">Destination</div>
+            <div className="font-mono text-2xl text-triage-min font-bold">
+              {recommendation.post_transfer_risk_score}
+            </div>
+          </div>
+        </div>
+      </div>
       
       <div className="space-y-4 mb-6">
-        <div className="flex justify-between items-baseline border-b border-rule pb-2">
-          <span className="text-sm text-ink-soft">Transfer from</span>
-          <span className="font-mono font-medium text-ink">{recommendation.source_phc_id}</span>
-        </div>
-        
         <div className="flex justify-between items-baseline border-b border-rule pb-2">
           <span className="text-sm text-ink-soft">Item & Quantity</span>
           <span className="font-mono font-medium text-ink">
@@ -130,15 +186,6 @@ export default function RecommendationRail({ districtId, phcId, onConfirmSuccess
             {recommendation.distance_km} km ({recommendation.travel_time_min} min)
           </span>
         </div>
-        
-        <div className="flex justify-between items-baseline pt-2">
-          <span className="text-sm text-ink-soft">Est. Final Risk</span>
-          <div className="flex items-center gap-2 font-mono font-bold">
-            <span className="text-signal text-lg">
-              {recommendation.post_transfer_risk_score}
-            </span>
-          </div>
-        </div>
       </div>
       
       {errorMsg && (
@@ -148,11 +195,12 @@ export default function RecommendationRail({ districtId, phcId, onConfirmSuccess
       )}
       
       <button 
+        type="button"
         onClick={handleConfirm}
-        disabled={confirming}
-        className="w-full py-3 bg-signal text-paper font-semibold rounded hover:bg-blue-600 transition-colors disabled:opacity-70 flex justify-center items-center font-body"
+        disabled={confirming || apiFailed}
+        className="w-full py-3 bg-signal text-paper font-semibold rounded hover:opacity-90 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-signal disabled:opacity-70 flex justify-center items-center font-body"
       >
-        {confirming ? 'Confirming...' : 'Confirm transfer'}
+        {apiFailed ? 'Transfer Disabled' : 'Confirm transfer'}
       </button>
     </div>
   );

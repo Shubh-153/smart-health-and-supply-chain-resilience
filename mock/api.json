@@ -2,31 +2,31 @@
   "summary": {
     "india": {
       "critical": 2,
-      "high": 2,
-      "stockouts": 2,
-      "bed_availability_pct": 65,
-      "staff_availability_pct": 75
+      "staff_availability_pct": 75,
+      "at_risk": 2,
+      "stock_outs": 2,
+      "bed_occupancy_pct": 35
     },
     "state_Punjab": {
       "critical": 2,
-      "high": 2,
-      "stockouts": 2,
-      "bed_availability_pct": 65,
-      "staff_availability_pct": 75
+      "staff_availability_pct": 75,
+      "at_risk": 2,
+      "stock_outs": 2,
+      "bed_occupancy_pct": 35
     },
     "district_Ludhiana": {
       "critical": 1,
-      "high": 1,
-      "stockouts": 1,
-      "bed_availability_pct": 70,
-      "staff_availability_pct": 80
+      "staff_availability_pct": 80,
+      "at_risk": 1,
+      "stock_outs": 1,
+      "bed_occupancy_pct": 30
     },
     "district_Jalandhar": {
       "critical": 1,
-      "high": 1,
-      "stockouts": 1,
-      "bed_availability_pct": 60,
-      "staff_availability_pct": 70
+      "staff_availability_pct": 70,
+      "at_risk": 1,
+      "stock_outs": 1,
+      "bed_occupancy_pct": 40
     }
   },
   "phcs": [

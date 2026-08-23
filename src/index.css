@@ -19,19 +19,19 @@
 }
 
 :root {
-  /* Palette */
+  /* Palette - Bolder Identity */
   --paper: #ffffff;
   --card: #f8fafc; /* slate-50 */
   --ink: #0f172a; /* slate-900 */
   --ink-soft: #475569; /* slate-600 */
   --rule: #e2e8f0; /* slate-200 */
-  --signal: #3b82f6; /* blue-500 */
+  --signal: #0369a1; /* deeper authoritative blue-700 instead of blue-500 */
 
-  /* Triage Bands */
-  --triage-min: #22c55e; /* green-500 */
-  --triage-del: #eab308; /* yellow-500 */
-  --triage-urg: #f97316; /* orange-500 */
-  --triage-imm: #ef4444; /* red-500 */
+  /* Triage Bands - Bolder */
+  --triage-min: #16a34a; /* green-600 */
+  --triage-del: #d97706; /* amber-600 */
+  --triage-urg: #ea580c; /* orange-600 */
+  --triage-imm: #dc2626; /* red-600 */
 }
 
 body {
@@ -50,8 +50,25 @@ body {
   }
 }
 
+@keyframes search-enter {
+  from { opacity: 0; transform: scale(0.95) translateY(-10px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
 .animate-slide-left {
   animation: slide-left 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-search-enter {
+  animation: search-enter 150ms ease-out forwards;
+}
+
+.sidebar-panel {
+  @apply fixed inset-y-0 left-0 z-40 w-64 bg-card border-r border-rule transform -translate-x-full transition-transform duration-300 md:relative md:translate-x-0 h-full flex flex-col;
+}
+
+.sidebar-open {
+  @apply translate-x-0;
 }
 
 @layer base {
@@ -63,4 +80,12 @@ body {
     outline: 2px solid var(--signal);
     outline-offset: 2px;
   }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.animate-fade-in {
+  animation: fade-in 300ms ease-out forwards;
 }

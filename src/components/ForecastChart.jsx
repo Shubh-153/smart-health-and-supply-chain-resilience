@@ -14,13 +14,8 @@ import {
 
 const CustomTooltip = ({ active, payload, label }) => {
   if (active && payload && payload.length) {
-    // Recharts passes all data keys (actual, predicted, range) in payload
-    // We can extract the original data object from payload[0].payload
     const data = payload[0].payload;
     const isForecast = data.isPredicted;
-    
-    // Day 30 is both actual and predicted to bridge the line,
-    // so we treat it as recorded unless explicitly in the forecast segment.
     const value = isForecast ? data.predicted : data.actual;
     
     return (
@@ -32,12 +27,23 @@ const CustomTooltip = ({ active, payload, label }) => {
             {value}
           </span>
         </div>
+        {isForecast && (
+          <div className="flex items-center justify-between mb-1 text-xs text-ink-soft">
+            <span className="mr-4">Range:</span>
+            <span>{Math.round(data.range[0])} – {Math.round(data.range[1])}</span>
+          </div>
+        )}
         <div className="flex items-center justify-between">
           <span className="text-ink-soft mr-4">Status:</span>
           <span className={`uppercase text-[10px] tracking-wider font-bold ${isForecast ? 'text-signal' : 'text-ink'}`}>
             {isForecast ? 'Predicted' : 'Recorded'}
           </span>
         </div>
+        {isForecast && (
+          <div className="mt-2 pt-2 border-t border-rule text-[10px] text-ink-soft leading-tight">
+            Based on 30-day historical pattern
+          </div>
+        )}
       </div>
     );
   }
@@ -64,15 +70,18 @@ export default function ForecastChart({ history = [], forecast = [] }) {
       let isPredicted = false;
       
       if (i < 30) {
-        actual = history[i];
+        const item = history[i];
+        actual = (item !== null && typeof item === 'object') ? (item.patients || item.count || 0) : item;
+        
         if (i === 29) {
           // The bridge point (Today). Set predicted = actual so lines connect seamlessly.
-          predicted = history[i];
-          range = [history[i], history[i]];
+          predicted = actual;
+          range = [actual, actual];
         }
       } else {
         isPredicted = true;
-        predicted = forecast[i - 30];
+        const item = forecast[i - 30];
+        predicted = (item !== null && typeof item === 'object') ? (item.patients || item.count || 0) : item;
         // Generate a 15% confidence band for visual weight
         const margin = Math.round(predicted * 0.15);
         range = [Math.max(0, predicted - margin), predicted + margin];
@@ -95,7 +104,7 @@ export default function ForecastChart({ history = [], forecast = [] }) {
   const todayLabel = chartData[29].date;
 
   return (
-    <div className="w-full h-80 bg-card border border-rule rounded-lg p-4">
+    <div className="w-full h-80 bg-paper rounded-xl p-4 shadow-sm">
       <ResponsiveContainer width="100%" height="100%">
         <ComposedChart
           data={chartData}

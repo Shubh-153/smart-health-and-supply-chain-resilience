@@ -45,3 +45,6 @@ dist/
 .agents/
 mcp_config.json
 skills-lock.json
+serviceAccountKey.json
+seed/serviceAccountKey.json
+*.log

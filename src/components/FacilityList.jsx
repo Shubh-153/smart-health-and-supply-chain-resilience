@@ -1,14 +1,40 @@
 import { useState, useEffect, useMemo, useRef, useLayoutEffect } from 'react';
 import { getPhcs } from '../api/client';
 import TriageTag from './TriageTag';
+import DataGrid from './DataGrid';
+
+const RANDOM_SEED = 42;
+function mulberry32(a) {
+  return function() {
+    var t = a += 0x6D2B79F5;
+    t = Math.imul(t ^ t >>> 15, t | 1);
+    t ^= t + Math.imul(t ^ t >>> 7, t | 61);
+    return ((t ^ t >>> 14) >>> 0) / 4294967296;
+  }
+}
+
+function getSeededRandom(idStr) {
+  let seed = RANDOM_SEED;
+  for (let i = 0; i < idStr.length; i++) {
+    seed += idStr.charCodeAt(i);
+  }
+  return mulberry32(seed)();
+}
 
 export default function FacilityList({ scope, id, phase }) {
   const [baselinePhcs, setBaselinePhcs] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [viewMode, setViewMode] = useState(() => {
+    return localStorage.getItem('aarogya-view-mode') || 'cards';
+  });
 
   const listRef = useRef(null);
   const [positions, setPositions] = useState({});
+
+  useEffect(() => {
+    localStorage.setItem('aarogya-view-mode', viewMode);
+  }, [viewMode]);
 
   useEffect(() => {
     let isMounted = true;
@@ -48,7 +74,7 @@ export default function FacilityList({ scope, id, phase }) {
     return baselinePhcs.map(p => {
       // Deterministically mutate the scores to simulate the emergency math globally.
       // E.g., PHC-02 gets a severe surge to climb past the top.
-      let boost = p.id === 'PHC-02' ? 38 : (Math.random() * 15 + 5);
+      let boost = p.id === 'PHC-02' ? 38 : (getSeededRandom(p.id) * 15 + 5);
       const newScore = Math.min(100, Math.round(p.risk_score + boost));
       
       let bucket = 'Low';
@@ -150,12 +176,39 @@ export default function FacilityList({ scope, id, phase }) {
   }
 
   return (
-    <div className="flex flex-col space-y-3 relative" ref={listRef}>
-      {displayPhcs.map((phc, idx) => (
-        <div key={phc.id} data-id={phc.id} className="relative bg-paper z-10">
-          <TriageTag phc={phc} phase={phase} index={idx} />
+    <div className="flex flex-col space-y-4 relative">
+      <div className="justify-end hidden md:flex">
+        <div className="inline-flex bg-rule/50 rounded-lg p-1 border border-rule">
+          <button
+            type="button"
+            className={`px-3 py-1.5 text-xs font-medium rounded-md transition-colors ${viewMode === 'cards' ? 'bg-paper text-ink shadow-sm' : 'text-ink-soft hover:text-ink'}`}
+            onClick={() => setViewMode('cards')}
+          >
+            Cards
+          </button>
+          <button
+            type="button"
+            className={`px-3 py-1.5 text-xs font-medium rounded-md transition-colors ${viewMode === 'grid' ? 'bg-paper text-ink shadow-sm' : 'text-ink-soft hover:text-ink'}`}
+            onClick={() => setViewMode('grid')}
+          >
+            Grid
+          </button>
         </div>
-      ))}
+      </div>
+      
+      {viewMode === 'grid' ? (
+        <div className="hidden md:block">
+          <DataGrid phcs={displayPhcs} />
+        </div>
+      ) : null}
+
+      <div className={`flex flex-col space-y-3 relative ${viewMode === 'grid' ? 'md:hidden' : ''}`} ref={listRef}>
+        {displayPhcs.map((phc, idx) => (
+          <div key={phc.id} data-id={phc.id} className="relative bg-paper z-10">
+            <TriageTag phc={phc} phase={phase} index={idx} />
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

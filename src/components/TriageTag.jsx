@@ -51,7 +51,7 @@ export default function TriageTag({ phc, phase = 0, index = 0 }) {
   const displayScore = isEmergencyActive ? phc.risk_score : (phc._origScore || phc.risk_score);
   const displayBucket = isEmergencyActive ? phc.risk_bucket : (phc._origBucket || phc.risk_bucket);
 
-  let triageColor = 'bg-green-100 text-triage-min border-green-200 text-green-800';
+  let triageColor = 'bg-green-100 border-green-200 text-green-800';
   if (displayBucket === 'Critical') triageColor = 'bg-red-100 text-triage-imm border-red-200 text-red-700';
   else if (displayBucket === 'High') triageColor = 'bg-orange-100 text-triage-urg border-orange-200 text-orange-800';
   else if (displayBucket === 'Medium') triageColor = 'bg-yellow-100 text-triage-del border-yellow-200 text-yellow-800';
@@ -60,10 +60,10 @@ export default function TriageTag({ phc, phase = 0, index = 0 }) {
   const staggerDelay = phase === 2 ? `${index * 40}ms` : '0ms';
 
   return (
-    <Link to={toUrl} className="group flex items-center justify-between p-4 bg-paper border border-rule rounded-lg hover:border-signal transition-colors shadow-sm hover:shadow">
+    <Link to={toUrl} className="group flex items-center justify-between p-4 bg-paper rounded-xl hover:shadow-md transition-shadow shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal">
       <div className="flex items-center space-x-4">
         
-        <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-card border border-rule rounded font-display font-bold text-xl text-ink">
+        <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-card rounded-lg font-display font-bold text-xl text-ink">
           {/* Phase 2: Animate numbers up, staggered 40ms apart down the list */}
           {phase === 2 && phc._origScore ? (
             <AnimatingTagScore from={phc._origScore} to={phc.risk_score} delay={index * 40} />
@@ -76,9 +76,29 @@ export default function TriageTag({ phc, phase = 0, index = 0 }) {
           <h3 className="font-display font-semibold text-ink group-hover:text-signal transition-colors">
             {phc.name}
           </h3>
-          <p className="text-sm font-body text-ink-soft">
-            {phc.district}, {phc.state}
-          </p>
+          <div className="flex items-center gap-3 mt-1">
+            <p className="text-sm font-body text-ink-soft">
+              {phc.district}, {phc.state}
+            </p>
+            {phc.total_beds !== undefined && (
+              <>
+                <span className="w-1 h-1 rounded-full bg-rule"></span>
+                <p className="text-xs font-mono text-ink-soft flex items-center gap-1" title="Occupied / Total Beds">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 4v16"></path><path d="M2 8h18a2 2 0 0 1 2 2v10"></path><path d="M2 17h20"></path><path d="M6 8v9"></path></svg>
+                  {phc.occupied_beds}/{phc.total_beds}
+                </p>
+              </>
+            )}
+            {phc.doctors_sanctioned !== undefined && (
+              <>
+                <span className="w-1 h-1 rounded-full bg-rule"></span>
+                <p className="text-xs font-mono text-ink-soft flex items-center gap-1" title="Staff Availability">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                  {Math.round(((phc.doctors_present + phc.nurses_present) / (phc.doctors_sanctioned + phc.nurses_sanctioned)) * 100)}%
+                </p>
+              </>
+            )}
+          </div>
         </div>
         
       </div>

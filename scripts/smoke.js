@@ -67,6 +67,15 @@ async function smokeTest() {
     initialRiskScore = data.risk.score;
   });
 
+  // 3.5 GET /phcs/:id/forecast (Shape)
+  await runTest('GET /phcs/:id/forecast (Shape)', async () => {
+    if (!samplePhcId) throw new Error("No sample PHC ID available");
+    const data = await request(`/phcs/${samplePhcId}/forecast`);
+    if (!data.footfall_forecast_7d || !data.medicine_demand_forecast) {
+      throw new Error("Missing forecast fields");
+    }
+  });
+
   // 5. GET /phcs/:id/stockout
   await runTest('GET /phcs/:id/stockout (Shape)', async () => {
     const data = await request(`/phcs/${samplePhcId}/stockout`);

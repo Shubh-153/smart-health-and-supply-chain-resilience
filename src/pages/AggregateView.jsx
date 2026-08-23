@@ -69,9 +69,11 @@ export default function AggregateView() {
     }
     
     setPhase(1);
-    setTimeout(() => setPhase(2), 120);
-    setTimeout(() => setPhase(3), 600);
-    setTimeout(() => setPhase(4), 900);
+    requestAnimationFrame(() => {
+      setPhase(2);
+      setTimeout(() => setPhase(3), 100);
+      setTimeout(() => setPhase(4), 200);
+    });
   };
 
   const handleResetEmergency = () => {

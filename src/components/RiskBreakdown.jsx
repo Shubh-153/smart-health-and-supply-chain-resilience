@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
+import HelpTooltip from './HelpTooltip';
 
 const NAMES = {
   medicine: 'Medicine shortage',
   bed: 'Bed occupancy',
   surge: 'Patient surge',
   staff: 'Staff shortage'
+};
+
+const HELP_TEXTS = {
+  medicine: "Based on days of medicine supply remaining across all tracked medicines. Weight: 40% of total score.",
+  bed: "Based on the ratio of occupied beds to total beds. Weight: 25% of total score.",
+  surge: "Based on predicted patient footfall increase from the 7-day AI forecast. Weight: 20% of total score.",
+  staff: "Based on the ratio of present staff to sanctioned positions. Weight: 15% of total score."
 };
 
 const COLORS = {
@@ -15,6 +23,8 @@ const COLORS = {
 };
 
 export default function RiskBreakdown({ breakdown }) {
+  const [showCalc, setShowCalc] = useState(false);
+
   const segments = Object.entries(breakdown)
     .map(([key, value]) => ({
       key,
@@ -23,23 +33,23 @@ export default function RiskBreakdown({ breakdown }) {
       color: COLORS[key] || 'bg-slate-400'
     }))
     .filter(s => s.value > 0)
-    // Sort descending by value to make the largest chunk first
     .sort((a, b) => b.value - a.value);
 
   const uncappedTotal = segments.reduce((sum, s) => sum + s.value, 0);
   const scaleMax = Math.max(100, uncappedTotal);
   
-  // Guard against empty state
   if (segments.length === 0) return null;
 
   const largest = segments[0];
 
   return (
-    <div className="bg-card border border-rule rounded-lg p-6">
-      <h3 className="text-lg font-display font-semibold text-ink mb-6">Risk Components</h3>
+    <div className="bg-paper rounded-xl p-6 shadow-sm">
+      <div className="flex items-center gap-2 mb-6">
+        <h3 className="text-lg font-display font-semibold text-ink">Risk Components</h3>
+        <HelpTooltip text="Shows the weighted contribution of four key operational metrics to the total risk score." />
+      </div>
       
       <div className="relative pt-6 pb-2">
-        {/* Show the cap honestly rather than silently rescaling */}
         {uncappedTotal > 100 && (
           <div 
             className="absolute top-0 bottom-0 border-l-[2px] border-dashed border-triage-imm z-10"
@@ -61,7 +71,6 @@ export default function RiskBreakdown({ breakdown }) {
                 className={`h-full ${s.color} transition-all duration-500 group relative flex items-center justify-center`}
                 title={`${s.name}: ${Math.round(s.value)} pts`}
               >
-                {/* If the segment is wide enough, show the value inside */}
                 {widthPct > 8 && (
                   <span className={`text-xs font-mono font-medium ${s.key === 'staff' || s.key === 'surge' ? 'text-ink' : 'text-paper'}`}>
                     {Math.round(s.value)}
@@ -79,14 +88,35 @@ export default function RiskBreakdown({ breakdown }) {
             <span className={`w-3 h-3 rounded-sm ${s.color}`}></span>
             <span className="text-ink-soft uppercase tracking-wider text-[11px]">{s.name}:</span>
             <span className="font-semibold text-ink">{Math.round(s.value)}</span>
+            <HelpTooltip text={HELP_TEXTS[s.key]} position="top" />
           </div>
         ))}
       </div>
 
       <div className="mt-6 pt-4 border-t border-rule">
-        <p className="text-sm font-body text-ink-soft">
+        <p className="text-sm font-body text-ink-soft mb-3">
           <strong className="text-ink">{largest.name}</strong> is the primary driver of this facility's risk score ({Math.round(largest.value)} pts).
         </p>
+
+        <button 
+          type="button" 
+          onClick={() => setShowCalc(!showCalc)}
+          className="text-sm text-signal hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal rounded px-1 -ml-1"
+        >
+          {showCalc ? 'Hide calculation details' : 'How is this calculated?'}
+        </button>
+        
+        {showCalc && (
+          <div className="mt-3 p-3 bg-card border border-rule rounded text-xs font-mono text-ink-soft leading-relaxed">
+            <p className="mb-2 text-ink font-semibold">Risk = Medicine(40%) + Beds(25%) + Surge(20%) + Staff(15%)</p>
+            <ul className="space-y-1">
+              <li>Medicine: {Math.round(breakdown.medicine)}/40 pts</li>
+              <li>Beds: {Math.round(breakdown.bed)}/25 pts</li>
+              <li>Surge: {Math.round(breakdown.surge)}/20 pts</li>
+              <li>Staff: {Math.round(breakdown.staff)}/15 pts</li>
+            </ul>
+          </div>
+        )}
       </div>
     </div>
   );

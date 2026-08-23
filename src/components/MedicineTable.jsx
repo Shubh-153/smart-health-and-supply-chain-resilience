@@ -24,7 +24,7 @@ export default function MedicineTable({ medicines }) {
   }).sort((a, b) => a.days_remaining - b.days_remaining);
 
   return (
-    <div className="bg-paper border border-rule rounded-lg overflow-hidden shadow-sm">
+    <div className="bg-paper rounded-xl overflow-hidden shadow-sm">
       <div className="overflow-x-auto">
         <table className="w-full text-left border-collapse font-mono text-sm">
           <thead className="bg-card text-ink-soft text-xs uppercase tracking-wider">

@@ -43,39 +43,47 @@ export default function SummaryBar({ data, loading }) {
   // If no data yet but loading, create 5 placeholders to map over
   const metrics = loading ? Array(5).fill(null) : [
     { label: 'Critical count', value: data.critical, suffix: '', isCritical: true },
-    { label: 'At risk count', value: data.high, suffix: '', isCritical: false },
-    { label: 'Medicine stock-outs', value: data.stockouts, suffix: '', isCritical: false },
-    { label: 'Bed occupancy %', value: 100 - (data.bed_availability_pct || 0), suffix: '%', isCritical: false },
+    { label: 'At risk count', value: data.at_risk, suffix: '', isCritical: false },
+    { label: 'Medicine stock-outs', value: data.stock_outs, suffix: '', isCritical: false },
+    { label: 'Bed occupancy %', value: data.bed_occupancy_pct, suffix: '%', isCritical: false },
     { label: 'Staff availability %', value: data.staff_availability_pct, suffix: '%', isCritical: false },
   ];
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-5 gap-8 py-4">
-      {metrics.map((m, i) => (
-        <div key={i} className="flex flex-col">
-          {loading ? (
-            // Skeleton state explicitly holding the layout height.
-            // 44px for the number (leading-none), 8px gap (mt-2), 18px for label = ~70px total
-            <div className="flex flex-col">
-              <div className="h-[44px] w-20 bg-rule/50 animate-pulse rounded"></div>
-              <div className="h-[14px] w-28 bg-rule/30 animate-pulse rounded mt-2"></div>
-            </div>
-          ) : (
-            <div className="flex flex-col items-start">
-              <div className="text-[44px] leading-none font-display font-bold text-ink">
-                <AnimatedNumber value={m.value} suffix={m.suffix} />
+    <div className="grid grid-cols-2 min-[480px]:grid-cols-6 md:grid-cols-5 gap-8 py-4">
+      {metrics.map((m, i) => {
+        const colClass = i < 3 
+          ? 'col-span-1 min-[480px]:col-span-2 md:col-span-1'
+          : i === 3 
+          ? 'col-span-1 min-[480px]:col-span-3 md:col-span-1'
+          : 'col-span-2 min-[480px]:col-span-3 md:col-span-1';
+
+        return (
+          <div key={i} className={`flex flex-col ${colClass}`}>
+            {loading ? (
+              // Skeleton state explicitly holding the layout height.
+              // 44px for the number (leading-none), 8px gap (mt-2), 18px for label = ~70px total
+              <div className="flex flex-col">
+                <div className="h-[44px] w-20 bg-rule/50 animate-pulse rounded"></div>
+                <div className="h-[14px] w-28 bg-rule/30 animate-pulse rounded mt-2"></div>
               </div>
-              <div className="mt-2 text-[12px] uppercase font-body tracking-widest text-ink-soft">
-                {m.label}
+            ) : (
+              <div className="flex flex-col items-start">
+                <div className="text-[44px] leading-none font-display font-bold text-ink">
+                  <AnimatedNumber value={m.value} suffix={m.suffix} />
+                </div>
+                <div className="mt-2 text-[12px] uppercase font-body tracking-widest text-ink-soft">
+                  {m.label}
+                </div>
+                {/* Thin triage-red underline ONLY for the Critical stat */}
+                {m.isCritical && (
+                  <div className="mt-3 h-[2px] w-full max-w-[80%] bg-triage-imm"></div>
+                )}
               </div>
-              {/* Thin triage-red underline ONLY for the Critical stat */}
-              {m.isCritical && (
-                <div className="mt-3 h-[2px] w-full max-w-[80%] bg-triage-imm"></div>
-              )}
-            </div>
-          )}
-        </div>
-      ))}
+            )}
+          </div>
+        );
+      })}
     </div>
   );
 }
