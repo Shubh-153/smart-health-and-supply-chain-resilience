@@ -10,9 +10,9 @@ app = Flask(__name__)
 
 # Warm-start cache
 print("Loading datasets into memory...")
-footfall_df = pd.read_csv("seed/footfall.csv")
+footfall_df = pd.read_csv("seed/patient_footfall.csv")
 footfall_df['date'] = pd.to_datetime(footfall_df['date'])
-medicines_df = pd.read_csv("seed/medicines.csv")
+medicines_df = pd.read_csv("seed/medicine_inventory.csv")
 print("Ready.")
 
 def compute_phc_forecast(phc_id, emergency_multiplier):
@@ -31,7 +31,7 @@ def compute_phc_forecast(phc_id, emergency_multiplier):
     features = ['t'] + [f'dow_{d}' for d in range(7)]
     
     X = phc_data[features]
-    y = phc_data['patients']
+    y = phc_data['patients_count']
     
     if emergency_multiplier:
         y = y * emergency_multiplier
@@ -65,9 +65,16 @@ def compute_phc_forecast(phc_id, emergency_multiplier):
     # Emergency consumption multiplier logic (from P9: consumption x 1.65)
     cons_mult = 1.65 if emergency_multiplier else 1.0
     
+    avg_patients = y.mean()
+    if avg_patients == 0: avg_patients = 1
+    
     for _, row in phc_meds.iterrows():
-        med_name = row['medicine']
-        u_p_p = row['units_per_patient'] * cons_mult
+        med_name = row['medicine_name']
+        base_daily_cons = float(row['daily_consumption'])
+        
+        # Calculate theoretical units_per_patient based on average historical consumption
+        u_p_p = (base_daily_cons / avg_patients) * cons_mult
+        
         current_stock = int(row['current_stock'])
         
         predicted_daily_consumption = round(future_preds[0] * u_p_p)

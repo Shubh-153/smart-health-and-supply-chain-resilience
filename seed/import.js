@@ -46,13 +46,20 @@ function calcDistanceAndTravelTime(lat1, lon1, lat2, lon2) {
 }
 
 async function run() {
-  console.log("Starting Aarogya Grid DB import...");
+  console.log("Starting Aarogya Grid DB import with 150 PHC dataset...");
 
-  const phcs = await readCSV('./phcs.csv');
-  const medicines = await readCSV('./medicines.csv');
-  const footfalls = await readCSV('./footfall.csv');
+  const phcMaster = await readCSV('./phc_master.csv');
+  const staffData = await readCSV('./staff_data.csv');
+  const medicines = await readCSV('./medicine_inventory.csv');
+  const footfalls = await readCSV('./patient_footfall.csv');
 
-  console.log(`Loaded ${phcs.length} PHCs, ${medicines.length} Medicines, ${footfalls.length} Footfall records.`);
+  console.log(`Loaded ${phcMaster.length} PHCs, ${staffData.length} Staff, ${medicines.length} Medicines, ${footfalls.length} Footfall records.`);
+
+  // Join PHC master and staff data
+  const phcs = phcMaster.map(phc => {
+    const staff = staffData.find(s => s.phc_id === phc.phc_id) || {};
+    return { ...phc, ...staff };
+  });
 
   let batch = db.batch();
   let count = 0;
@@ -77,20 +84,24 @@ async function run() {
   for (const phc of phcs) {
     const docRef = db.collection('phcs').doc(phc.phc_id);
     await setDoc(docRef, {
-      name: phc.name,
+      name: phc.phc_name,
       district: phc.district,
       state: phc.state,
-      lat: parseFloat(phc.lat),
-      lng: parseFloat(phc.lng),
+      lat: parseFloat(phc.latitude),
+      lng: parseFloat(phc.longitude),
+      facility_type: phc.facility_type,
       beds: {
         total: parseInt(phc.total_beds, 10),
-        occupied: parseInt(phc.occupied_beds, 10)
+        occupied: parseInt(phc.occupied_beds, 10),
+        icu: parseInt(phc.icu_beds || 0, 10)
       },
       staff: {
-        doctors_sanctioned: parseInt(phc.doctors_sanctioned, 10),
-        doctors_present: parseInt(phc.doctors_present, 10),
-        nurses_sanctioned: parseInt(phc.nurses_sanctioned, 10),
-        nurses_present: parseInt(phc.nurses_present, 10)
+        doctors_sanctioned: parseInt(phc.doctors_sanctioned || 0, 10),
+        doctors_present: parseInt(phc.doctors_present || 0, 10),
+        nurses_sanctioned: parseInt(phc.nurses_sanctioned || 0, 10),
+        nurses_present: parseInt(phc.nurses_present || 0, 10),
+        pharmacists_sanctioned: parseInt(phc.pharmacists_sanctioned || 0, 10),
+        pharmacists_present: parseInt(phc.pharmacists_present || 0, 10)
       },
       emergency: false,
       risk: {
@@ -104,16 +115,19 @@ async function run() {
   // 2. Process Medicines
   for (const med of medicines) {
     const phcId = med.phc_id;
-    const medId = med.medicine; 
+    const medId = med.medicine_name.replace(/\s+/g, '_'); // safe ID
     const docRef = db.collection(`phcs/${phcId}/medicines`).doc(medId);
+    
+    // In our original system we needed units_per_patient. We can mock it as 1.5 if missing.
     await setDoc(docRef, {
-      name: med.medicine,
+      name: med.medicine_name,
       current_stock: parseInt(med.current_stock, 10),
-      avg_daily_consumption: parseInt(med.avg_daily_consumption, 10),
-      units_per_patient: parseInt(med.units_per_patient, 10),
-      min_safety_stock: parseInt(med.min_safety_stock, 10),
+      avg_daily_consumption: parseInt(med.daily_consumption, 10),
+      units_per_patient: 1.5,
+      min_safety_stock: parseInt(med.minimum_safety_stock, 10),
       expiry_date: Timestamp.fromDate(new Date(med.expiry_date)),
-      incoming_qty: parseInt(med.incoming_qty, 10)
+      incoming_qty: parseInt(med.incoming_shipment_qty || 0, 10),
+      incoming_eta_days: parseInt(med.incoming_shipment_eta_days || 0, 10)
     });
   }
 
@@ -123,28 +137,32 @@ async function run() {
     const dateStr = ff.date;
     const docRef = db.collection(`phcs/${phcId}/footfall`).doc(dateStr);
     await setDoc(docRef, {
-      patients: parseInt(ff.patients, 10)
+      patients: parseInt(ff.patients_count, 10)
     });
   }
 
-  // 4. Generate Distance Cache
+  // 4. Generate Distance Cache (Optimization: only generate for Punjab to save emulator batch limits during testing, or compute them all)
+  // Generating distance cache for 150x150 = 22,500 docs might crash local emulator.
+  // We'll filter for same-district to drastically reduce the matrix.
+  const distancesToCache = [];
   for (let i = 0; i < phcs.length; i++) {
-    for (let j = 0; j < phcs.length; j++) {
-      if (i === j) continue;
-      const phcA = phcs[i];
-      const phcB = phcs[j];
-      const distData = calcDistanceAndTravelTime(
-        parseFloat(phcA.lat), parseFloat(phcA.lng),
-        parseFloat(phcB.lat), parseFloat(phcB.lng)
-      );
-      
-      const distId = `${phcA.phc_id}_${phcB.phc_id}`;
-      const docRef = db.collection('distance_cache').doc(distId);
-      await setDoc(docRef, {
-        distance_km: distData.distance_km,
-        travel_time_min: distData.travel_time_min
-      });
+    for (let j = i + 1; j < phcs.length; j++) {
+      if (phcs[i].district === phcs[j].district || phcs[i].state === phcs[j].state) {
+        distancesToCache.push([phcs[i], phcs[j]]);
+      }
     }
+  }
+  
+  for (const pair of distancesToCache) {
+    const [phcA, phcB] = pair;
+    const distData = calcDistanceAndTravelTime(
+      parseFloat(phcA.latitude), parseFloat(phcA.longitude),
+      parseFloat(phcB.latitude), parseFloat(phcB.longitude)
+    );
+    
+    // bi-directional
+    await setDoc(db.collection('distance_cache').doc(`${phcA.phc_id}_${phcB.phc_id}`), distData);
+    await setDoc(db.collection('distance_cache').doc(`${phcB.phc_id}_${phcA.phc_id}`), distData);
   }
 
   // 5. Network State
