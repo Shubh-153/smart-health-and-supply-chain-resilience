@@ -1,0 +1,183 @@
+{
+  "dataGrid": {
+    "facility": "Unidade",
+    "stockStatus": "Status do Estoque",
+    "trend": "Tendência (7d)",
+    "risk": "Risco",
+    "transfer": "Transferência",
+    "triage": "Triagem",
+    "beds": "Leitos",
+    "staff": "% de Equipe",
+    "district": "Distrito"
+  },
+  "facilityList": {
+    "error": "A conexão com os dados das unidades caiu. Exibindo uma lista vazia de unidades.",
+    "empty": "Nenhuma unidade em risco neste {{scope}}. Última verificação há 2 minutos.",
+    "cards": "Cartões",
+    "grid": "Grade"
+  },
+  "recommendationRail": {
+    "title": "Recomendações de Transferência por IA",
+    "subtitle": "Revise e aprove o rebalanceamento da rede.",
+    "empty": "Nenhuma recomendação.",
+    "approve": "Aprovar",
+    "from": "de",
+    "to": "para",
+    "km": "km",
+    "riskReduction": "redução de risco",
+    "riskReductionTitle": "Redução de risco",
+    "error": "Fluxo de dados desconectado."
+  },
+  "riskBreakdown": {
+    "title": "Fatores de Risco",
+    "stock": "Estoque",
+    "demand": "Demanda",
+    "beds": "Leitos",
+    "staff": "Equipe"
+  },
+  "summaryBar": {
+    "title": "Panorama da Rede",
+    "totalFacilities": "Total de Unidades",
+    "avgRiskScore": "Pontuação Média de Risco",
+    "critical": "Crítico",
+    "activeTransfers": "Transferências Ativas",
+    "error": "Conexão perdida."
+  },
+  "triageTag": {
+    "risk": "Risco",
+    "viewDetails": "Ver detalhes"
+  },
+  "aggregateView": {
+    "empty": "Nenhuma unidade encontrada.",
+    "networkOverview": "Visão Geral da Rede",
+    "activeAlerts": "Alertas Ativos",
+    "facilitiesAtRisk": "Unidades em Risco",
+    "riskDistribution": "Distribuição de Risco",
+    "aiRecommendations": "Recomendações de IA"
+  },
+  "notFound": {
+    "title": "404",
+    "subtitle": "Página não encontrada",
+    "return": "Voltar para o Painel"
+  },
+  "phcView": {
+    "stockOutIn": "Desabastecimento em",
+    "days": "dias",
+    "forecast": "Previsão de 7 Dias",
+    "inventory": "Inventário de Medicamentos",
+    "riskAnalysis": "Análise de Risco",
+    "footfall": "Fluxo de Pacientes"
+  },
+  "layout": {
+    "breadcrumbs": {
+      "india": "Índia"
+    },
+    "header": {
+      "title": "Aarogya Grid",
+      "openNavigation": "Abrir navegação",
+      "searchFacilities": "Buscar unidades",
+      "search": "Buscar...",
+      "simulated": "Simulado",
+      "simulatedTooltip": "Os dados são gerados para simulação"
+    }
+  },
+  "sidebar": {
+    "expand": "Expandir",
+    "collapse": "Recolher",
+    "ariaNavigation": "Navegação de unidades",
+    "loading": "Navegação indisponível. Use os caminhos acima (breadcrumbs).",
+    "header": "Navegação",
+    "close": "Fechar navegação"
+  },
+  "forecastChart": {
+    "count": "Quantidade:",
+    "range": "Intervalo:",
+    "status": "Status:",
+    "predicted": "Previsto",
+    "recorded": "Registrado",
+    "historicalPattern": "Com base no padrão histórico de 30 dias",
+    "today": "HOJE"
+  },
+  "medicineTable": {
+    "medicine": "Medicamento",
+    "currentStock": "Estoque Atual",
+    "dailyCons": "Consumo Diário",
+    "daysRem": "Dias Rest.",
+    "status": "Status"
+  },
+  "triage": {
+    "critical": "Crítico",
+    "high": "Alto",
+    "medium": "Médio",
+    "low": "Baixo"
+  },
+  "glossary": {
+    "ariaLabel": "Glossário",
+    "title": "Glossário",
+    "close": "Fechar glossário",
+    "searchPlaceholder": "Buscar termos...",
+    "noTermsFound": "Nenhum termo encontrado correspondente a \"{{query}}\"",
+    "terms": {
+      "riskScore": {
+        "term": "Pontuação de Risco",
+        "def": "Uma métrica composta de 0 a 100 calculada diariamente. Ela pondera os níveis de estoque atuais (40%), a demanda prevista (35%) e a capacidade de infraestrutura local (25%)."
+      },
+      "triageBands": {
+        "term": "Faixas de Triagem",
+        "def": "As unidades são classificadas em quatro faixas com base na pontuação de risco: Mínima (0–30), Adiada (31–60), Urgente (61–80) e Imediata (81–100). Estas se mapeiam para a terminologia de triagem clínica."
+      },
+      "stockDays": {
+        "term": "Dias de Estoque",
+        "def": "O número de dias que um medicamento durará com base nas taxas de consumo atuais. Calculado como estoque atual ÷ consumo médio diário."
+      },
+      "demandSurge": {
+        "term": "Aumento Súbito de Demanda",
+        "def": "Um aumento previsto no fluxo de pacientes com base no modelo de previsão de IA de 7 dias. Expresso como uma porcentagem acima da linha de base de 30 dias."
+      },
+      "transferRecommendation": {
+        "term": "Recomendação de Transferência",
+        "def": "Uma sugestão gerada por IA para mover o estoque de medicamentos de uma unidade com excedente para outra que enfrenta escassez. Mostra origem, destino, quantidade, distância e redução de risco projetada."
+      },
+      "bedOccupancy": {
+        "term": "Ocupação de Leitos",
+        "def": "A porcentagem de leitos totais de uma unidade atualmente em uso. Alta ocupação (>80%) sinaliza pressão de capacidade."
+      },
+      "staffRatio": {
+        "term": "Proporção de Equipe",
+        "def": "A proporção de vagas de funcionários autorizadas (aprovadas) atualmente preenchidas. Proporções baixas indicam escassez de funcionários."
+      }
+    }
+  },
+  "helpTooltip": {
+    "moreInfo": "Mais informações"
+  },
+  "alertCard": {
+    "actionRequired": "Ação Requerida",
+    "reviewTransfer": "Revisar transferência"
+  },
+  "alertRail": {
+    "emergencyText": "CRÍTICO: Fluxo de pacientes da PHC-02 aumentando abruptamente. Desabastecimento de SRO projetado em <24 horas. Transferência imediata necessária para estabilizar a reserva.",
+    "error": "Fluxo de alertas desconectado. Exibindo zero alertas ativos.",
+    "empty": "Nenhum alerta ativo para este {{scope}}."
+  },
+  "emergencyControls": {
+    "updating": "Atualizando...",
+    "simulate": "Simular emergência",
+    "reset": "Redefinir rede",
+    "triggerTitle": "Acionar Emergência?",
+    "triggerDesc": "Isso injetará crises simuladas na rede, recalculará todas as pontuações de risco e gerará novas recomendações de transferência por IA.",
+    "cancel": "Cancelar",
+    "triggerBtn": "Acionar"
+  },
+  "searchPalette": {
+    "placeholder": "Buscar unidades por nome, ID, distrito...",
+    "ariaSearch": "Buscar unidades",
+    "esc": "Esc",
+    "recent": "Recentes",
+    "typeToSearch": "Digite para buscar em todas as unidades",
+    "noResults": "Nenhuma unidade correspondente a \"{{query}}\"",
+    "navigate": "↑↓ Navegar",
+    "select": "↵ Selecionar",
+    "close": "Esc Fechar"
+  }
+}

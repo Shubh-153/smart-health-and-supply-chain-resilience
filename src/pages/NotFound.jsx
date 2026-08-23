@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export default function NotFound() {
+  const { t } = useTranslation();
   return (
     <div className="p-8 border border-rule bg-card rounded-lg max-w-xl text-center mx-auto mt-12">
       <h2 className="text-xl font-display font-semibold text-ink mb-2">Page Not Found</h2>

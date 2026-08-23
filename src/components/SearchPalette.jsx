@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useMemo } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { getHierarchy } from '../api/client';
+import { useTranslation } from 'react-i18next';
 
 export default function SearchPalette({ isOpen, onClose }) {
   const [query, setQuery] = useState('');
@@ -13,6 +14,7 @@ export default function SearchPalette({ isOpen, onClose }) {
   const inputRef = useRef(null);
   const listRef = useRef(null);
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   // Load PHC data
   useEffect(() => {
@@ -125,15 +127,15 @@ export default function SearchPalette({ isOpen, onClose }) {
           <input
             ref={inputRef}
             type="text"
-            placeholder="Search facilities by name, ID, district..."
+            placeholder={t('searchPalette.placeholder')}
             value={query}
             onChange={(e) => { setQuery(e.target.value); setSelectedIndex(0); }}
             onKeyDown={handleKeyDown}
             className="flex-1 bg-transparent text-ink text-sm font-body placeholder:text-ink-soft/60 focus:outline-none"
-            aria-label="Search facilities"
+            aria-label={t('searchPalette.ariaSearch')}
             aria-activedescendant={flatResults[selectedIndex] ? `search-result-${flatResults[selectedIndex].id}` : undefined}
           />
-          <kbd className="hidden sm:inline-flex items-center px-2 py-0.5 text-[10px] font-mono text-ink-soft border border-rule rounded bg-card">Esc</kbd>
+          <kbd className="hidden sm:inline-flex items-center px-2 py-0.5 text-[10px] font-mono text-ink-soft border border-rule rounded bg-card">{t('searchPalette.esc')}</kbd>
         </div>
 
         {/* Results */}
@@ -143,7 +145,7 @@ export default function SearchPalette({ isOpen, onClose }) {
             <div className="p-3">
               {recentSearches.length > 0 ? (
                 <>
-                  <p className="text-[10px] uppercase tracking-widest text-ink-soft font-body mb-2 px-1">Recent</p>
+                  <p className="text-[10px] uppercase tracking-widest text-ink-soft font-body mb-2 px-1">{t('searchPalette.recent')}</p>
                   {recentSearches.map((recent, i) => (
                     <button
                       key={recent.id}
@@ -157,7 +159,7 @@ export default function SearchPalette({ isOpen, onClose }) {
                   ))}
                 </>
               ) : (
-                <p className="text-sm text-ink-soft text-center py-6 font-body">Type to search across all facilities</p>
+                <p className="text-sm text-ink-soft text-center py-6 font-body">{t('searchPalette.typeToSearch')}</p>
               )}
             </div>
           ) : flatResults.length > 0 ? (
@@ -189,15 +191,15 @@ export default function SearchPalette({ isOpen, onClose }) {
               ))}
             </div>
           ) : (
-            <p className="text-sm text-ink-soft text-center py-6 font-body">No facilities matching "{query}"</p>
+            <p className="text-sm text-ink-soft text-center py-6 font-body">{t('searchPalette.noResults', { query })}</p>
           )}
         </div>
 
         {/* Footer hint */}
         <div className="px-4 py-2 border-t border-rule bg-card/50 flex items-center gap-4 text-[10px] text-ink-soft font-mono">
-          <span>↑↓ Navigate</span>
-          <span>↵ Select</span>
-          <span>Esc Close</span>
+          <span>{t('searchPalette.navigate')}</span>
+          <span>{t('searchPalette.select')}</span>
+          <span>{t('searchPalette.close')}</span>
         </div>
       </div>
     </div>

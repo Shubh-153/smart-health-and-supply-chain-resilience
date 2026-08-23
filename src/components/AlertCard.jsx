@@ -1,10 +1,13 @@
+import { useTranslation } from 'react-i18next';
+
 export default function AlertCard({ alert }) {
+  const { t } = useTranslation();
   return (
     <div className="bg-amber-50 rounded-xl p-5 shadow-sm">
       <div className="flex items-center gap-2 mb-3">
         <span className="w-2 h-2 rounded-full bg-amber-500"></span>
         <h4 className="text-xs font-bold text-amber-900 uppercase tracking-widest">
-          Action Required
+          {t('alertCard.actionRequired')}
         </h4>
       </div>
       
@@ -14,7 +17,7 @@ export default function AlertCard({ alert }) {
       </p>
       
       <button type="button" className="w-full py-2.5 bg-signal text-paper font-semibold rounded hover:opacity-90 transition-opacity">
-        Review transfer
+        {t('alertCard.reviewTransfer')}
       </button>
     </div>
   );

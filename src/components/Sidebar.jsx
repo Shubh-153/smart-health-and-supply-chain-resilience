@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { getHierarchy } from '../api/client';
+import { useTranslation } from 'react-i18next';
 
 function TriageDot({ bucket }) {
   const colors = {
@@ -12,7 +13,7 @@ function TriageDot({ bucket }) {
   return <span className={`w-2 h-2 rounded-full flex-shrink-0 ${colors[bucket] || 'bg-rule'}`} />;
 }
 
-function TreeNode({ label, to, children, isActive, depth = 0, defaultExpanded = false, riskScore, riskBucket }) {
+function TreeNode({ label, to, children, isActive, depth = 0, defaultExpanded = false, riskScore, riskBucket, t }) {
   const [expanded, setExpanded] = useState(defaultExpanded);
   const navigate = useNavigate();
   const hasChildren = children && children.length > 0;
@@ -34,7 +35,7 @@ function TreeNode({ label, to, children, isActive, depth = 0, defaultExpanded = 
         className={`flex items-center gap-2 py-1.5 pr-3 cursor-pointer text-sm font-body transition-colors rounded-r-md
           ${isActive ? 'bg-signal/10 border-l-2 border-signal text-ink font-medium' : 'text-ink-soft hover:bg-card hover:text-ink border-l-2 border-transparent'}
         `}
-        style={{ paddingLeft: `${paddingLeft}px` }}
+        style={{ paddingInlineStart: `${paddingLeft}px` }}
         onClick={handleNavigate}
         onKeyDown={(e) => {
           if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleNavigate(e); }
@@ -49,7 +50,7 @@ function TreeNode({ label, to, children, isActive, depth = 0, defaultExpanded = 
             type="button"
             onClick={(e) => { e.stopPropagation(); handleToggle(); }}
             className="w-4 h-4 flex items-center justify-center text-ink-soft hover:text-ink flex-shrink-0"
-            aria-label={expanded ? 'Collapse' : 'Expand'}
+            aria-label={expanded ? t('sidebar.collapse') : t('sidebar.expand')}
             tabIndex={-1}
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="currentColor">
@@ -84,6 +85,7 @@ export default function Sidebar({ isOpen, onClose }) {
   const [error, setError] = useState(null);
   const location = useLocation();
   const sidebarRef = useRef(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     let isMounted = true;
@@ -124,7 +126,7 @@ export default function Sidebar({ isOpen, onClose }) {
 
   if (loading) {
     return (
-      <nav ref={sidebarRef} className={`sidebar-panel ${isOpen ? 'sidebar-open' : ''}`} aria-label="Facility navigation">
+      <nav ref={sidebarRef} className={`sidebar-panel ${isOpen ? 'sidebar-open' : ''}`} aria-label={t('sidebar.ariaNavigation')}>
         <div className="p-4 space-y-3">
           {[1, 2, 3, 4, 5].map(i => (
             <div key={i} className="h-6 bg-rule/50 rounded animate-pulse" style={{ width: `${70 - i * 8}%`, marginLeft: `${i * 8}px` }} />
@@ -136,9 +138,9 @@ export default function Sidebar({ isOpen, onClose }) {
 
   if (error) {
     return (
-      <nav ref={sidebarRef} className={`sidebar-panel ${isOpen ? 'sidebar-open' : ''}`} aria-label="Facility navigation">
+      <nav ref={sidebarRef} className={`sidebar-panel ${isOpen ? 'sidebar-open' : ''}`} aria-label={t('sidebar.ariaNavigation')}>
         <div className="p-4 text-sm text-ink-soft">
-          Navigation unavailable. Use breadcrumbs above.
+          {t('sidebar.loading')}
         </div>
       </nav>
     );
@@ -156,11 +158,11 @@ export default function Sidebar({ isOpen, onClose }) {
       <nav
         ref={sidebarRef}
         className={`sidebar-panel ${isOpen ? 'sidebar-open' : ''}`}
-        aria-label="Facility navigation"
+        aria-label={t('sidebar.ariaNavigation')}
       >
         <div className="p-3 border-b border-rule flex items-center justify-between md:hidden">
-          <span className="font-display font-semibold text-sm text-ink">Navigation</span>
-          <button type="button" onClick={onClose} className="text-ink-soft hover:text-ink p-1" aria-label="Close navigation">
+          <span className="font-display font-semibold text-sm text-ink">{t('sidebar.header')}</span>
+          <button type="button" onClick={onClose} className="text-ink-soft hover:text-ink p-1" aria-label={t('sidebar.close')}>
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>
           </button>
         </div>
@@ -173,6 +175,7 @@ export default function Sidebar({ isOpen, onClose }) {
               isActive={isActive('/')}
               defaultExpanded={true}
               depth={0}
+              t={t}
             >
               {hierarchy?.states?.map(state => {
                 const statePath = `/state/${state.name.toLowerCase()}`;
@@ -184,6 +187,7 @@ export default function Sidebar({ isOpen, onClose }) {
                     isActive={isActive(statePath)}
                     defaultExpanded={isUnder(statePath)}
                     depth={1}
+                    t={t}
                   >
                     {state.districts.map(district => {
                       const districtPath = `${statePath}/district/${district.name.toLowerCase()}`;
@@ -195,6 +199,7 @@ export default function Sidebar({ isOpen, onClose }) {
                           isActive={isActive(districtPath)}
                           defaultExpanded={isUnder(districtPath)}
                           depth={2}
+                          t={t}
                         >
                           {district.phcs.map(phc => {
                             const phcPath = `${districtPath}/phc/${phc.id}`;
@@ -207,6 +212,7 @@ export default function Sidebar({ isOpen, onClose }) {
                                 depth={3}
                                 riskScore={phc.risk_score}
                                 riskBucket={phc.risk_bucket}
+                                t={t}
                               />
                             );
                           })}

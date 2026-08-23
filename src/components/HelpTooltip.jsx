@@ -1,10 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export default function HelpTooltip({ text, position = 'top' }) {
   const [isVisible, setIsVisible] = useState(false);
   const [actualPos, setActualPos] = useState(position);
   const triggerRef = useRef(null);
   const tooltipId = React.useId();
+  const { t } = useTranslation();
 
   const handleMouseEnter = () => {
     checkPosition();
@@ -73,7 +75,7 @@ export default function HelpTooltip({ text, position = 'top' }) {
         onFocus={handleFocus}
         onBlur={handleBlur}
         onKeyDown={handleKeyDown}
-        aria-label="More information"
+        aria-label={t('helpTooltip.moreInfo')}
       >
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <circle cx="12" cy="12" r="10"></circle>

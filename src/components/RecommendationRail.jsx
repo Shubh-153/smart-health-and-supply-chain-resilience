@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import { getRecommendations, confirmRecommendation } from '../api/client';
+import { useTranslation } from 'react-i18next';
 
 export default function RecommendationRail({ districtId, phcId, onConfirmSuccess }) {
   const [recommendation, setRecommendation] = useState(null);
   const [loading, setLoading] = useState(true);
   const [initError, setInitError] = useState(false);
+  const { t } = useTranslation();
   
   const [confirming, setConfirming] = useState(false);
   const [confirmed, setConfirmed] = useState(false);
@@ -99,7 +101,7 @@ export default function RecommendationRail({ districtId, phcId, onConfirmSuccess
       <div className="bg-paper rounded-xl p-6 text-center shadow-sm">
         <h4 className="font-display font-semibold text-ink mb-2">Recommendation Engine Disconnected</h4>
         <p className="text-sm font-body text-ink-soft">
-          Unable to retrieve optimization data from the server. Showing zero active transfers.
+          {t('recommendationRail.error')}
         </p>
       </div>
     );
@@ -110,8 +112,7 @@ export default function RecommendationRail({ districtId, phcId, onConfirmSuccess
       <div className="bg-paper rounded-xl p-6 text-center shadow-sm">
         <h4 className="font-display font-semibold text-ink mb-2">No Transfers Needed</h4>
         <p className="text-sm font-body text-ink-soft">
-          There are currently no active transfer recommendations for this facility. 
-          Stock levels are either within safe operational margins, or no nearby surplus exists to facilitate a transfer.
+          {t('recommendationRail.empty')}
         </p>
       </div>
     );
@@ -135,7 +136,7 @@ export default function RecommendationRail({ districtId, phcId, onConfirmSuccess
           )}
         </div>
         <p className="text-sm font-body text-green-800 mb-4">
-          Logistics team {finalized ? 'has been notified' : 'will be notified'} for {recommendation.quantity} units of {recommendation.medicine} from {recommendation.source_phc_id}.
+          Logistics team {finalized ? 'has been notified' : 'will be notified'} for {recommendation.quantity} units of {recommendation.medicine} {t('recommendationRail.from')} {recommendation.source_phc_id}.
         </p>
       </div>
     );
@@ -147,11 +148,11 @@ export default function RecommendationRail({ districtId, phcId, onConfirmSuccess
       
       <h3 className="font-display font-semibold text-ink mb-4 flex items-center gap-2">
         <span className="w-2 h-2 rounded-full bg-signal animate-pulse"></span>
-        Recommended Action
+        {t('recommendationRail.title')}
       </h3>
 
       <div className="bg-card rounded-lg p-4 mb-6">
-        <span className="text-xs font-bold text-ink-soft uppercase tracking-widest block mb-3">Risk Trade-off Impact</span>
+        <span className="text-xs font-bold text-ink-soft uppercase tracking-widest block mb-3">{t('recommendationRail.riskReductionTitle')}</span>
         <div className="flex justify-between items-center">
           <div>
             <div className="text-sm text-ink-soft mb-1">{recommendation.source_phc_id}</div>
@@ -183,7 +184,7 @@ export default function RecommendationRail({ districtId, phcId, onConfirmSuccess
         <div className="flex justify-between items-baseline border-b border-rule pb-2">
           <span className="text-sm text-ink-soft">Logistics</span>
           <span className="font-mono font-medium text-ink">
-            {recommendation.distance_km} km ({recommendation.travel_time_min} min)
+            {recommendation.distance_km} {t('recommendationRail.km')} ({recommendation.travel_time_min} min)
           </span>
         </div>
       </div>
@@ -200,7 +201,7 @@ export default function RecommendationRail({ districtId, phcId, onConfirmSuccess
         disabled={confirming || apiFailed}
         className="w-full py-3 bg-signal text-paper font-semibold rounded hover:opacity-90 transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-signal disabled:opacity-70 flex justify-center items-center font-body"
       >
-        {apiFailed ? 'Transfer Disabled' : 'Confirm transfer'}
+        {apiFailed ? 'Transfer Disabled' : t('recommendationRail.approve')}
       </button>
     </div>
   );

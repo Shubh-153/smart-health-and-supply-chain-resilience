@@ -2,12 +2,15 @@ import { Outlet, Link, useLocation } from 'react-router-dom';
 import React, { useState, useContext, useEffect } from 'react';
 import Sidebar from './Sidebar';
 import { SearchContext } from '../App';
+import { useTranslation } from 'react-i18next';
+import { LanguageSwitcher } from './LanguageSwitcher';
 
 function Breadcrumbs() {
   const { pathname } = useLocation();
   const pathParts = pathname.split('/').filter(Boolean);
+  const { t } = useTranslation();
   
-  const crumbs = [{ label: 'India', to: '/' }];
+  const crumbs = [{ label: t('layout.breadcrumbs.india'), to: '/' }];
   
   let stateId = '';
   let districtId = '';
@@ -80,6 +83,7 @@ function Breadcrumbs() {
 export default function Layout() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const { setIsSearchOpen } = useContext(SearchContext);
+  const { t } = useTranslation();
 
   return (
     <div className="min-h-screen bg-paper flex flex-col font-body">
@@ -89,13 +93,13 @@ export default function Layout() {
             type="button" 
             className="md:hidden text-ink-soft hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal rounded p-1"
             onClick={() => setIsSidebarOpen(true)}
-            aria-label="Open navigation"
+            aria-label={t('layout.header.openNavigation')}
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
           </button>
           
           <Link to="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-            <h1 className="font-display font-bold text-xl sm:text-2xl tracking-tight text-ink">Aarogya Grid</h1>
+            <h1 className="font-display font-bold text-xl sm:text-2xl tracking-tight text-ink">{t('layout.header.title')}</h1>
           </Link>
           <div className="h-6 w-px bg-rule hidden sm:block"></div>
           <div className="hidden sm:block"><Breadcrumbs /></div>
@@ -105,16 +109,18 @@ export default function Layout() {
             type="button"
             className="flex items-center gap-2 text-ink-soft hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal rounded p-1.5 sm:px-3 sm:py-1.5 sm:bg-rule/50 sm:hover:bg-rule transition-colors"
             onClick={() => setIsSearchOpen(true)}
-            aria-label="Search facilities"
+            aria-label={t('layout.header.searchFacilities')}
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-            <span className="hidden sm:inline text-sm font-medium">Search...</span>
+            <span className="hidden sm:inline text-sm font-medium">{t('layout.header.search')}</span>
             <kbd className="hidden sm:inline-block px-1.5 py-0.5 text-[10px] font-mono border border-rule rounded bg-card text-ink-soft opacity-70 shadow-sm">⌘K</kbd>
           </button>
           
-          <span className="hidden sm:flex px-2.5 py-1 text-xs font-mono font-medium bg-amber-100 text-amber-800 border border-amber-200 rounded-full items-center gap-1.5" title="Data is generated for simulation">
+          <LanguageSwitcher />
+
+          <span className="hidden sm:flex px-2.5 py-1 text-xs font-mono font-medium bg-amber-100 text-amber-800 border border-amber-200 rounded-full items-center gap-1.5" title={t('layout.header.simulatedTooltip')}>
             <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse"></span>
-            Simulated
+            {t('layout.header.simulated')}
           </span>
         </div>
       </header>

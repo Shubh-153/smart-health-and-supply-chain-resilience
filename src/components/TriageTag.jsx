@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
 function AnimatingTagScore({ from, to, delay = 0 }) {
@@ -44,6 +45,7 @@ function AnimatingTagScore({ from, to, delay = 0 }) {
 }
 
 export default function TriageTag({ phc, phase = 0, index = 0 }) {
+  const { t } = useTranslation();
   const toUrl = `/state/${phc.state.toLowerCase()}/district/${phc.district.toLowerCase()}/phc/${phc.id}`;
   
   // Staggered colors natively crossfade thanks to Tailwind transition utilities

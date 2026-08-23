@@ -1,0 +1,183 @@
+{
+  "dataGrid": {
+    "facility": "医疗机构",
+    "stockStatus": "库存状态",
+    "trend": "趋势 (7天)",
+    "risk": "风险",
+    "transfer": "调拨",
+    "triage": "分诊",
+    "beds": "床位",
+    "staff": "人员比例 %",
+    "district": "地区"
+  },
+  "facilityList": {
+    "error": "医疗机构数据连接已断开。当前显示空机构列表。",
+    "empty": "当前{{scope}}内无风险医疗机构。上次检查时间为 2 分钟前。",
+    "cards": "卡片",
+    "grid": "网格"
+  },
+  "recommendationRail": {
+    "title": "AI 调拨建议",
+    "subtitle": "审查并批准网络再平衡。",
+    "empty": "无建议。",
+    "approve": "批准",
+    "from": "从",
+    "to": "到",
+    "km": "公里",
+    "riskReduction": "风险降低",
+    "riskReductionTitle": "风险降低",
+    "error": "数据流已断开。"
+  },
+  "riskBreakdown": {
+    "title": "风险因素",
+    "stock": "库存",
+    "demand": "需求",
+    "beds": "床位",
+    "staff": "人员"
+  },
+  "summaryBar": {
+    "title": "网络概览",
+    "totalFacilities": "医疗机构总数",
+    "avgRiskScore": "平均风险评分",
+    "critical": "危急",
+    "activeTransfers": "进行中的调拨",
+    "error": "连接已断开。"
+  },
+  "triageTag": {
+    "risk": "风险",
+    "viewDetails": "查看详情"
+  },
+  "aggregateView": {
+    "empty": "未找到医疗机构。",
+    "networkOverview": "网络概览",
+    "activeAlerts": "活动警报",
+    "facilitiesAtRisk": "有风险的医疗机构",
+    "riskDistribution": "风险分布",
+    "aiRecommendations": "AI 建议"
+  },
+  "notFound": {
+    "title": "404",
+    "subtitle": "页面未找到",
+    "return": "返回控制面板"
+  },
+  "phcView": {
+    "stockOutIn": "预计缺货于",
+    "days": "天",
+    "forecast": "7天预测",
+    "inventory": "药品库存",
+    "riskAnalysis": "风险分析",
+    "footfall": "就诊人次"
+  },
+  "layout": {
+    "breadcrumbs": {
+      "india": "印度"
+    },
+    "header": {
+      "title": "Aarogya Grid",
+      "openNavigation": "打开导航",
+      "searchFacilities": "搜索医疗机构",
+      "search": "搜索...",
+      "simulated": "已模拟",
+      "simulatedTooltip": "此数据为模拟生成"
+    }
+  },
+  "sidebar": {
+    "expand": "展开",
+    "collapse": "收起",
+    "ariaNavigation": "医疗机构导航",
+    "loading": "导航不可用。请使用上方的面包屑导航。",
+    "header": "导航",
+    "close": "关闭导航"
+  },
+  "forecastChart": {
+    "count": "数量：",
+    "range": "范围：",
+    "status": "状态：",
+    "predicted": "预测",
+    "recorded": "已记录",
+    "historicalPattern": "基于30天历史模式",
+    "today": "今天"
+  },
+  "medicineTable": {
+    "medicine": "药品",
+    "currentStock": "当前库存",
+    "dailyCons": "日消耗",
+    "daysRem": "剩余天数",
+    "status": "状态"
+  },
+  "triage": {
+    "critical": "危急",
+    "high": "高",
+    "medium": "中",
+    "low": "低"
+  },
+  "glossary": {
+    "ariaLabel": "术语表",
+    "title": "术语表",
+    "close": "关闭术语表",
+    "searchPlaceholder": "搜索术语...",
+    "noTermsFound": "未找到与“{{query}}”匹配的术语",
+    "terms": {
+      "riskScore": {
+        "term": "风险评分",
+        "def": "每日计算的 0-100 综合指标。权重包括：当前库存水平 (40%)、预测需求 (35%) 以及当地基础设施能力 (25%)。"
+      },
+      "triageBands": {
+        "term": "分诊级别",
+        "def": "医疗机构根据风险评分被划分为四个级别：轻微 (0–30)、延缓 (31–60)、紧急 (61–80) 和即刻 (81–100)。这些级别与临床分诊术语相对应。"
+      },
+      "stockDays": {
+        "term": "库存可用天数",
+        "def": "在当前消耗率下药品预计可维持的天数。计算方式为：当前库存 ÷ 日平均消耗量。"
+      },
+      "demandSurge": {
+        "term": "需求激增",
+        "def": "基于 7 天 AI 预测模型预测的就诊人数增长。表示为高出 30 天基准线的百分比。"
+      },
+      "transferRecommendation": {
+        "term": "调拨建议",
+        "def": "AI 生成的建议，用于将药品库存从有盈余的医疗机构调拨至面临短缺的医疗机构。显示来源地、目的地、数量、距离及预测的风险降低度。"
+      },
+      "bedOccupancy": {
+        "term": "床位使用率",
+        "def": "医疗机构当前正在使用的床位数占总床位数的百分比。高使用率 (>80%) 意味着面临收治压力。"
+      },
+      "staffRatio": {
+        "term": "人员配置比例",
+        "def": "当前已配备的在编（批准）人员岗位的比例。比例较低表明存在人员短缺。"
+      }
+    }
+  },
+  "helpTooltip": {
+    "moreInfo": "更多信息"
+  },
+  "alertCard": {
+    "actionRequired": "需要采取行动",
+    "reviewTransfer": "审查调拨"
+  },
+  "alertRail": {
+    "emergencyText": "紧急：PHC-02 就诊人次骤增。预计 ORS 将在不到 24 小时内耗尽。需要立即调拨以稳定储备。",
+    "error": "警报流连接已断开。当前显示零个活动警报。",
+    "empty": "当前{{scope}}内无活动警报。"
+  },
+  "emergencyControls": {
+    "updating": "正在更新...",
+    "simulate": "模拟紧急情况",
+    "reset": "重置网络",
+    "triggerTitle": "触发紧急情况？",
+    "triggerDesc": "此操作将向网络中植入模拟危机，重新计算所有风险评分，并生成新的 AI 调拨建议。",
+    "cancel": "取消",
+    "triggerBtn": "触发"
+  },
+  "searchPalette": {
+    "placeholder": "按名称、ID、地区搜索医疗机构...",
+    "ariaSearch": "搜索医疗机构",
+    "esc": "Esc",
+    "recent": "最近",
+    "typeToSearch": "输入以在所有医疗机构中进行搜索",
+    "noResults": "未找到与“{{query}}”匹配的医疗机构",
+    "navigate": "↑↓ 导航",
+    "select": "↵ 选择",
+    "close": "Esc 关闭"
+  }
+}

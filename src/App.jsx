@@ -5,7 +5,8 @@ import Layout from './components/Layout';
 import AggregateView from './pages/AggregateView';
 import NotFound from './pages/NotFound';
 import SearchPalette from './components/SearchPalette';
-
+import { useTranslation } from 'react-i18next';
+import { languages } from './i18n/languages';
 const PhcView = lazy(() => import('./pages/PhcView'));
 
 export const SearchContext = React.createContext();
@@ -23,6 +24,24 @@ function App() {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
+
+  const { i18n } = useTranslation();
+  useEffect(() => {
+    const handleLangChange = (lng) => {
+      document.documentElement.lang = lng;
+      document.documentElement.dir = languages[lng]?.dir || 'ltr';
+    };
+    
+    // Set initial
+    if (i18n.resolvedLanguage) {
+      handleLangChange(i18n.resolvedLanguage);
+    }
+    
+    i18n.on('languageChanged', handleLangChange);
+    return () => {
+      i18n.off('languageChanged', handleLangChange);
+    };
+  }, [i18n]);
 
   return (
     <SearchContext.Provider value={{ isSearchOpen, setIsSearchOpen }}>

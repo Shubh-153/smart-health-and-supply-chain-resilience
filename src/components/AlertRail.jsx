@@ -1,11 +1,13 @@
 import { useState, useEffect, useMemo } from 'react';
 import { getAlerts } from '../api/client';
 import AlertCard from './AlertCard';
+import { useTranslation } from 'react-i18next';
 
 export default function AlertRail({ scope, id, phase = 0 }) {
   const [baselineAlerts, setBaselineAlerts] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     let isMounted = true;
@@ -37,14 +39,14 @@ export default function AlertRail({ scope, id, phase = 0 }) {
     if (phase >= 4) {
       return [
         {
-          alert_text: "CRITICAL: PHC-02 footfall surging abruptly. ORS stockout projected in <24 hours. Immediate transfer required to stabilize reserve."
+          alert_text: t('alertRail.emergencyText')
         },
         ...baselineAlerts
       ];
     }
     
     return baselineAlerts;
-  }, [baselineAlerts, phase]);
+  }, [baselineAlerts, phase, t]);
 
   if (loading) {
     return (
@@ -58,7 +60,7 @@ export default function AlertRail({ scope, id, phase = 0 }) {
   if (error) {
     return (
       <div className="p-4 bg-red-50 border border-red-200 text-red-700 rounded-lg text-sm">
-        Alert stream disconnected. Showing zero active alerts.
+        {t('alertRail.error')}
       </div>
     );
   }
@@ -66,7 +68,7 @@ export default function AlertRail({ scope, id, phase = 0 }) {
   if (!displayAlerts || displayAlerts.length === 0) {
     return (
       <div className="p-6 border border-rule bg-card rounded-lg text-center text-ink-soft text-sm">
-        No active alerts for this {scope}.
+        {t('alertRail.empty', { scope })}
       </div>
     );
   }

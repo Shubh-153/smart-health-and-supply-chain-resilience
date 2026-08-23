@@ -1,0 +1,151 @@
+phc_id,phc_name,state,district,latitude,longitude,facility_type,total_beds,occupied_beds,icu_beds
+PHC-001,Ludhiana Rural Health Centre,Punjab,Ludhiana,30.7621,75.6472,District Hospital,68,42,10
+PHC-002,Ludhiana Central Health Centre,Punjab,Ludhiana,30.0602,75.1716,District Hospital,60,54,8
+PHC-003,Amritsar Rural Health Centre,Punjab,Amritsar,31.7901,76.182,Rural,22,13,0
+PHC-004,Jalandhar Rural Health Centre,Punjab,Jalandhar,30.7728,76.7685,District Hospital,108,84,5
+PHC-005,Jalandhar Central Health Centre,Punjab,Jalandhar,31.6209,76.5709,Rural,21,17,0
+PHC-006,Jalandhar Rural Health Centre,Punjab,Jalandhar,30.7717,74.858,District Hospital,76,72,4
+PHC-007,Ludhiana Central Health Centre,Punjab,Ludhiana,31.5111,76.3925,Rural,97,78,9
+PHC-008,Mohali Rural Health Centre,Punjab,Mohali,30.7963,74.8345,Urban,141,107,7
+PHC-009,Ludhiana Central Health Centre,Punjab,Ludhiana,31.2729,75.1035,Urban,145,89,10
+PHC-010,Mohali Central Health Centre,Punjab,Mohali,30.98,75.6755,Urban,123,102,8
+PHC-011,Patiala Central Health Centre,Punjab,Patiala,31.5828,75.0269,District Hospital,43,19,0
+PHC-012,Ludhiana Central Health Centre,Punjab,Ludhiana,31.1997,76.5035,District Hospital,106,80,6
+PHC-013,Ludhiana Rural Health Centre,Punjab,Ludhiana,30.2984,75.5694,Rural,84,59,4
+PHC-014,Ludhiana Rural Health Centre,Punjab,Ludhiana,30.1167,75.2676,District Hospital,117,94,5
+PHC-015,Jalandhar Rural Health Centre,Punjab,Jalandhar,30.1199,76.5329,Urban,53,38,2
+PHC-016,Jalandhar Rural Health Centre,Punjab,Jalandhar,30.6975,76.2592,Urban,125,85,7
+PHC-017,Mohali Rural Health Centre,Punjab,Mohali,31.4537,75.9352,Rural,60,56,5
+PHC-018,Mohali Rural Health Centre,Punjab,Mohali,30.5205,75.479,Rural,40,27,0
+PHC-019,Ludhiana Central Health Centre,Punjab,Ludhiana,31.8648,74.9687,Rural,135,122,5
+PHC-020,Mohali Rural Health Centre,Punjab,Mohali,31.8689,75.7234,Urban,69,32,9
+PHC-021,Nagpur Rural Health Centre,Maharashtra,Nagpur,18.4753,72.2437,District Hospital,128,80,4
+PHC-022,Varanasi Rural Health Centre,Uttar Pradesh,Varanasi,25.8876,80.2989,Urban,137,55,3
+PHC-023,Coimbatore Rural Health Centre,Tamil Nadu,Coimbatore,10.1648,77.9069,Urban,112,53,9
+PHC-024,Malda Rural Health Centre,West Bengal,Malda,22.5341,86.9483,District Hospital,38,23,0
+PHC-025,Udaipur Rural Health Centre,Rajasthan,Udaipur,26.3162,74.0312,Urban,96,68,0
+PHC-026,Bangalore Central Health Centre,Karnataka,Bangalore,15.2007,75.7997,District Hospital,93,57,8
+PHC-027,Gaya Central Health Centre,Bihar,Gaya,25.841,86.0456,Rural,125,90,9
+PHC-028,Rajkot Central Health Centre,Gujarat,Rajkot,23.1558,70.4159,Urban,21,17,0
+PHC-029,Gwalior Rural Health Centre,Madhya Pradesh,Gwalior,22.5472,78.0961,Rural,67,56,7
+PHC-030,Kozhikode Central Health Centre,Kerala,Kozhikode,10.0639,76.0308,District Hospital,134,107,7
+PHC-031,Warangal Central Health Centre,Telangana,Warangal,17.1885,79.0779,Rural,32,29,0
+PHC-032,Cuttack Rural Health Centre,Odisha,Cuttack,20.5064,85.818,Rural,75,53,5
+PHC-033,Nashik Rural Health Centre,Maharashtra,Nashik,18.0183,73.0115,District Hospital,37,28,0
+PHC-034,Lucknow Central Health Centre,Uttar Pradesh,Lucknow,27.1689,80.4607,District Hospital,141,94,1
+PHC-035,Chennai Rural Health Centre,Tamil Nadu,Chennai,10.2861,78.7961,Urban,42,28,0
+PHC-036,Malda Rural Health Centre,West Bengal,Malda,22.2599,88.3352,District Hospital,71,53,8
+PHC-037,Jaipur Central Health Centre,Rajasthan,Jaipur,26.2091,74.032,Rural,108,91,7
+PHC-038,Hubli Rural Health Centre,Karnataka,Hubli,15.0851,74.9285,Urban,100,74,9
+PHC-039,Bhagalpur Rural Health Centre,Bihar,Bhagalpur,25.0752,84.6364,District Hospital,94,38,3
+PHC-040,Vadodara Central Health Centre,Gujarat,Vadodara,22.857,71.6229,Urban,83,52,5
+PHC-041,Bhopal Rural Health Centre,Madhya Pradesh,Bhopal,21.9022,78.5536,Rural,129,98,1
+PHC-042,Thrissur Central Health Centre,Kerala,Thrissur,10.3911,75.3091,Rural,150,97,6
+PHC-043,Hyderabad Central Health Centre,Telangana,Hyderabad,19.006,79.246,District Hospital,22,14,0
+PHC-044,Puri Rural Health Centre,Odisha,Puri,21.8628,85.9082,Urban,65,42,8
+PHC-045,Pune Rural Health Centre,Maharashtra,Pune,19.9284,72.4735,Urban,35,24,0
+PHC-046,Agra Rural Health Centre,Uttar Pradesh,Agra,26.0451,81.7846,District Hospital,52,32,5
+PHC-047,Madurai Central Health Centre,Tamil Nadu,Madurai,10.4522,78.785,District Hospital,110,91,2
+PHC-048,Howrah Central Health Centre,West Bengal,Howrah,22.5364,88.4176,District Hospital,28,18,0
+PHC-049,Jaipur Central Health Centre,Rajasthan,Jaipur,26.4111,73.58,District Hospital,60,36,5
+PHC-050,Bangalore Central Health Centre,Karnataka,Bangalore,16.1056,76.1286,District Hospital,141,95,6
+PHC-051,Gaya Rural Health Centre,Bihar,Gaya,25.8417,86.0941,Urban,80,48,7
+PHC-052,Vadodara Central Health Centre,Gujarat,Vadodara,21.9731,70.4258,Rural,43,28,0
+PHC-053,Bhopal Rural Health Centre,Madhya Pradesh,Bhopal,23.2726,78.8766,District Hospital,68,46,3
+PHC-054,Kochi Central Health Centre,Kerala,Kochi,10.2188,76.7471,Rural,21,14,0
+PHC-055,Hyderabad Rural Health Centre,Telangana,Hyderabad,17.1395,79.5795,Urban,47,35,0
+PHC-056,Puri Rural Health Centre,Odisha,Puri,20.1768,85.2944,Urban,31,18,0
+PHC-057,Nashik Central Health Centre,Maharashtra,Nashik,18.1007,72.4454,Urban,102,94,4
+PHC-058,Varanasi Central Health Centre,Uttar Pradesh,Varanasi,25.8971,81.7706,Urban,21,20,0
+PHC-059,Madurai Central Health Centre,Tamil Nadu,Madurai,10.8174,78.5052,District Hospital,72,70,0
+PHC-060,Howrah Central Health Centre,West Bengal,Howrah,22.961,88.7933,District Hospital,75,62,9
+PHC-061,Udaipur Rural Health Centre,Rajasthan,Udaipur,26.779,73.4366,District Hospital,123,87,0
+PHC-062,Hubli Rural Health Centre,Karnataka,Hubli,14.4396,75.087,Urban,45,30,0
+PHC-063,Gaya Central Health Centre,Bihar,Gaya,25.696,85.9131,Rural,148,59,3
+PHC-064,Vadodara Rural Health Centre,Gujarat,Vadodara,21.5225,71.7667,Rural,142,134,9
+PHC-065,Bhopal Central Health Centre,Madhya Pradesh,Bhopal,23.7202,77.7676,District Hospital,54,35,3
+PHC-066,Kochi Central Health Centre,Kerala,Kochi,11.0279,76.242,District Hospital,118,98,6
+PHC-067,Warangal Central Health Centre,Telangana,Warangal,18.4632,79.993,Urban,106,89,7
+PHC-068,Cuttack Central Health Centre,Odisha,Cuttack,20.8566,85.0815,Urban,52,21,6
+PHC-069,Thane Central Health Centre,Maharashtra,Thane,19.3811,72.1201,Urban,32,22,0
+PHC-070,Varanasi Central Health Centre,Uttar Pradesh,Varanasi,27.0362,80.0686,Urban,41,17,0
+PHC-071,Madurai Central Health Centre,Tamil Nadu,Madurai,10.9742,78.0998,District Hospital,115,74,8
+PHC-072,Howrah Rural Health Centre,West Bengal,Howrah,23.5345,88.4565,District Hospital,69,39,4
+PHC-073,Udaipur Central Health Centre,Rajasthan,Udaipur,26.2517,73.6653,District Hospital,59,45,1
+PHC-074,Bangalore Central Health Centre,Karnataka,Bangalore,14.8119,75.4327,Rural,145,106,9
+PHC-075,Gaya Rural Health Centre,Bihar,Gaya,25.2168,85.4263,District Hospital,130,104,5
+PHC-076,Ahmedabad Central Health Centre,Gujarat,Ahmedabad,23.0573,71.3678,Rural,78,61,9
+PHC-077,Gwalior Central Health Centre,Madhya Pradesh,Gwalior,23.1464,78.4809,Rural,109,82,7
+PHC-078,Thrissur Central Health Centre,Kerala,Thrissur,10.8631,75.5728,Urban,100,72,9
+PHC-079,Nizamabad Central Health Centre,Telangana,Nizamabad,18.5542,79.7309,Urban,67,45,2
+PHC-080,Bhubaneswar Rural Health Centre,Odisha,Bhubaneswar,20.8032,85.654,Rural,29,21,0
+PHC-081,Nagpur Central Health Centre,Maharashtra,Nagpur,18.8392,72.619,Urban,65,35,0
+PHC-082,Agra Rural Health Centre,Uttar Pradesh,Agra,26.3986,80.6371,Rural,29,18,0
+PHC-083,Coimbatore Rural Health Centre,Tamil Nadu,Coimbatore,11.332,77.6582,Urban,105,71,9
+PHC-084,Malda Central Health Centre,West Bengal,Malda,23.439,86.9965,District Hospital,99,78,2
+PHC-085,Kota Central Health Centre,Rajasthan,Kota,26.1722,73.9838,District Hospital,47,32,0
+PHC-086,Mangalore Central Health Centre,Karnataka,Mangalore,14.4558,76.5617,Urban,80,51,10
+PHC-087,Gaya Central Health Centre,Bihar,Gaya,24.2781,85.4108,Urban,74,71,7
+PHC-088,Vadodara Central Health Centre,Gujarat,Vadodara,23.1807,71.7178,Urban,63,46,10
+PHC-089,Indore Central Health Centre,Madhya Pradesh,Indore,23.2658,77.682,District Hospital,117,90,8
+PHC-090,Kochi Central Health Centre,Kerala,Kochi,11.3387,76.5844,Urban,136,112,4
+PHC-091,Nizamabad Central Health Centre,Telangana,Nizamabad,17.9012,79.4645,Rural,111,75,4
+PHC-092,Puri Central Health Centre,Odisha,Puri,21.1976,84.0287,Urban,31,20,0
+PHC-093,Thane Central Health Centre,Maharashtra,Thane,18.4713,72.235,Rural,109,76,8
+PHC-094,Agra Central Health Centre,Uttar Pradesh,Agra,25.9193,80.173,Urban,105,66,9
+PHC-095,Coimbatore Rural Health Centre,Tamil Nadu,Coimbatore,11.5946,77.6488,Rural,61,32,9
+PHC-096,Howrah Central Health Centre,West Bengal,Howrah,23.5591,87.7403,District Hospital,135,128,8
+PHC-097,Kota Rural Health Centre,Rajasthan,Kota,27.956,73.4959,Rural,28,21,0
+PHC-098,Bangalore Rural Health Centre,Karnataka,Bangalore,16.255,76.4486,District Hospital,92,63,4
+PHC-099,Patna Rural Health Centre,Bihar,Patna,24.7464,85.7659,Urban,141,118,1
+PHC-100,Ahmedabad Central Health Centre,Gujarat,Ahmedabad,21.478,70.9839,District Hospital,142,97,5
+PHC-101,Indore Central Health Centre,Madhya Pradesh,Indore,21.9087,79.0507,District Hospital,92,59,8
+PHC-102,Kochi Central Health Centre,Kerala,Kochi,11.6865,75.9122,Urban,89,70,10
+PHC-103,Karimnagar Rural Health Centre,Telangana,Karimnagar,18.1134,78.9828,Urban,140,100,2
+PHC-104,Bhubaneswar Central Health Centre,Odisha,Bhubaneswar,21.3354,85.1564,Urban,77,58,1
+PHC-105,Thane Rural Health Centre,Maharashtra,Thane,19.5941,72.6211,Urban,58,37,3
+PHC-106,Varanasi Central Health Centre,Uttar Pradesh,Varanasi,25.8696,81.3789,Rural,98,59,9
+PHC-107,Trichy Rural Health Centre,Tamil Nadu,Trichy,10.9206,79.4788,District Hospital,53,43,10
+PHC-108,Darjeeling Central Health Centre,West Bengal,Darjeeling,23.4849,86.8575,Rural,68,47,6
+PHC-109,Jaipur Central Health Centre,Rajasthan,Jaipur,27.8056,73.7264,Urban,112,93,4
+PHC-110,Bangalore Rural Health Centre,Karnataka,Bangalore,15.2597,75.9567,District Hospital,137,110,10
+PHC-111,Bhagalpur Rural Health Centre,Bihar,Bhagalpur,25.2591,85.3494,Urban,59,49,8
+PHC-112,Vadodara Rural Health Centre,Gujarat,Vadodara,22.8319,71.4921,Rural,23,14,0
+PHC-113,Bhopal Central Health Centre,Madhya Pradesh,Bhopal,22.5783,78.8042,District Hospital,149,137,10
+PHC-114,Kozhikode Central Health Centre,Kerala,Kozhikode,9.8839,75.4108,Rural,46,37,0
+PHC-115,Karimnagar Central Health Centre,Telangana,Karimnagar,18.3878,79.9752,District Hospital,57,44,7
+PHC-116,Cuttack Rural Health Centre,Odisha,Cuttack,20.8086,84.2931,Urban,69,67,5
+PHC-117,Thane Central Health Centre,Maharashtra,Thane,19.2729,73.5234,Rural,53,41,8
+PHC-118,Lucknow Rural Health Centre,Uttar Pradesh,Lucknow,26.1384,81.129,Rural,98,57,10
+PHC-119,Madurai Rural Health Centre,Tamil Nadu,Madurai,10.6785,79.5442,Urban,138,115,9
+PHC-120,Howrah Central Health Centre,West Bengal,Howrah,22.283,88.4326,District Hospital,91,70,5
+PHC-121,Jaipur Rural Health Centre,Rajasthan,Jaipur,26.3938,73.8584,District Hospital,128,107,3
+PHC-122,Hubli Central Health Centre,Karnataka,Hubli,15.0108,75.6628,Rural,52,39,4
+PHC-123,Gaya Rural Health Centre,Bihar,Gaya,24.3982,84.8682,Urban,112,68,0
+PHC-124,Surat Rural Health Centre,Gujarat,Surat,22.1285,70.7436,District Hospital,150,104,8
+PHC-125,Gwalior Central Health Centre,Madhya Pradesh,Gwalior,23.5909,77.9813,Rural,97,76,10
+PHC-126,Kochi Rural Health Centre,Kerala,Kochi,10.869,75.5767,District Hospital,72,60,1
+PHC-127,Hyderabad Rural Health Centre,Telangana,Hyderabad,17.6758,79.962,District Hospital,30,23,0
+PHC-128,Rourkela Rural Health Centre,Odisha,Rourkela,21.5831,84.3412,Rural,55,39,4
+PHC-129,Thane Rural Health Centre,Maharashtra,Thane,19.2999,72.738,Rural,76,46,4
+PHC-130,Lucknow Central Health Centre,Uttar Pradesh,Lucknow,26.8786,81.7133,Rural,104,71,3
+PHC-131,Chennai Central Health Centre,Tamil Nadu,Chennai,11.0072,78.3503,Rural,85,59,4
+PHC-132,Darjeeling Rural Health Centre,West Bengal,Darjeeling,23.8354,88.117,Urban,84,64,8
+PHC-133,Udaipur Central Health Centre,Rajasthan,Udaipur,26.019,73.7322,District Hospital,144,139,1
+PHC-134,Mysore Central Health Centre,Karnataka,Mysore,16.2101,75.6643,Rural,139,89,7
+PHC-135,Patna Rural Health Centre,Bihar,Patna,25.0766,85.2212,Urban,76,47,0
+PHC-136,Surat Central Health Centre,Gujarat,Surat,23.177,70.3952,Urban,46,24,0
+PHC-137,Bhopal Central Health Centre,Madhya Pradesh,Bhopal,23.0982,77.9599,Urban,50,32,0
+PHC-138,Thiruvananthapuram Central Health Centre,Kerala,Thiruvananthapuram,10.8718,75.3411,District Hospital,128,106,2
+PHC-139,Karimnagar Central Health Centre,Telangana,Karimnagar,17.6181,79.5733,District Hospital,123,60,2
+PHC-140,Bhubaneswar Central Health Centre,Odisha,Bhubaneswar,20.3885,85.478,District Hospital,128,99,5
+PHC-141,Nagpur Rural Health Centre,Maharashtra,Nagpur,18.0138,73.5389,Urban,59,41,7
+PHC-142,Kanpur Rural Health Centre,Uttar Pradesh,Kanpur,27.2023,80.9047,District Hospital,129,118,1
+PHC-143,Trichy Central Health Centre,Tamil Nadu,Trichy,10.1876,77.9834,Urban,71,52,2
+PHC-144,Howrah Rural Health Centre,West Bengal,Howrah,22.9692,86.8028,District Hospital,83,70,3
+PHC-145,Udaipur Rural Health Centre,Rajasthan,Udaipur,27.2066,73.9558,Rural,55,42,0
+PHC-146,Mangalore Central Health Centre,Karnataka,Mangalore,16.0862,76.0743,Urban,66,50,2
+PHC-147,Gaya Central Health Centre,Bihar,Gaya,24.6987,85.9975,Rural,48,19,0
+PHC-148,Surat Central Health Centre,Gujarat,Surat,21.6378,70.4674,District Hospital,74,51,0
+PHC-149,Gwalior Central Health Centre,Madhya Pradesh,Gwalior,23.4501,77.6474,Urban,45,32,0
+PHC-150,Thrissur Rural Health Centre,Kerala,Thrissur,11.6343,75.458,District Hospital,122,85,9

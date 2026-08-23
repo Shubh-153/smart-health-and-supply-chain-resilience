@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo, useRef, useLayoutEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { getPhcs } from '../api/client';
 import TriageTag from './TriageTag';
 import DataGrid from './DataGrid';
@@ -22,6 +23,7 @@ function getSeededRandom(idStr) {
 }
 
 export default function FacilityList({ scope, id, phase }) {
+  const { t } = useTranslation();
   const [baselinePhcs, setBaselinePhcs] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -162,7 +164,7 @@ export default function FacilityList({ scope, id, phase }) {
   if (error) {
     return (
       <div className="p-6 bg-red-50 border border-red-200 text-red-700 rounded-lg text-sm">
-        Facility data connection dropped. Showing an empty facility list instead.
+        {t('facilityList.error')}
       </div>
     );
   }
@@ -170,7 +172,7 @@ export default function FacilityList({ scope, id, phase }) {
   if (!baselinePhcs || baselinePhcs.length === 0) {
     return (
       <div className="p-8 border border-rule bg-card rounded-lg text-center text-ink-soft">
-        No facilities at risk in this {scope}. Last checked 2 minutes ago.
+        {t('facilityList.empty', { scope })}
       </div>
     );
   }

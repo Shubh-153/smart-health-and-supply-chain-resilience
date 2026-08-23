@@ -1,0 +1,183 @@
+{
+  "dataGrid": {
+    "facility": "ተቋም",
+    "stockStatus": "የክምችት ሁኔታ",
+    "trend": "አዝማሚያ (7ቀ)",
+    "risk": "ስጋት",
+    "transfer": "ዝውውር",
+    "triage": "ትሪያዥ",
+    "beds": "አልጋዎች",
+    "staff": "ሰራተኞች %",
+    "district": "ወረዳ"
+  },
+  "facilityList": {
+    "error": "የተቋሙ የመረጃ ግንኙነት ተቋርጧል። በምትኩ ባዶ የተቋማት ዝርዝር እያሳየ ነው።",
+    "empty": "በዚህ {{scope}} ውስጥ ምንም አስጋሪ ሁኔታ ላይ ያሉ ተቋማት የሉም። ከመጨረሻው ፍተሻ ከ 2 ደቂቃ በፊት ነበር።",
+    "cards": "ካርዶች",
+    "grid": "ግሪድ"
+  },
+  "recommendationRail": {
+    "title": "የ AI የዝውውር ምክረ ሃሳቦች",
+    "subtitle": "የአውታረ መረብ ሚዛንን ይገምግሙ እና ያጽድቁ።",
+    "empty": "ምንም ምክረ ሃሳብ የለም።",
+    "approve": "አጽድቅ",
+    "from": "ከ",
+    "to": "ወደ",
+    "km": "ኪ.ሜ",
+    "riskReduction": "የስጋት ቅነሳ",
+    "riskReductionTitle": "የስጋት ቅነሳ",
+    "error": "የመረጃ ፍሰቱ ተቋርጧል።"
+  },
+  "riskBreakdown": {
+    "title": "የስጋት ሁኔታዎች",
+    "stock": "ክምችት",
+    "demand": "ፍላጎት",
+    "beds": "አልጋዎች",
+    "staff": "ሰራተኞች"
+  },
+  "summaryBar": {
+    "title": "የአውታረ መረብ ቅጽበታዊ እይታ",
+    "totalFacilities": "ጠቅላላ ተቋማት",
+    "avgRiskScore": "አማካኝ የስጋት ነጥብ",
+    "critical": "አሳሳቢ",
+    "activeTransfers": "ንቁ ዝውውሮች",
+    "error": "ግንኙነት ተቋርጧል።"
+  },
+  "triageTag": {
+    "risk": "ስጋት",
+    "viewDetails": "ዝርዝሮችን ይመልከቱ"
+  },
+  "aggregateView": {
+    "empty": "ምንም ተቋማት አልተገኙም።",
+    "networkOverview": "የአውታረ መረብ አጠቃላይ እይታ",
+    "activeAlerts": "ንቁ ማስጠንቀቂያዎች",
+    "facilitiesAtRisk": "ስጋት ላይ ያሉ ተቋማት",
+    "riskDistribution": "የስጋት ስርጭት",
+    "aiRecommendations": "የ AI ምክረ ሃሳቦች"
+  },
+  "notFound": {
+    "title": "404",
+    "subtitle": "ገጹ አልተገኘም",
+    "return": "ወደ ዳሽቦርድ ይመለሱ"
+  },
+  "phcView": {
+    "stockOutIn": "ክምችት የሚያበቃው በ",
+    "days": "ቀናት",
+    "forecast": "የ7-ቀን ትንበያ",
+    "inventory": "የመድኃኒት ክምችት",
+    "riskAnalysis": "የስጋት ትንተና",
+    "footfall": "የታካሚዎች ቁጥር"
+  },
+  "layout": {
+    "breadcrumbs": {
+      "india": "ህንድ"
+    },
+    "header": {
+      "title": "አሮግያ ግሪድ",
+      "openNavigation": "አሰሳ ክፈት",
+      "searchFacilities": "ተቋማትን ፈልግ",
+      "search": "ፈልግ...",
+      "simulated": "የተመሰለ",
+      "simulatedTooltip": "መረጃው ለሙከራ የተመሰለ ነው"
+    }
+  },
+  "sidebar": {
+    "expand": "ዘርጋ",
+    "collapse": "አጣጥፍ",
+    "ariaNavigation": "የተቋማት አሰሳ",
+    "loading": "አሰሳው አይገኝም። ከላይ ያለውን መገኛ ይጠቀሙ።",
+    "header": "አሰሳ",
+    "close": "አሰሳ ዝጋ"
+  },
+  "forecastChart": {
+    "count": "ብዛት:",
+    "range": "ወሰን:",
+    "status": "ሁኔታ:",
+    "predicted": "የተተነበየ",
+    "recorded": "የተመዘገበ",
+    "historicalPattern": "በ30 ቀናት ታሪካዊ መረጃ ላይ የተመሰረተ",
+    "today": "ዛሬ"
+  },
+  "medicineTable": {
+    "medicine": "መድኃኒት",
+    "currentStock": "የአሁኑ ክምችት",
+    "dailyCons": "የቀን ፍጆታ",
+    "daysRem": "የቀሩት ቀናት",
+    "status": "ሁኔታ"
+  },
+  "triage": {
+    "critical": "እጅግ አስቸኳይ",
+    "high": "ከፍተኛ",
+    "medium": "መካከለኛ",
+    "low": "ዝቅተኛ"
+  },
+  "glossary": {
+    "ariaLabel": "የቃላት መፍቻ",
+    "title": "የቃላት መፍቻ",
+    "close": "መፍቻውን ዝጋ",
+    "searchPlaceholder": "ቃላትን ፈልግ...",
+    "noTermsFound": "ከ \"{{query}}\" ጋር የሚዛመድ ቃል አልተገኘም",
+    "terms": {
+      "riskScore": {
+        "term": "የስጋት ነጥብ",
+        "def": "በየቀኑ የሚሰላ ከ0-100 የሆነ ጥምር መለኪያ። የአሁኑን የክምችት መጠን (40%)፣ የተተነበየውን ፍላጎት (35%) እና የአካባቢውን መሰረተ ልማት አቅም (25%) ያመዛዝናል።"
+      },
+      "triageBands": {
+        "term": "የትሪያዥ ደረጃዎች",
+        "def": "ተቋማት በስጋት ነጥባቸው መሰረት በአራት ደረጃዎች ይከፈላሉ፡ አነስተኛ (0–30)፣ የዘገየ (31–60)፣ አስቸኳይ (61–80) እና ወዲያውኑ የሚደርስ (81–100)። እነዚህም ከክሊኒካዊ ትሪያዥ ቃላት ጋር ይዛመዳሉ።"
+      },
+      "stockDays": {
+        "term": "የክምችት ቀናት",
+        "def": "አንድ መድኃኒት በአሁኑ የፍጆታ መጠን ምን ያህል ቀናት ሊቆይ እንደሚችል የሚያሳይ። የአሁኑ ክምችት ÷ አማካኝ የቀን ፍጆታ ተደርጎ ይሰላል።"
+      },
+      "demandSurge": {
+        "term": "የፍላጎት መጨመር",
+        "def": "በ7-ቀን የ AI ትንበያ ሞዴል ላይ በመመስረት የታካሚዎች ቁጥር እንደሚጨምር የሚጠበቅ ትንበያ። ከ30 ቀናት መነሻ መስመር በላይ በመቶኛ ይገለጻል።"
+      },
+      "transferRecommendation": {
+        "term": "የዝውውር ምክረ ሃሳብ",
+        "def": "ትርፍ ክምችት ካለው ተቋም ወደ እጥረት ወዳለበት ተቋም የመድኃኒት ክምችት ለማዛወር በ AI የሚመነጭ አስተያየት። መነሻውን፣ መድረሻውን፣ መጠኑን፣ ርቀቱን እና የሚጠበቀውን የስጋት ቅነሳ ያሳያል።"
+      },
+      "bedOccupancy": {
+        "term": "የአልጋ አጠቃቀም",
+        "def": "በአሁኑ ጊዜ ጥቅም ላይ የዋሉት የጤና ተቋሙ ጠቅላላ አልጋዎች መቶኛ። ከፍተኛ የአልጋ አጠቃቀም (>80%) የአቅም ማነስ ጫናን ያሳያል።"
+      },
+      "staffRatio": {
+        "term": "የሰራተኞች ጥምርታ",
+        "def": "በአሁኑ ጊዜ የተቀጠሩት የተፈቀዱ የሰራተኞች የስራ መደቦች መጠን። ዝቅተኛ ጥምርታ የሰራተኞች እጥረትን ያሳያል።"
+      }
+    }
+  },
+  "helpTooltip": {
+    "moreInfo": "ተጨማሪ መረጃ"
+  },
+  "alertCard": {
+    "actionRequired": "እርምጃ ያስፈልጋል",
+    "reviewTransfer": "ዝውውሩን ይገምግሙ"
+  },
+  "alertRail": {
+    "emergencyText": "እጅግ አስቸኳይ፡ የPHC-02 ታካሚዎች ቁጥር በድንገት እየጨመረ ነው። የORS ክምችት ከ<24 ሰዓታት ባነሰ ጊዜ ውስጥ ያልቃል ተብሎ ይገመታል። ክምችቱን ለማረጋጋት ወዲያውኑ ማስተላለፍ ያስፈልጋል።",
+    "error": "የማስጠንቀቂያ ፍሰት ተቋርጧል። ምንም ንቁ ማስጠንቀቂያዎች የሉም።",
+    "empty": "ለዚህ {{scope}} ምንም ንቁ ማስጠንቀቂያዎች የሉም።"
+  },
+  "emergencyControls": {
+    "updating": "በማዘመን ላይ...",
+    "simulate": "የአደጋ ጊዜን አስመስል",
+    "reset": "አውታረ መረቡን እንደገና አስጀምር",
+    "triggerTitle": "የአደጋ ጊዜ ሁኔታ ይፈጠር?",
+    "triggerDesc": "ይህ በአውታረ መረቡ ውስጥ የተመሰሉ ቀውሶችን ያስገባል፣ ሁሉንም የስጋት ነጥቦች እንደገና ያሰላል እና አዲስ የ AI ዝውውር ምክረ ሃሳቦችን ያመነጫል።",
+    "cancel": "ሰርዝ",
+    "triggerBtn": "አስጀምር"
+  },
+  "searchPalette": {
+    "placeholder": "ተቋማትን በስም፣ መለያ ቁጥር (ID)፣ ወረዳ ፈልግ...",
+    "ariaSearch": "ተቋማትን ፈልግ",
+    "esc": "Esc",
+    "recent": "የቅርብ ጊዜ",
+    "typeToSearch": "በሁሉም ተቋማት ውስጥ ለመፈለግ ይተይቡ",
+    "noResults": "ከ \"{{query}}\" ጋር የሚዛመድ ተቋም አልተገኘም",
+    "navigate": "↑↓ ተንቀሳቀስ",
+    "select": "↵ ምረጥ",
+    "close": "Esc ዝጋ"
+  }
+}

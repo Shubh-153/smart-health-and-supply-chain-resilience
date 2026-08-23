@@ -1,7 +1,11 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 export default function MedicineTable({ medicines }) {
+  const { t, i18n } = useTranslation();
   if (!medicines || medicines.length === 0) return null;
+
+  const numFormatter = new Intl.NumberFormat(i18n.resolvedLanguage || 'en', { numberingSystem: 'latn' });
 
   // Compute days_remaining and sort ascending
   const enriched = medicines.map(m => {
@@ -29,21 +33,21 @@ export default function MedicineTable({ medicines }) {
         <table className="w-full text-left border-collapse font-mono text-sm">
           <thead className="bg-card text-ink-soft text-xs uppercase tracking-wider">
             <tr>
-              <th className="px-6 py-4 font-semibold border-b border-rule">Medicine</th>
-              <th className="px-6 py-4 font-semibold border-b border-rule text-right">Current Stock</th>
-              <th className="px-6 py-4 font-semibold border-b border-rule text-right">Daily Cons.</th>
-              <th className="px-6 py-4 font-semibold border-b border-rule text-right">Days Rem.</th>
-              <th className="px-6 py-4 font-semibold border-b border-rule text-center">Status</th>
+              <th className="px-6 py-4 font-semibold border-b border-rule">{t('medicineTable.medicine')}</th>
+              <th className="px-6 py-4 font-semibold border-b border-rule text-right">{t('medicineTable.currentStock')}</th>
+              <th className="px-6 py-4 font-semibold border-b border-rule text-right">{t('medicineTable.dailyCons')}</th>
+              <th className="px-6 py-4 font-semibold border-b border-rule text-right">{t('medicineTable.daysRem')}</th>
+              <th className="px-6 py-4 font-semibold border-b border-rule text-center">{t('medicineTable.status')}</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-rule text-ink">
             {enriched.map((m, idx) => (
               <tr key={idx} className="hover:bg-slate-50 transition-colors">
                 <td className="px-6 py-4 font-medium whitespace-nowrap">{m.name}</td>
-                <td className="px-6 py-4 text-right">{m.current_stock.toLocaleString()}</td>
-                <td className="px-6 py-4 text-right text-ink-soft">{m.avg_daily_consumption.toLocaleString()}</td>
+                <td className="px-6 py-4 text-right">{numFormatter.format(m.current_stock)}</td>
+                <td className="px-6 py-4 text-right text-ink-soft">{numFormatter.format(m.avg_daily_consumption)}</td>
                 <td className={`px-6 py-4 text-right font-bold ${m.days_remaining <= 3 ? 'text-triage-imm' : ''}`}>
-                  {m.days_remaining}
+                  {numFormatter.format(m.days_remaining)}
                 </td>
                 <td className="px-6 py-4">
                   <div className="flex items-center justify-center gap-2">
@@ -51,7 +55,7 @@ export default function MedicineTable({ medicines }) {
                     <span className={`uppercase tracking-widest text-[10px] font-bold 
                       ${m.severity === 'Critical' ? 'text-triage-imm' : 'text-ink-soft'}
                     `}>
-                      {m.severity}
+                      {t(`triage.${m.severity.toLowerCase()}`)}
                     </span>
                   </div>
                 </td>

@@ -1,0 +1,183 @@
+{
+  "dataGrid": {
+    "facility": "Fasilitas",
+    "stockStatus": "Status Stok",
+    "trend": "Tren (7 hari)",
+    "risk": "Risiko",
+    "transfer": "Transfer",
+    "triage": "Triase",
+    "beds": "Tempat Tidur",
+    "staff": "Staf %",
+    "district": "Distrik"
+  },
+  "facilityList": {
+    "error": "Koneksi data fasilitas terputus. Menampilkan daftar fasilitas kosong sebagai gantinya.",
+    "empty": "Tidak ada fasilitas yang berisiko di {{scope}} ini. Terakhir diperiksa 2 menit yang lalu.",
+    "cards": "Kartu",
+    "grid": "Kisi"
+  },
+  "recommendationRail": {
+    "title": "Rekomendasi Transfer AI",
+    "subtitle": "Tinjau dan setujui penyeimbangan ulang jaringan.",
+    "empty": "Tidak ada rekomendasi.",
+    "approve": "Setujui",
+    "from": "dari",
+    "to": "ke",
+    "km": "km",
+    "riskReduction": "pengurangan risiko",
+    "riskReductionTitle": "Pengurangan risiko",
+    "error": "Aliran data terputus."
+  },
+  "riskBreakdown": {
+    "title": "Faktor Risiko",
+    "stock": "Stok",
+    "demand": "Permintaan",
+    "beds": "Tempat Tidur",
+    "staff": "Staf"
+  },
+  "summaryBar": {
+    "title": "Ringkasan Jaringan",
+    "totalFacilities": "Total Fasilitas",
+    "avgRiskScore": "Skor Risiko Rata-rata",
+    "critical": "Kritis",
+    "activeTransfers": "Transfer Aktif",
+    "error": "Koneksi terputus."
+  },
+  "triageTag": {
+    "risk": "Risiko",
+    "viewDetails": "Lihat detail"
+  },
+  "aggregateView": {
+    "empty": "Fasilitas tidak ditemukan.",
+    "networkOverview": "Ikhtisar Jaringan",
+    "activeAlerts": "Peringatan Aktif",
+    "facilitiesAtRisk": "Fasilitas Berisiko",
+    "riskDistribution": "Distribusi Risiko",
+    "aiRecommendations": "Rekomendasi AI"
+  },
+  "notFound": {
+    "title": "404",
+    "subtitle": "Halaman tidak ditemukan",
+    "return": "Kembali ke Dasbor"
+  },
+  "phcView": {
+    "stockOutIn": "Kehabisan stok dalam",
+    "days": "hari",
+    "forecast": "Prakiraan 7 Hari",
+    "inventory": "Inventaris Obat",
+    "riskAnalysis": "Analisis Risiko",
+    "footfall": "Kunjungan Pasien"
+  },
+  "layout": {
+    "breadcrumbs": {
+      "india": "India"
+    },
+    "header": {
+      "title": "Aarogya Grid",
+      "openNavigation": "Buka navigasi",
+      "searchFacilities": "Cari fasilitas",
+      "search": "Cari...",
+      "simulated": "Simulasi",
+      "simulatedTooltip": "Data dibuat untuk simulasi"
+    }
+  },
+  "sidebar": {
+    "expand": "Perluas",
+    "collapse": "Ciutkan",
+    "ariaNavigation": "Navigasi fasilitas",
+    "loading": "Navigasi tidak tersedia. Gunakan breadcrumbs di atas.",
+    "header": "Navigasi",
+    "close": "Tutup navigasi"
+  },
+  "forecastChart": {
+    "count": "Jumlah:",
+    "range": "Rentang:",
+    "status": "Status:",
+    "predicted": "Diprediksi",
+    "recorded": "Tercatat",
+    "historicalPattern": "Berdasarkan pola historis 30 hari",
+    "today": "HARI INI"
+  },
+  "medicineTable": {
+    "medicine": "Obat",
+    "currentStock": "Stok Saat Ini",
+    "dailyCons": "Kons. Harian",
+    "daysRem": "Sisa Hari",
+    "status": "Status"
+  },
+  "triage": {
+    "critical": "Kritis",
+    "high": "Tinggi",
+    "medium": "Sedang",
+    "low": "Rendah"
+  },
+  "glossary": {
+    "ariaLabel": "Glosarium",
+    "title": "Glosarium",
+    "close": "Tutup glosarium",
+    "searchPlaceholder": "Cari istilah...",
+    "noTermsFound": "Tidak ada istilah yang cocok dengan \"{{query}}\"",
+    "terms": {
+      "riskScore": {
+        "term": "Skor Risiko",
+        "def": "Metrik komposit 0-100 yang dihitung setiap hari. Metrik ini membobotkan tingkat stok saat ini (40%), perkiraan permintaan (35%), dan kapasitas infrastruktur lokal (25%)."
+      },
+      "triageBands": {
+        "term": "Kategori Triase",
+        "def": "Fasilitas diklasifikasikan ke dalam empat kategori berdasarkan skor risiko: Minimal (0–30), Ditunda (31–60), Mendesak (61–80), dan Segera (81–100). Ini dipetakan ke terminologi triase klinis."
+      },
+      "stockDays": {
+        "term": "Hari Stok",
+        "def": "Jumlah hari pasokan obat yang tersisa berdasarkan tingkat konsumsi saat ini. Dihitung sebagai stok saat ini ÷ rata-rata konsumsi harian."
+      },
+      "demandSurge": {
+        "term": "Lonjakan Permintaan",
+        "def": "Perkiraan peningkatan kunjungan pasien berdasarkan model prakiraan AI 7 hari. Dinyatakan sebagai persentase di atas garis dasar 30 hari."
+      },
+      "transferRecommendation": {
+        "term": "Rekomendasi Transfer",
+        "def": "Saran yang dihasilkan AI untuk memindahkan stok obat dari fasilitas yang kelebihan ke fasilitas yang menghadapi kekurangan. Menunjukkan asal, tujuan, jumlah, jarak, dan proyeksi pengurangan risiko."
+      },
+      "bedOccupancy": {
+        "term": "Keterisian Tempat Tidur",
+        "def": "Persentase total tempat tidur fasilitas yang saat ini sedang digunakan. Keterisian yang tinggi (>80%) menandakan adanya tekanan kapasitas."
+      },
+      "staffRatio": {
+        "term": "Rasio Staf",
+        "def": "Proporsi posisi staf yang disetujui yang saat ini terisi. Rasio yang rendah menunjukkan kekurangan staf."
+      }
+    }
+  },
+  "helpTooltip": {
+    "moreInfo": "Informasi lebih lanjut"
+  },
+  "alertCard": {
+    "actionRequired": "Tindakan Diperlukan",
+    "reviewTransfer": "Tinjau transfer"
+  },
+  "alertRail": {
+    "emergencyText": "KRITIS: Kunjungan pasien PHC-02 melonjak drastis. Proyeksi kehabisan stok ORS dalam waktu <24 jam. Diperlukan transfer segera untuk menstabilkan cadangan.",
+    "error": "Aliran peringatan terputus. Menampilkan nol peringatan aktif.",
+    "empty": "Tidak ada peringatan aktif untuk {{scope}} ini."
+  },
+  "emergencyControls": {
+    "updating": "Memperbarui...",
+    "simulate": "Simulasikan keadaan darurat",
+    "reset": "Atur ulang jaringan",
+    "triggerTitle": "Picu Keadaan Darurat?",
+    "triggerDesc": "Ini akan memasukkan simulasi krisis ke dalam jaringan, menghitung ulang semua skor risiko, dan menghasilkan rekomendasi transfer AI yang baru.",
+    "cancel": "Batal",
+    "triggerBtn": "Picu"
+  },
+  "searchPalette": {
+    "placeholder": "Cari fasilitas berdasarkan nama, ID, distrik...",
+    "ariaSearch": "Cari fasilitas",
+    "esc": "Esc",
+    "recent": "Terbaru",
+    "typeToSearch": "Ketik untuk mencari di semua fasilitas",
+    "noResults": "Tidak ada fasilitas yang cocok dengan \"{{query}}\"",
+    "navigate": "↑↓ Navigasi",
+    "select": "↵ Pilih",
+    "close": "Esc Tutup"
+  }
+}

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 /**
  * AnimatedNumber smoothly increments from 0 to target value.
@@ -40,9 +41,10 @@ function AnimatedNumber({ value, suffix = '', duration = 400 }) {
 }
 
 export default function SummaryBar({ data, loading }) {
+  const { t } = useTranslation();
   // If no data yet but loading, create 5 placeholders to map over
   const metrics = loading ? Array(5).fill(null) : [
-    { label: 'Critical count', value: data.critical, suffix: '', isCritical: true },
+    { label: t('summaryBar.critical') + ' count', value: data.critical, suffix: '', isCritical: true },
     { label: 'At risk count', value: data.at_risk, suffix: '', isCritical: false },
     { label: 'Medicine stock-outs', value: data.stock_outs, suffix: '', isCritical: false },
     { label: 'Bed occupancy %', value: data.bed_occupancy_pct, suffix: '%', isCritical: false },
@@ -75,7 +77,7 @@ export default function SummaryBar({ data, loading }) {
                 <div className="mt-2 text-[12px] uppercase font-body tracking-widest text-ink-soft">
                   {m.label}
                 </div>
-                {/* Thin triage-red underline ONLY for the Critical stat */}
+                {/* Thin triage-red underline ONLY for the critical stat */}
                 {m.isCritical && (
                   <div className="mt-3 h-[2px] w-full max-w-[80%] bg-triage-imm"></div>
                 )}

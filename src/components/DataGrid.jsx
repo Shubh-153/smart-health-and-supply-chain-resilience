@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
 function TriageDot({ bucket }) {
@@ -7,6 +8,7 @@ function TriageDot({ bucket }) {
 }
 
 export default function DataGrid({ phcs }) {
+  const { t } = useTranslation();
   const [sortKey, setSortKey] = useState('risk_score');
   const [sortDir, setSortDir] = useState('desc');
   const navigate = useNavigate();
@@ -60,12 +62,12 @@ export default function DataGrid({ phcs }) {
         <table className="w-full text-left border-collapse text-sm">
           <thead className="bg-card text-ink-soft text-xs uppercase tracking-wider sticky top-0 z-10">
             <tr>
-              <SortHeader label="Facility" field="name" />
-              <SortHeader label="Risk" field="risk_score" align="right" />
-              <th className="px-4 py-3 font-semibold border-b border-rule text-center">Triage</th>
-              <SortHeader label="Beds" field="occupied_beds" align="right" />
-              <th className="px-4 py-3 font-semibold border-b border-rule text-right">Staff %</th>
-              <SortHeader label="District" field="district" />
+              <SortHeader label={t('dataGrid.facility')} field="name" />
+              <SortHeader label={t('dataGrid.risk')} field="risk_score" align="right" />
+              <th className="px-4 py-3 font-semibold border-b border-rule text-center">{t('dataGrid.triage')}</th>
+              <SortHeader label={t('dataGrid.beds')} field="occupied_beds" align="right" />
+              <th className="px-4 py-3 font-semibold border-b border-rule text-right">{t('dataGrid.staff')}</th>
+              <SortHeader label={t('dataGrid.district')} field="district" />
             </tr>
           </thead>
           <tbody className="divide-y divide-rule">
@@ -91,7 +93,7 @@ export default function DataGrid({ phcs }) {
                   <td className="px-4 py-3 text-center">
                     <span className="inline-flex items-center gap-1.5">
                       <TriageDot bucket={bucket} />
-                      <span className="text-[10px] uppercase tracking-wider font-bold text-ink-soft">{bucket}</span>
+                      <span className="text-[10px] uppercase tracking-wider font-bold text-ink-soft">{t(`triage.${bucket.toLowerCase()}`)}</span>
                     </span>
                   </td>
                   <td className="px-4 py-3 text-right font-mono text-ink-soft">

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useParams, Link } from 'react-router-dom';
 import { getSummary } from '../api/client';
 import SummaryBar from '../components/SummaryBar';
@@ -7,6 +8,7 @@ import AlertRail from '../components/AlertRail';
 import EmergencyControls from '../components/EmergencyControls';
 
 export default function AggregateView() {
+  const { t } = useTranslation();
   const { stateId, districtId } = useParams();
   
   const [data, setData] = useState(null);
@@ -145,7 +147,7 @@ export default function AggregateView() {
           
           <div className="min-[900px]:col-span-4 order-1 min-[900px]:order-2">
             <div className="sticky top-24">
-              <h3 className="text-lg font-display font-semibold text-ink mb-4">Active Alerts</h3>
+              <h3 className="text-lg font-display font-semibold text-ink mb-4">{t('aggregateView.activeAlerts')}</h3>
               <AlertRail scope={scope} id={id} phase={phase} />
             </div>
           </div>

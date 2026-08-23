@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useParams, Link } from 'react-router-dom';
 import { getPhcDetail, getPhcStockout, getPhcForecast } from '../api/client';
 import RiskBreakdown from '../components/RiskBreakdown';
@@ -64,6 +65,7 @@ function AnimatingScore({ from, to, duration = 800 }) {
 }
 
 export default function PhcView() {
+  const { t } = useTranslation();
   const { stateId, districtId, phcId } = useParams();
   
   const [data, setData] = useState(null);
@@ -256,7 +258,7 @@ export default function PhcView() {
                 <div className="animate-fade-in">
                   <div className="flex items-center gap-2 mb-6">
                     <h3 className="text-lg font-display font-semibold text-ink">30-Day Trend & AI Forecast</h3>
-                    <HelpTooltip text="Solid line: recorded daily patient visits over the past 30 days. Dashed line: 7-day AI prediction with ±15% confidence band (shaded area)." />
+                    <HelpTooltip text="Solid line: recorded daily patient visits over the past 30 {t('phcView.days')}. Dashed line: 7-day AI prediction with ±15% confidence band (shaded area)." />
                   </div>
                   {data.footfall_history_30d && forecast?.footfall_forecast_7d ? (
                     <ForecastChart 

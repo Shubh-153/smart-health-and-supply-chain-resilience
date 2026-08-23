@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import HelpTooltip from './HelpTooltip';
 
 const NAMES = {
   medicine: 'Medicine shortage',
   bed: 'Bed occupancy',
   surge: 'Patient surge',
-  staff: 'Staff shortage'
+  staff: t('riskBreakdown.staff') + ' shortage'
 };
 
 const HELP_TEXTS = {
@@ -23,6 +24,7 @@ const COLORS = {
 };
 
 export default function RiskBreakdown({ breakdown }) {
+  const { t } = useTranslation();
   const [showCalc, setShowCalc] = useState(false);
 
   const segments = Object.entries(breakdown)
@@ -108,12 +110,12 @@ export default function RiskBreakdown({ breakdown }) {
         
         {showCalc && (
           <div className="mt-3 p-3 bg-card border border-rule rounded text-xs font-mono text-ink-soft leading-relaxed">
-            <p className="mb-2 text-ink font-semibold">Risk = Medicine(40%) + Beds(25%) + Surge(20%) + Staff(15%)</p>
+            <p className="mb-2 text-ink font-semibold">Risk = Medicine(40%) + {t('riskBreakdown.beds')}(25%) + Surge(20%) + {t('riskBreakdown.staff')}(15%)</p>
             <ul className="space-y-1">
               <li>Medicine: {Math.round(breakdown.medicine)}/40 pts</li>
-              <li>Beds: {Math.round(breakdown.bed)}/25 pts</li>
+              <li>{t('riskBreakdown.beds')}: {Math.round(breakdown.bed)}/25 pts</li>
               <li>Surge: {Math.round(breakdown.surge)}/20 pts</li>
-              <li>Staff: {Math.round(breakdown.staff)}/15 pts</li>
+              <li>{t('riskBreakdown.staff')}: {Math.round(breakdown.staff)}/15 pts</li>
             </ul>
           </div>
         )}

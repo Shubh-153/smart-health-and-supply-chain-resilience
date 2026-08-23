@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export default function EmergencyControls({ onTrigger, onReset, phase }) {
   const [showConfirm, setShowConfirm] = useState(false);
   const isRecalculating = phase > 0 && phase < 4;
   const isEmergency = phase >= 4;
+  const { t } = useTranslation();
 
   const handleTriggerClick = () => {
     setShowConfirm(true);
@@ -36,10 +38,10 @@ export default function EmergencyControls({ onTrigger, onReset, phase }) {
                 <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                 <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
               </svg>
-              Updating...
+              {t('emergencyControls.updating')}
             </span>
           ) : (
-            'Simulate emergency'
+            t('emergencyControls.simulate')
           )}
         </button>
 
@@ -54,7 +56,7 @@ export default function EmergencyControls({ onTrigger, onReset, phase }) {
             }
           `}
         >
-          Reset network
+          {t('emergencyControls.reset')}
         </button>
       </div>
 
@@ -62,9 +64,9 @@ export default function EmergencyControls({ onTrigger, onReset, phase }) {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
           <div className="absolute inset-0 bg-slate-900/40" onClick={() => setShowConfirm(false)}></div>
           <div className="relative bg-paper rounded-xl shadow-2xl p-6 max-w-sm w-full border border-rule">
-            <h3 className="font-display font-bold text-xl text-ink mb-2">Trigger Emergency?</h3>
+            <h3 className="font-display font-bold text-xl text-ink mb-2">{t('emergencyControls.triggerTitle')}</h3>
             <p className="text-sm text-ink-soft mb-6">
-              This will inject simulated crises into the network, recalculate all risk scores, and generate new AI transfer recommendations.
+              {t('emergencyControls.triggerDesc')}
             </p>
             <div className="flex gap-3 justify-end">
               <button 
@@ -72,14 +74,14 @@ export default function EmergencyControls({ onTrigger, onReset, phase }) {
                 onClick={() => setShowConfirm(false)}
                 className="px-4 py-2 text-ink-soft hover:text-ink font-medium rounded-md"
               >
-                Cancel
+                {t('emergencyControls.cancel')}
               </button>
               <button 
                 type="button" 
                 onClick={confirmTrigger}
                 className="px-4 py-2 bg-triage-imm text-paper font-medium rounded-md hover:bg-red-600 transition-colors"
               >
-                Trigger
+                {t('emergencyControls.triggerBtn')}
               </button>
             </div>
           </div>
