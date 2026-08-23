@@ -7,7 +7,7 @@ export default function RecommendationRail({ districtId, phcId, onConfirmSuccess
   const [recommendation, setRecommendation] = useState(null);
   const [loading, setLoading] = useState(true);
   const [initError, setInitError] = useState(false);
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   
   const [confirming, setConfirming] = useState(false);
   const [confirmed, setConfirmed] = useState(false);

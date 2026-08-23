@@ -9,7 +9,7 @@ import AlertRail from '../components/AlertRail';
 import EmergencyControls from '../components/EmergencyControls';
 
 export default function AggregateView() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { stateId, districtId } = useParams();
   
   const [data, setData] = useState(null);

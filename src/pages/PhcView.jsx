@@ -66,7 +66,7 @@ function AnimatingScore({ from, to, duration = 800 }) {
 }
 
 export default function PhcView() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const { stateId, districtId, phcId } = useParams();
   
   const [data, setData] = useState(null);

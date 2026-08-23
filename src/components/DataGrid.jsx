@@ -9,7 +9,7 @@ function TriageDot({ bucket }) {
 }
 
 export default function DataGrid({ phcs }) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [sortKey, setSortKey] = useState('risk_score');
   const [sortDir, setSortDir] = useState('desc');
   const navigate = useNavigate();

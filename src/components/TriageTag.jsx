@@ -46,7 +46,7 @@ function AnimatingTagScore({ from, to, delay = 0 }) {
 }
 
 export default function TriageTag({ phc, phase = 0, index = 0 }) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const toUrl = `/state/${phc.state.toLowerCase()}/district/${phc.district.toLowerCase()}/phc/${phc.id}`;
   
   // Staggered colors natively crossfade thanks to Tailwind transition utilities

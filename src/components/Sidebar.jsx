@@ -86,7 +86,7 @@ export default function Sidebar({ isOpen, onClose }) {
   const [error, setError] = useState(null);
   const location = useLocation();
   const sidebarRef = useRef(null);
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     let isMounted = true;
