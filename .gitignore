@@ -14,7 +14,6 @@ web/build/
 # Firebase Functions
 functions/node_modules/
 functions/.runtimeconfig.json
-functions/lib/
 
 # Python / Forecast
 forecast/venv/
@@ -43,6 +42,7 @@ ui-debug.log
 Thumbs.db
 dist/
 .agents/
+.claude/
 mcp_config.json
 skills-lock.json
 serviceAccountKey.json
