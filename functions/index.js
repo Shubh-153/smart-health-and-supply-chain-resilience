@@ -491,4 +491,4 @@ app.get("/federated/status", async (req, res) => {
   }
 });
 
-exports.api = onRequest({ region: "us-central1" }, app);
+module.exports = app;
