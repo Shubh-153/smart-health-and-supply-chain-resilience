@@ -1,4 +1,3 @@
-const { onRequest } = require("firebase-functions/v2/https");
 const { getFirestore, Timestamp } = require("firebase-admin/firestore");
 const { initializeApp, getApps, cert } = require("firebase-admin/app");
 const express = require("express");
